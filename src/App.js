@@ -1,9 +1,14 @@
 import React from 'react';
+
 import './App.scss';
+import Layout from './containers/Layout/Layout';
+import Home from './containers/Home/Home';
 
 function App() {
   return (
-    <h1> Tokyo Traveler </h1> 
+   <Layout>
+     <Home />
+   </Layout>
   );
 }
 
