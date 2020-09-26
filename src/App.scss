@@ -1,3 +1,6 @@
+// importing fonts //
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+// font-family: 'EB Garamond', serif;
 
 // SCSS VARIABLES
 
@@ -10,3 +13,22 @@ $dark-blue: #2b2d42;
 
 
 // FONTSIZE //
+
+// Global Styling //
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%; // 62.5% of 16px (the typical default browser font-size) is 10px
+}
+
+body {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.6rem; // 1rem = 10px
+}

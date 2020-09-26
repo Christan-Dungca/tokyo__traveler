@@ -1,15 +1,21 @@
 import React, { Component } from "react";
-import Aux from "../../hoc/Aux/Aux";
+import Styles from './Home.module.scss';
+
+import Aux from '../../hoc/Aux/Aux';
+import Landing from '../../components/Landing/Landing';
+import About from '../../components/About/About';
+import Articles from '../../components/Articles/Articles';
+import Calculator from '../Calculator/Calculator';
+
 
 class Home extends Component {
   render() {
     return (
       <Aux>
-        <h3>Landing placeholder from Home</h3>
-        <h3>About placeholder from Home</h3>
-        <h3>Articles placeholder from Home</h3>
-        <h3>Calculator placeholder from Home</h3>
-        <h3>Footer placeholder from Home</h3>
+        <Landing className={Styles.Landing} />
+        <About className={Styles.About} />
+        <Articles className={Styles.Landing} /> 
+        <Calculator className={Styles.Calculator} />
       </Aux>
     );
   }
