@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Styles from './Calculator.module.scss';
-
+import CustomizeBudget from './CustomizeBudgetPlan';
+import BudgetHomePage from './BudgetHomePage';
+import BudgetResultsPage from './BudgetResultsPage';
+import CreateBudget from './CreateBudget';
 
 //state goes in containers non state in components
 /*
@@ -15,42 +18,39 @@ import Styles from './Calculator.module.scss';
     first section should contain simple things like how much money you have to spend
     and maybe some info or ads with prices for restaraunts etc
 */
+
 const Calculator = () => {
-    let stepsBar2 = document.getElementsByClassName('CalculatorIncomplete');
-    let stepsList = ['Enter your budget', 'Customize', 'Your results'];
-
-    let completeStep1 = () => {
-        //if the class of the element is incomplete, change to completed
-        console.log(stepsBar2)
-        console.log(document.getElementsByClassName("CalculatorCompleted"));
-        
-        // stepsBar2.classList.remove('CalculatorIncomplete');
-        // stepsBar2.classList.add('CalculatorCompleted');
+    //setting state for a couple different options to render different parts of the screen
+    const [count, setCount] = useState(0);
+    const handleCountState = () => {
+        setCount(count + 1);
     }
-    
-
-
+    const stepsList = ['Get a thing', 'enter a thing', 'view a thing']
+    // const textInput = useRef(null);
+    console.log(count)
+    if(count === 0) {
+        console.log(`homepage count ${count}`)
+        return (
+            <BudgetHomePage countState={count} handleCountState={handleCountState}/>
+            )
+        } else if(count===1) {
+            return (
+                <CreateBudget countState={count} handleCountState={handleCountState} />
+            )
+        } else if(count===2) {
+            return (
+                <CustomizeBudget countState={count} handleCountState={handleCountState}/>
+            )
+        } else if(count === 3) {
+            return (
+                <BudgetResultsPage countState={count} handleCountState={handleCountState} />
+            )
+        } else {
+            console.log(`count is not defined: ${count}`)
+        }
     return (
-        <div className={Styles.Calculator}>
-            <div className={Styles.CalculatorContainer}>
-                <div className={Styles.CalculatorHeader}>
-                    <h1>Calculate your budget</h1>
-                    <div className={Styles.CalculatorStatusBar}>
-                        <div className={Styles.CalculatorCompleted} id={Styles.step1}></div>
-                        <div className={Styles.CalculatorIncomplete} id={Styles.step2}></div>
-                        <div className={Styles.CalculatorIncomplete} id={Styles.step3}></div>
-                    </div>
-                    <div className={Styles.CalculatorSteps}>
-                        {stepsList.map((value, index) => {
-                            return <h4 key={index}>
-                                    <span className={Styles.CalculatorStepsNum}>0{index + 1}. </span>
-                                    <span className={Styles.CalculatorStepsPara}>{value}</span>
-                                </h4>
-                        })}
-                    </div>
-                    <button onClick={completeStep1}>Check step</button>
-                </div>
-            </div>
+        <div>
+            <h1>This is the default</h1>
         </div>
     )
 }
