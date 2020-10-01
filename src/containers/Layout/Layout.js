@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import styles from './Layout.module.scss';
 import Navigation from '../../components/Navigation/Navigation';
+import Menu from '../../components/Menu/Menu';
 
 class Layout extends Component {
 
@@ -9,17 +10,19 @@ class Layout extends Component {
     }
 
     // NAVIGATION STATE //
-    toggleNavHandler = () => {
+    toggleNavHandler = () => { 
+        console.log(this.state.showNav);
         this.setState( ( prevState ) => {
-            return { showSideDrawer: !prevState.showSideDrawer };
+            return { showNav: !prevState.showNav };
         });
     } //pass this method to Navigation component via props
 
     render () {
         return (
             <Fragment>
+                {this.state.showNav && <Menu />}
                 {/* Navigation will always be shown */}
-                <Navigation  className={styles.Navigation} />
+                <Navigation  className={styles.Navigation} toggleNavHandler={this.toggleNavHandler} showNav={this.state.showNav}/>
                 {/* This will change according to App Component */}
                 <main>
                     {this.props.children}
