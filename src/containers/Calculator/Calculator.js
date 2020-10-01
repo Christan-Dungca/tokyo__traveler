@@ -45,8 +45,10 @@ const Calculator = () => {
             return (
                 <BudgetResultsPage countState={count} handleCountState={handleCountState} />
             )
-        } else {
-            console.log(`count is not defined: ${count}`)
+        } else if(count > 3) {
+            return (
+                <BudgetHomePage countState={count} handleCountState={handleCountState}/>
+            )
         }
     return (
         <div>
