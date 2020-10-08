@@ -89,9 +89,9 @@
     max-width: 100%;
     width: auto;
     height: 100%;
-    top: 50%;     
+    top: 50%;
     left: 50%;
-    transform: translate( -50%, -50%);
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -103,4 +103,23 @@
 
 .quote {
   font-size: 3rem;
+}
+
+.test {
+  grid-column: 1 / -1;
+  grid-row: landing / about;
+  background-color: lawngreen;
+  overflow: hidden;
+}
+
+.imgContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  object-position: bottom;
+  
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
 }

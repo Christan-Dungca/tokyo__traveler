@@ -7,7 +7,7 @@ import Home from './containers/Home/Home';
 function App() {
   return (
     <Layout className="Layout">
-      <Home />
+      <Home className="Home"/>
     </Layout>
   );
 }
