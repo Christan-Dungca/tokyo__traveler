@@ -1,0 +1,91 @@
+.btn {
+    &,
+    &:link,
+    &:visited {
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        padding: .5rem 1rem;
+        position: relative;
+        backface-visibility: hidden;
+        background-color: transparent;
+        color: black;
+        text-decoration: none;
+        font-size: 2.5rem;
+        font-weight: 300;
+        border: 1px solid black;
+        transition: all .5s ease;
+        background-size: 100% 200%;
+        background-image: linear-gradient(to top, black 50%, transparent 50%);
+        }
+    }
+.btnSmall {
+    &,
+    &:link,
+    &:visited {
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        padding: .2rem .5rem;
+        position: relative;
+        backface-visibility: hidden;
+        background-color: transparent;
+        color: #957b5f;
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: 300;
+        min-width: 100px;
+        border: 1px solid #957b5f;
+        transition: all .5s ease;
+        background-size: 100% 200%;
+        background-image: linear-gradient(to top, #957b5f 50%, transparent 50%);
+        margin: 1rem 0;
+    }
+}
+
+
+.btn:hover {
+    background-position: 0 100%;
+    color: #ffffff;
+}
+.btnSmall:hover {
+    background-position: 0 100%;
+    color: #ffffff;
+}
+
+
+//button with cool underlining effect
+.btnUnderline {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 3rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btnUnderline::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    -webkit-transform-origin: right center;
+    -ms-transform-origin: right center;
+    transform-origin: right center;
+    height: 1px;
+    background: #000000;
+    -webkit-transform: scale(0, 1);
+    -ms-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    // transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btnUnderline:hover::before {
+    transform-origin: left center;
+    transform: scale(1, 1);
+}

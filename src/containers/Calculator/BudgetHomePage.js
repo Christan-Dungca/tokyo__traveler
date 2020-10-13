@@ -1,14 +1,14 @@
 import React from 'react';
 import Styles from './BudgetHomePage.module.scss';
+import BtnStyles from '../../components/UI/Button/Button.module.scss';
 
 function BudgetHomePage(props) {
-    console.log(props.countState)
 
     return (
         <div className={Styles.BudgetHome}>
             <h1>This is the homepage</h1>
             <h2>should be some example stuff with a button to find your own budget</h2>
-            <button onClick={props.handleCountState}>Create your budget</button>
+            <button className={BtnStyles.btnUnderline} onClick={props.handleStateCount}>Create your budget</button>
         </div>
     )
 }
