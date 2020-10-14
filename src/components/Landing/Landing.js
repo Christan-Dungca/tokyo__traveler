@@ -5,35 +5,19 @@ import smallHatMan from "../../assets/images/small-hat-man.jpg";
 import mediumHatMan from "../../assets/images/medium-hat-man.jpg";
 import largeHatMan from "../../assets/images/large-hat-man.jpg";
 
-{
-  /* <img src={small} srcSet={`${small} 300w, ${medium} 768w, ${large} 1280w, ${xlarge} 3200w`} onLoad={this.onLoad} /> */
-}
-
 const Landing = () => {
   return (
-    <div className={styles.test}>
-      <div className={styles.imgContainer}>
-        <img
-          src={smallHatMan}
-          srcSet={`${smallHatMan} 640w, ${mediumHatMan} 1920w, ${largeHatMan} 2400w`}
-          sizes="(min-width: 1000px) 2400px,
-                 (min-width: 600px) 1920px,
-                 (max-width: 400px) 640px"
-        />
-      </div>
-
-      {/* <picture>
-        <src media="(min-width:1000px)" srcSet={largeHatMan} />
-        <src media="(min-width:600px)" srcSet={mediumHatMan} />
-        <src media="(min-width:400px)" srcSet={smallHatMan} />
-        <img src={largeHatMan}></img>
-      </picture> */}
+    <div className={styles.Landing}>
+      <div className={styles.imgContainer}></div>
     </div>
   );
 };
 
+export default Landing;
+
+
 // const Landing = () => {
-//   return (
+  //   return (
 //     <div className={styles.Landing}>
 //       {/* Left side of page */}
 //       <div className={styles.LandingLeft}>
@@ -63,4 +47,21 @@ const Landing = () => {
 //   );
 // };
 
-export default Landing;
+{/* <img
+  src={smallHatMan}
+  srcSet={`${smallHatMan} 640w, ${mediumHatMan} 1920w, ${largeHatMan} 2400w`}
+  sizes="(min-width: 1000px) 2400px,
+         (min-width: 600px) 1920px,
+         (max-width: 400px) 640px"
+/> */}
+
+{/* <picture>
+  <src media="(min-width:1000px)" srcSet={largeHatMan} />
+  <src media="(min-width:600px)" srcSet={mediumHatMan} />
+  <src media="(min-width:400px)" srcSet={smallHatMan} />
+  <img src={largeHatMan}></img>
+</picture> */}
+
+{
+  /* <img src={small} srcSet={`${small} 300w, ${medium} 768w, ${large} 1280w, ${xlarge} 3200w`} onLoad={this.onLoad} /> */
+}
