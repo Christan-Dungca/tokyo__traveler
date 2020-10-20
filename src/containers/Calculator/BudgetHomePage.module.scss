@@ -1,7 +1,9 @@
 .BudgetHome {
     background-color: rgba($color: #c8302f, $alpha: .7);
-    width: 100%;
-    height: 100vh;
+    grid-column: 1 / -1;
+    grid-row: calculator / footer;
+    // width: 100%;
+    // height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;

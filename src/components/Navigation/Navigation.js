@@ -6,7 +6,7 @@ const Navigation = (props) => {
         <nav className={styles.Navigation}>
             <a href="#" 
                 className={styles.logo} 
-                style={ props.showNav === true ? {color: "black"} : {color: "black"}}
+                // style={ props.showNav === true ? {color: "black"} : {color: "black"}}
             > Tokyo Traveler </a>
             {/* <div className={styles.navBtnContainer} onClick={props.toggleNavHandler}> 
                 <div className={styles.navBtn}></div>  
