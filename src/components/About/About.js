@@ -9,6 +9,7 @@ import styles from "./About.module.scss";
   [x] Left Container : 80vw 100% (width, height) -> about + image
   [x] Right Container : 100% 100% -> about text
   [] Create a Grid layout for About Section
+  [x] Change top of about section to be 80%, diplay flex; justify content space between
 */
 
 const About = () => {
@@ -31,7 +32,7 @@ const About = () => {
             unpleasant experience. We can help you with that!
           </p>
         </div>
-      </div> 
+      </div>
       {/* Double Image Component */}
       <div className={styles.imageSection}>
         <div className={styles.doubleImageContainer}>
@@ -40,18 +41,15 @@ const About = () => {
       </div>
       {/* FullDetail Component */}
       <div className={styles.FullDetail}>
-        <div className={styles.leftContainer}>
-          <div className={styles.leftAbout}> 
-            <h1 className={styles.leftText}>About</h1>
-          </div>
-          <div className={styles.leftImage}> </div>
-        </div>
-        <div className={styles.rightContainer}>
-          <p className={styles.rightText}>Hello, future travelers! Tokyo Traveler is a guide with the goal of
+        <div className={styles.fullDetailGridContainer}>
+          <div className={styles.backgroundImageContainer}></div>
+          <div className={styles.foregroundTextContainer}>
+            <p>Hello, future travelers! Tokyo Traveler is a guide with the goal of
             helping you effectivly plan you dream trip to Japan! The early
             stages of planning a trip can be exhilarating and have you eager to
             venture out and explore. However, poor planning can lead to an
             unpleasant experience. We can help you with that!</p>
+          </div>
         </div>
       </div>
     </div>
