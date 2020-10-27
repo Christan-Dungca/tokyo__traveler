@@ -3,7 +3,7 @@
   // background-color: paleturquoise;
   grid-column: 1 / -1;
   grid-row: about / articles;
-
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,35 +14,71 @@
     height: 50%;
     // background-color: bisque;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     justify-content: space-between;
     position: relative;
     padding-top: 10rem;
     padding-bottom: 10rem;
-    font-weight:400;
+    font-weight: 400;
 
     .bigText {
       width: 50%;
       display: flex;
       flex-direction: column;
-      // background-color: lightskyblue;
+      background-color: lightcoral;
       font-family: "Playfair Display", serif;
       font-size: 4rem;
       font-weight: 400;
       line-height: 140%;
       text-transform: uppercase;
-    }
-  }
 
-  // ABOUT TEXT SECTION  //
-  .aboutTextContainer {
-    // background-color: rgb(64, 69, 141);
-    width: 30%;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 2rem;
-    line-height: 140%;
-    // padding-left: 10rem;
+      // MEDIA QUERIES LARGE LAPTOP
+      @media screen and (max-width: 1200px) {
+        font-size: 3.5rem;
+      }
+
+      @media screen and (max-width: 1100px) {
+        font-size: 3.2rem;
+      }
+
+      // MEDIA QUERIES LAPTOP (1024px<)
+      @media screen and (max-width: 880px) {
+        font-size: 2.5rem;
+      }
+      // MEDIA QUEIRIES TABLET (768<)
+      @media screen and (max-width: 768px) {
+        width: 80%;
+        margin-bottom: 2.5rem;
+      }
+      @media screen and (max-width: 615px) {
+        font-size: 2rem;
+      }
+      @media screen and (max-width: 468px) {
+        width: 100%;
+        font-size: 1.8;
+      }
+
+    }
+
+    // ABOUT TEXT SECTION  //
+    .aboutTextContainer {
+      // background-color: rgb(64, 69, 141);
+      width: 40%;
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 2rem;
+      line-height: 140%;
+      @media screen and (max-width: 768px) {
+        font-size: 1.8rem;
+        width: 80%;
+        
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      height: 100%;
+      // background-color: greenyellow;
+    }
   }
 
   // DOUBLE IMAGE SECTION
@@ -54,7 +90,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10rem;
-    
+
     .doubleImageContainer {
       width: 80%;
       height: 80vh;
@@ -65,11 +101,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      
+
       .doubleImage {
         width: 80%;
         height: 80%;
-        background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(../../assets/images/medium-crosswalk-left-right.jpg);
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+          url(../../assets/images/medium-crosswalk-left-right.jpg);
         background-size: cover;
         background-position: center;
       }
@@ -99,23 +136,28 @@
         grid-column: 1 / 10;
         grid-row: 1 / 4;
         background-color: lightgreen;
-        background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url(../../assets/images/small-ginza-building.jpg);
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+          url(../../assets/images/small-ginza-building.jpg);
         background-position: top;
         background-size: cover;
-        
       }
 
       .foregroundTextContainer {
         grid-column: 6 / -1;
         grid-row: 2 / -1;
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         background-color: rgba(26, 26, 26, 1);
         // border-radius: 50%;
-        
+
+        h1 {
+          font-size: 5rem;
+          color: white;
+          font-family: "Playfair Display", serif;
+        }
         p {
-          font-family: 'Source Sans Pro', sans-serif;
+          font-family: "Source Sans Pro", sans-serif;
           color: white;
           font-size: 2rem;
           font-weight: 600;
@@ -123,8 +165,6 @@
           line-height: 140%;
         }
       }
-
-
     }
   }
 }

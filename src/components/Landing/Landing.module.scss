@@ -9,7 +9,10 @@
   grid-row: landing / about;
   position: relative;
   display: grid;
-  grid-template-columns: [left-section top-section] repeat(8, 1fr) [right-section bottom-section] repeat(8, 1fr);
+  grid-template-columns: [left-section top-section] repeat(8, 1fr) [right-section bottom-section] repeat(
+      8,
+      1fr
+    );
 
   // TOP / LEFT SECTION //
   .imageContainer {
@@ -30,6 +33,15 @@
       background-size: cover;
       background-position: left top;
       // background-color: cornsilk;
+
+      @media screen and (max-width: 468px) {
+        width: 80%;
+        height: 90%;
+      }
+    }
+
+    @media screen and (max-width: 468px) {
+      grid-column: 1 / -1;
     }
   }
 
@@ -41,6 +53,11 @@
     background: url(../../assets/images/medium-abstract-building.jpg);
     background-size: cover;
     background-position: top;
+
+    @media screen and (max-width: 468px) {
+      display: none;
+      visibility: hidden;
+    }
   }
 }
 
@@ -62,9 +79,7 @@
     text-transform: uppercase;
 
     @media screen and (max-width: 600px) {
-      & {
-        font-size: 5vw;
-      }
+      font-size: 6vw;
     }
   }
 }

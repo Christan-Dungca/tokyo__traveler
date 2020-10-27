@@ -13,23 +13,38 @@ import styles from "./About.module.scss";
 */
 
 const About = () => {
+  const windowHeight = window.innerHeight;
+  console.log("window height: " + windowHeight + "px");
+  // const isMobile = window.innerHeight
+
+  // Checking if mobile screen
+  const isTabletSize = window.innerWidth <= 768 ? true : false;
+
   return (
     <div className={styles.About}>
       {/* Text Container */}
       <div className={styles.textContainer}>
-        <div className={styles.bigText}>
-          <h2>A Simple </h2>
-          <h2>Travel Guide For</h2>
-          <h2>Future Travelers </h2>
-        </div>
+        {/* Big Text */}
+        {isTabletSize ? (
+          <div className={styles.bigText}>
+            <h2>A Simple </h2>
+            <h2>Travel Guide For</h2>
+            <h2>Future Travelers</h2>
+          </div>
+        ) : (
+          <div className={styles.bigText}>
+            <h2>A Simple </h2>
+            <h2>Travel Guide</h2>
+            <h2>For Future</h2>
+            <h2>Travelers </h2>
+          </div>
+        )}
+
         {/* About Tokyo Traveler Section */}
         <div className={styles.aboutTextContainer}>
           <p>
             Hello, future travelers! Tokyo Traveler is a guide with the goal of
-            helping you effectivly plan you dream trip to Japan! The early
-            stages of planning a trip can be exhilarating and have you eager to
-            venture out and explore. However, poor planning can lead to an
-            unpleasant experience. We can help you with that!
+            helping you effectivly plan you dream trip to Japan!
           </p>
         </div>
       </div>
@@ -44,11 +59,14 @@ const About = () => {
         <div className={styles.fullDetailGridContainer}>
           <div className={styles.backgroundImageContainer}></div>
           <div className={styles.foregroundTextContainer}>
-            <p>Hello, future travelers! Tokyo Traveler is a guide with the goal of
-            helping you effectivly plan you dream trip to Japan! The early
-            stages of planning a trip can be exhilarating and have you eager to
-            venture out and explore. However, poor planning can lead to an
-            unpleasant experience. We can help you with that!</p>
+            <h1>About</h1>
+            <p>
+              Hello, future travelers! Tokyo Traveler is a guide with the goal
+              of helping you effectivly plan you dream trip to Japan! The early
+              stages of planning a trip can be exhilarating and have you eager
+              to venture out and explore. However, poor planning can lead to an
+              unpleasant experience. We can help you with that!
+            </p>
           </div>
         </div>
       </div>
