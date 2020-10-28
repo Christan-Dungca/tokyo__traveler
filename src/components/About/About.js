@@ -55,7 +55,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      {/* Double Image Component */}
+      {/* Double Imagek Component */}
       <div className={styles.imageSection}>
         <div className={styles.doubleImageContainer}>
           <div className={styles.doubleImage}></div>
@@ -71,7 +71,7 @@ const About = () => {
             <img src={mdWithinSakura} alt="img"></img>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
   );
 };
