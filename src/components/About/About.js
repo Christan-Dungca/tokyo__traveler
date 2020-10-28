@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./About.module.scss";
-
+import smGinzaImg from "../../assets/images/small-ginza-building.jpg";
+import smRedSakura from "../../assets/images/small-red-temple-sakura.jpg";
+import mdWithinSakura from "../../assets/images/medium-within-sakura-tree.jpg";
+import mdWomanRedBG from "../../assets/images/medium-woman-red-background.jpg";
 /* 
   TODO
-  [] Add one more section for the about: will give the full rundown on tokyo traveler, maybe a link to a separate page?
+  [x] Add one more section for the about: will give the full rundown on tokyo traveler, maybe a link to a separate page?
   [x] Create another component for the about section FullDetail Component
   [x] Container -> Left Container + Right Container
   [x] Left Container : 80vw 100% (width, height) -> about + image
@@ -18,7 +21,8 @@ const About = () => {
   // const isMobile = window.innerHeight
 
   // Checking if mobile screen
-  const isTabletSize = window.innerWidth <= 768 ? true : false;
+  const isTabletSize =
+    window.innerWidth <= 768 && window.innerWidth > 350 ? true : false;
 
   return (
     <div className={styles.About}>
@@ -44,7 +48,10 @@ const About = () => {
         <div className={styles.aboutTextContainer}>
           <p>
             Hello, future travelers! Tokyo Traveler is a guide with the goal of
-            helping you effectivly plan you dream trip to Japan!
+            helping you effectivly plan you dream trip to Japan! The early
+            stages of planning a trip can be exhilarating and have you eager to
+            venture out and explore. However, poor planning can lead to an
+            unpleasant experience. We can help you with that!
           </p>
         </div>
       </div>
@@ -55,18 +62,13 @@ const About = () => {
         </div>
       </div>
       {/* FullDetail Component */}
-      <div className={styles.FullDetail}>
-        <div className={styles.fullDetailGridContainer}>
-          <div className={styles.backgroundImageContainer}></div>
-          <div className={styles.foregroundTextContainer}>
-            <h1>About</h1>
-            <p>
-              Hello, future travelers! Tokyo Traveler is a guide with the goal
-              of helping you effectivly plan you dream trip to Japan! The early
-              stages of planning a trip can be exhilarating and have you eager
-              to venture out and explore. However, poor planning can lead to an
-              unpleasant experience. We can help you with that!
-            </p>
+      <div className={styles.stacked}>
+        <div className={styles.stackedGridContainer}>
+          <div className={styles.topImage}>
+            <img src={smGinzaImg} alt="img" />
+          </div>
+          <div className={styles.bottomImage}>
+            <img src={mdWithinSakura} alt="img"></img>
           </div>
         </div>
       </div>

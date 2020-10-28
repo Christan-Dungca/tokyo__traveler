@@ -1,8 +1,7 @@
-
-// EB GARAMOND 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+// EB GARAMOND
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap");
 // PLAYFAIR DISPLAY & SOURCE SANS PRO
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,600&display=swap");
 
 // HOW TO USE FONTS //
 // font-family: 'EB Garamond', serif;
@@ -16,33 +15,51 @@ $white-blue: #edf2f4;
 $blue-gray: #8d99ae;
 $dark-blue: #2b2d42;
 
+// Using CSS Variables
+:root {
+  // FONT FAMILIES
+  --font-serif: 'Playfair Display', serif;
+  --font-san-serif: 'Source Sans Pro', sans-serif;
 
-// FONTSIZE //
+  // FONT SIZES
+
+  //  COLORS
+  --dark-red: #d90429;
+  --light-red: #ef233c;
+  --white-blue: #edf2f4;
+  --blue-gray: #8d99ae;
+  --dark-blue: #2b2d42;
+
+  // SPACING
+  --padding-bg: 10rem;
+  --padding-md: 5rem;
+  --padding-sm: 1rem;
+}
 
 // Global Styling //
 
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    font-size: 62.5%; // 62.5% of 16px (the typical default browser font-size) is 10px
+  font-size: 62.5%; // 62.5% of 16px (the typical default browser font-size) is 10px
 }
 
 body {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.6rem; // 1rem = 10px
+  font-family: "EB Garamond", serif;
+  font-size: 1.6rem; // 1rem = 10px
 }
 
 .Layout {
-    position: relative;
+  position: relative;
 }
 
 .Home {
-    // width: 100vw;
-    // min-height: 100vh;
+  // width: 100vw;
+  // min-height: 100vh;
 }

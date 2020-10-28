@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5rem 10rem;
+  padding: 2.5rem var(--padding-bg);
 
   // position absolute
   position: fixed;
