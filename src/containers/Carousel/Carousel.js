@@ -13,16 +13,19 @@ const Carousel = () => {
         // Listening to mousedown event on the carousel component
         slider.addEventListener('mousedown', (e) => {
             isDown = true;
+            slider.classList.add('active');
             startX = e.pageX - slider.offsetLeft;
             scrollLeft = slider.scrollLeft;
           });
         // Listening to mouseleave event on the carousel component
         slider.addEventListener('mouseleave', () => {
             isDown = false;
-          });
+            slider.classList.remove('active');
+        });
         // Listening to mouseup event on the carousel component
         slider.addEventListener('mouseup', () => {
             isDown = false;
+            slider.classList.remove('active');
           });
         // Listening to mousemove event on the carousel component
         slider.addEventListener('mousemove', (e) => {
@@ -41,38 +44,10 @@ const Carousel = () => {
       <div className={styles.item}>Article</div>
       <div className={styles.item}>Article</div>
       <div className={styles.item}>Article</div>
+      <div className={styles.item}>Article</div>
+      <div className={styles.item}>Article</div>
     </div>
   );
 };
 
 export default Carousel;
-
-/* FROM JS FILE NEED TO CONVERT TO REACT COMPONENT 
-const slider = document.querySelector('.items');
-let isDown = false;
-let startX;
-let scrollLeft;
-
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.classList.add('active');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('active');
-});
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.classList.remove('active');
-});
-slider.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 3; //scroll-fast
-  slider.scrollLeft = scrollLeft - walk;
-  console.log(walk);
-});
-*/

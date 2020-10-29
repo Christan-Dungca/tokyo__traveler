@@ -1,14 +1,23 @@
-import React from 'react';
-import Styles from './Articles.module.scss';
-import Carousel from '../../containers/Carousel/Carousel';
+import React from "react";
+import styles from "./Articles.module.scss";
+import Carousel from "../../containers/Carousel/Carousel";
 
 const Articles = () => {
-    return (
-        <div className={Styles.Articles}>
-            <h3>Articles placeholder from Home</h3>
-            <Carousel /> 
+  return (
+    <div className={styles.Articles}>
+      <div className={styles.textSection}>
+        <div className={styles.textContainer}>
+          <h2>Explore Our Articles</h2>
+          <h2>And Dive Into The</h2>
+          <h2>Different Aspects Of Traveling</h2>
         </div>
-    )
-}
+      </div>
+      <div className={styles.carouselContainer}>
+        <Carousel />
+      </div>
+        {/* <Carousel styles={{paddingLeft: "20%"}} /> */}
+    </div>
+  );
+};
 
 export default Articles;
