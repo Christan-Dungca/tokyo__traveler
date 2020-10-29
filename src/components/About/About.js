@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./About.module.scss";
 import smGinzaImg from "../../assets/images/small-ginza-building.jpg";
-import smRedSakura from "../../assets/images/small-red-temple-sakura.jpg";
 import mdWithinSakura from "../../assets/images/medium-within-sakura-tree.jpg";
 import mdWomanRedBG from "../../assets/images/medium-woman-red-background.jpg";
+
 /* 
   TODO
   [x] Add one more section for the about: will give the full rundown on tokyo traveler, maybe a link to a separate page?

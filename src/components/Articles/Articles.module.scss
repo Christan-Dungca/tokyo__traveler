@@ -1,10 +1,14 @@
 .Articles {
-    background-color: palegoldenrod;
-    grid-column: 1 / -1;
-    grid-row: articles / calculator;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8rem;
-    overflow: hidden;
+  background-color: palegoldenrod;
+  grid-column: 1 / -1;
+  grid-row: articles / calculator;
+  overflow: hidden;
+}
+
+.items {
+  background-color: black;
+
+  .item {
+    background-color: lightcoral;
+  }
 }

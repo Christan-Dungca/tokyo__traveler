@@ -1,7 +1,7 @@
 /// SECTION 2 ///
 .About {
   --padding-bg: 10rem;
-  background-color: paleturquoise;
+  // background-color: paleturquoise;
   grid-column: 1 / -1;
   grid-row: about / articles;
   overflow: hidden;
@@ -13,7 +13,7 @@
   .textContainer {
     width: 80%;
     height: 50%;
-    background-color: bisque;
+    // background-color: bisque;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,7 +26,7 @@
       width: 50%;
       display: flex;
       flex-direction: column;
-      background-color: lightcoral;
+      // background-color: lightcoral;
       font-family: "Playfair Display", serif;
       font-size: 4rem;
       font-weight: 400;
@@ -62,7 +62,7 @@
 
     // ABOUT TEXT SECTION  //
     .aboutTextContainer {
-      background-color: rgb(64, 69, 141);
+      // background-color: rgb(64, 69, 141);
       width: 40%;
       font-family: "Source Sans Pro", sans-serif;
       font-size: 2rem;
@@ -79,7 +79,7 @@
     @media screen and (max-width: 768px) {
       flex-direction: column;
       height: 100%;
-      background-color: greenyellow;
+      // background-color: greenyellow;
     }
 
     @media screen and (max-width: 468px) {
@@ -91,7 +91,7 @@
   .imageSection {
     width: 100%;
     height: 50%;
-    background-color: lightpink;
+    // background-color: lightpink;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +100,7 @@
     .doubleImageContainer {
       width: 80%;
       height: 80vh;
-      background-color: lightyellow;
+      // background-color: lightyellow;
       background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
         url(../../assets/images/medium-white-flowers.jpg);
       background-size: cover;
@@ -125,7 +125,7 @@
 
   // FullDetail Section //
   .stacked {
-    background-color: bisque;
+    // background-color: bisque;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -136,7 +136,7 @@
     overflow: hidden;
 
     .stackedGridContainer {
-      background-color: lightcoral;
+      // background-color: lightcoral;
       width: 80%;
       max-width: 1000px;
       display: grid;
@@ -148,7 +148,7 @@
       }
 
       .topImage {
-        background-color: lightgreen;
+        // background-color: lightgreen;
         // background-color: rgba(26, 26, 26, 1);
         grid-column: 1 / span 10;
         grid-row: 1;
@@ -168,7 +168,7 @@
       }
 
       .bottomImage {
-        background-color: rgba(26, 26, 26, 1);
+        // background-color: rgba(26, 26, 26, 1);
         grid-column: 6 / -1;
         grid-row: 1;
         height: 80%;
