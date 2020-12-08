@@ -14,7 +14,7 @@ const Layout = (props) => {
 
   return (
     <div className={styles.Layout}>
-      {showNav && <Menu />}
+      {showNav && <Menu toggleNavHandler={toggleNavHandler} />}
       {/* Navigation will always be shown */}
       <Navigation
         className={styles.Navigation}
