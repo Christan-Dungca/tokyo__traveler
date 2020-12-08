@@ -14,15 +14,15 @@ import Calculator from "../Calculator/Calculator";
 const Home = () => {
   // GETTING THE WINDOW INNER HEIGHT
   const windowHeight = window.innerHeight + "px";
-  console.log("window height: " + windowHeight);
+  // console.log("window height: " + windowHeight);
 
   // Get 90% of the window inner height
   const ninetyHeight = window.innerHeight * .95;
-  console.log("90%: " + ninetyHeight)
+  // console.log("90%: " + ninetyHeight)
 
   // CHECK IS SCREEN IS MOBILE
   const isMobile = window.innerWidth < 426 ? true : false;
-  console.log({windowHeight, isMobile});
+  // console.log({windowHeight, isMobile});
 
   // SETTING GRID ROWS TO BE THE HEIGHT OF INNER WINDOW
   const myStyles = {

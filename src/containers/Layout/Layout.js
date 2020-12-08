@@ -8,7 +8,7 @@ const Layout = (props) => {
 
   const toggleNavHandler = () => {
     const toggledNav = !showNav;
-    console.log(toggledNav);
+    // console.log(toggledNav);
     toggleNav(toggledNav);
   };
 

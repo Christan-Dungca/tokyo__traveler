@@ -17,7 +17,7 @@ import mdWomanRedBG from "../../assets/images/medium-woman-red-background.jpg";
 
 const About = () => {
   const windowHeight = window.innerHeight;
-  console.log("window height: " + windowHeight + "px");
+  // console.log("window height: " + windowHeight + "px");
   // const isMobile = window.innerHeight
 
   // Checking if mobile screen

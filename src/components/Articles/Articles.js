@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Articles.module.scss";
 import Carousel from "../../containers/Carousel/Carousel";
 
+
 const Articles = () => {
   return (
     <div className={styles.Articles}>

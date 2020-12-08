@@ -2,7 +2,7 @@ import React from 'react';
 import Styles from './BudgetHomePage.module.scss';
 
 function BudgetHomePage(props) {
-    console.log(props.countState)
+    // console.log(props.countState)
 
     return (
         <div className={Styles.BudgetHome}>

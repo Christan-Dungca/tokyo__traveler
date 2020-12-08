@@ -27,9 +27,9 @@ const Calculator = () => {
     }
     const stepsList = ['Get a thing', 'enter a thing', 'view a thing']
     // const textInput = useRef(null);
-    console.log(count)
+    // console.log(count)
     if(count === 0) {
-        console.log(`homepage count ${count}`)
+        // console.log(`homepage count ${count}`)
         return (
             <BudgetHomePage countState={count} handleCountState={handleCountState}/>
             )

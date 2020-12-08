@@ -1,22 +1,27 @@
-import React from 'react';
-import styles from './Navigation.module.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./Navigation.module.scss";
 
 const Navigation = (props) => {
-    return (
-        <nav className={styles.Navigation}>
-            <a href="#" 
-                className={styles.logo} 
-                // style={ props.showNav === true ? {color: "black"} : {color: "black"}}
-            > Tokyo Traveler </a>
-            {/* <div className={styles.navBtnContainer} onClick={props.toggleNavHandler}> 
+  return (
+    <nav className={styles.Navigation}>
+      <Link
+        to="/"
+        className={styles.logo}
+        // style={ props.showNav === true ? {color: "black"} : {color: "black"}}
+      >
+        {" "}
+        Tokyo Traveler{" "}
+      </Link>
+      {/* <div className={styles.navBtnContainer} onClick={props.toggleNavHandler}> 
                 <div className={styles.navBtn}></div>  
             </div> */}
-            <div className={styles.navContainer}>
-                <div className={styles.navBtn}></div>
-            </div>
-        </nav>
-    )
-}
+      <div className={styles.navContainer}>
+        <div className={styles.navBtn}></div>
+      </div>
+    </nav>
+  );
+};
 
 export default Navigation;
 
