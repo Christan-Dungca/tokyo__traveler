@@ -1,7 +1,7 @@
 .Menu {
   width: 100vw;
   height: 100vh;
-  background-color: green;
+  background-color: #047fe4;
   color: white;
 
   position: fixed;
@@ -14,4 +14,57 @@
   justify-content: center;
   z-index: 200;
   scroll-behavior: none;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 2.5rem;
+  right: var(--padding-bg);
+}
+
+.container {
+  width: 90%;
+  height: 50%;
+  // background-color: bisque;
+  display: flex;
+
+  .mainLinks {
+    font-family: var(--font-san-serif);
+    font-size: 4rem;
+    width: 30%;
+    height: 100%;
+    // background-color: lightcoral;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    .mainLink {
+      text-decoration: none;
+      color: rgb(240, 240, 240);
+      line-height: 140%;
+    }
+  }
+
+  .pageLinks {
+    width: 70%;
+    height: 100%;
+    // background-color: black; 
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    line-height: 140%;
+    font-family: var(--font-san-serif);
+    font-size: 1.6rem;
+    color: rgb(182, 182, 182);
+    letter-spacing: 1.4px;
+
+    .linksFirstHalf > div {
+      margin-bottom: 1rem;
+    }
+
+    .linksSecondHalf > div {
+      margin-bottom: 1rem;
+    }
+  }
 }
