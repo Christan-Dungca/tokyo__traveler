@@ -1,8 +1,8 @@
 .Menu {
   width: 100vw;
   height: 100vh;
-  background-color: #047fe4;
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: black;
 
   position: fixed;
   top: 0;
@@ -24,47 +24,53 @@
 
 .container {
   width: 90%;
-  height: 50%;
-  // background-color: bisque;
+  height: 80%;
+  background-color: bisque;
   display: flex;
-
-  .mainLinks {
-    font-family: var(--font-san-serif);
-    font-size: 4rem;
-    width: 30%;
+  
+  .imageContainer {
+    width: 50rem;
     height: 100%;
-    // background-color: lightcoral;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
-    .mainLink {
-      text-decoration: none;
-      color: rgb(240, 240, 240);
-      line-height: 140%;
-    }
+    // background: url(../../assets/images/medium-woman-red-background.jpg);
+    background: url(../../assets/images/medium-crosswalk-left-right.jpg);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
   }
-
-  .pageLinks {
-    width: 70%;
+  
+  .linksContainer {
+    flex: 1;
     height: 100%;
-    // background-color: black; 
+    background-color: lightgreen;
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
-    line-height: 140%;
-    font-family: var(--font-san-serif);
-    font-size: 1.6rem;
-    color: rgb(182, 182, 182);
-    letter-spacing: 1.4px;
+    align-items: center;
 
-    .linksFirstHalf > div {
-      margin-bottom: 1rem;
+    .mainLinks {
+      font-family: var(--font-san-serif);
+      font-size: 3rem;
+      // height: 100%;
+      background-color: lightcoral;
+      display: flex;
+      flex-direction: column;
+      
+      .mainLink {
+        text-decoration: none;
+        color: black;
+        line-height: 140%;
+      }
     }
-
-    .linksSecondHalf > div {
-      margin-bottom: 1rem;
+    
+    .pageLinks {
+      // height: 100%;
+      background-color: rgb(110, 59, 59);
+      color: black;
+      display: flex;
+      flex-direction: column;
+      line-height: 140%;
+      font-family: var(--font-san-serif);
+      font-size: 1.6rem;
+      letter-spacing: 1.4px;
     }
   }
 }
