@@ -16,10 +16,14 @@ const Menu = ({ toggleNavHandler }) => {
         </nav>
         <div className={styles.textContainer}>
           <div className={styles.links}>
-            <Link to="/"> Home </Link>
-            <Link to="/"> About Us </Link>
-            <Link to="/"> Articles </Link>
-            <Link to="/"> Spending Plan </Link>
+            <Link to='/' onClick={toggleNavHandler}>
+              Home
+            </Link>
+            <Link to='/' onClick={toggleNavHandler}> About Us </Link>
+            <Link to='/' onClick={toggleNavHandler}>
+              Articles
+            </Link>
+            <Link to='/' onClick={toggleNavHandler}> Spending Plan </Link>
           </div>
         </div>
       </div>
