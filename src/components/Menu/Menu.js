@@ -1,40 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Menu.module.scss";
+import japanVideo from "../../assets/videos/japan.mp4";
 
 const Menu = ({ toggleNavHandler }) => {
   return (
     <div className={styles.Menu}>
-      <p onClick={toggleNavHandler} className={styles.closeBtn}>
-        Close
-      </p>
-      <div className={styles.container}>
-        <div className={styles.imageContainer}></div>
-        <div className={styles.linksContainer}>
-          <div className={styles.mainLinks}>
-            <Link to='/' className={styles.mainLink} onClick={toggleNavHandler}>
-              Home
-            </Link>
-            <Link to='/' className={styles.mainLink}>
-              About
-            </Link>
-            <Link to='/' className={styles.mainLink}>
-              Budget
-            </Link>
+      <div className={styles.overlay}>
+        <nav>
+          <h3 className={styles.title}> Tokyo Travler </h3>
+          <div onClick={toggleNavHandler} className={styles.closeBtnContainer}>
+            <div className={styles.btnTop}></div>
+            <div className={styles.btnBottom}></div>
           </div>
-          <div className={styles.pageLinks}>
-            <div>Airline Tickets</div>
-            <div>When to Travel</div>
-            <div>What to Pack</div>
-            <div>Living Situation</div>
-            <div>Exploring Foods</div>
-            <div>Solo vs Group</div>
-            <div>Things to do</div>
-            <div>Transportation</div>
-            <div>General Tips</div>
-            <div>Japanese</div>
+        </nav>
+        <div className={styles.textContainer}>
+          <div className={styles.links}>
+            <Link to="/"> Home </Link>
+            <Link to="/"> About Us </Link>
+            <Link to="/"> Articles </Link>
+            <Link to="/"> Spending Plan </Link>
           </div>
         </div>
+      </div>
+      <div className={styles.videoContainer}>
+        <video
+          className={styles.video}
+          autoPlay={true}
+          loop={true}
+          muted={true}
+        >
+          <source src={japanVideo} type='video/mp4' />
+        </video>
       </div>
     </div>
   );
