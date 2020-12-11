@@ -1,5 +1,8 @@
 import React from "react";
+import Carousel from "../../containers/Carousel/Carousel";
 import styles from "./AboutPage.module.scss";
+
+const imageList = ["hello", "a", "a", "a", "a", "a"];
 
 const AboutPage = () => {
   return (
@@ -34,6 +37,7 @@ const AboutPage = () => {
           </p>
         </section>
       </section>
+      <Carousel list={imageList} type={"images"} />
     </div>
   );
 };

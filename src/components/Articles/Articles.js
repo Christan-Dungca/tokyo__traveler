@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Articles.module.scss";
 import Carousel from "../../containers/Carousel/Carousel";
+import articlesList from "../../data/articles-data.json";
+
 
 
 const Articles = () => {
@@ -14,7 +16,7 @@ const Articles = () => {
         </div>
       </div>
       <div className={styles.carouselContainer}>
-        <Carousel />
+        <Carousel list={articlesList} type={"routing"} />
       </div>
         {/* <Carousel styles={{paddingLeft: "20%"}} /> */}
     </div>
