@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Carousel.module.scss";
 import articlesList from "../../data/articles-data.json";
 
-console.log(articlesList);
-
-const Carousel = () => {
+const Carousel = ({list}) => {
   const items = useRef(null);
   let isDown = false;
   let startX;
