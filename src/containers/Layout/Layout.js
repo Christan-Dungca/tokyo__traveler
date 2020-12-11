@@ -4,7 +4,7 @@ import Navigation from "../../components/Navigation/Navigation";
 import Menu from "../../components/Menu/Menu";
 
 const Layout = (props) => {
-  const [showNav, toggleNav] = React.useState(true);
+  const [showNav, toggleNav] = React.useState(false);
 
   const toggleNavHandler = () => {
     const toggledNav = !showNav;

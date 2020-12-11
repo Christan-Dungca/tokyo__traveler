@@ -19,8 +19,8 @@ const Menu = ({ toggleNavHandler }) => {
             <Link to='/' onClick={toggleNavHandler}>
               Home
             </Link>
-            <Link to='/' onClick={toggleNavHandler}> About Us </Link>
-            <Link to='/' onClick={toggleNavHandler}>
+            <Link to='/about' onClick={toggleNavHandler}> About Us </Link>
+            <Link to='/all-articles' onClick={toggleNavHandler}>
               Articles
             </Link>
             <Link to='/' onClick={toggleNavHandler}> Spending Plan </Link>

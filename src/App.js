@@ -5,6 +5,8 @@ import "./App.scss";
 import Layout from "./containers/Layout/Layout";
 import Home from "./containers/Home/Home";
 import Article from "./containers/Article/Article";
+import AllArticlesPage from './components/AllArticlesPage/AllArticlesPage';
+import AboutPage from "./components/AboutPage/AboutPage";
 
 function App() {
   return (
@@ -13,10 +15,14 @@ function App() {
         <Route path="/" exact>
           <Home />
         </Route>
+        <Route path="/about" exact>
+          <AboutPage  />
+        </Route>
+        <Route path="/all-articles" exact>
+          <AllArticlesPage />
+        </Route>
         <Route path="/article/:id" exact>
-          <div>
             <Article />
-          </div>
         </Route>
       </Switch>
     </Layout>

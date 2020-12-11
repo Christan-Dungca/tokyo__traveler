@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Carousel.module.scss";
-import articlesList from "../../articles-data.json";
+import articlesList from "../../data/articles-data.json";
 
 console.log(articlesList);
 
@@ -54,36 +54,6 @@ const Carousel = () => {
       })}
     </div>
   );
-
-  // return (
-  //   <div className={styles.items} ref={items}>
-  //     <div className={styles.item}>
-  //       <Link to="/article">
-  //         <h1>Article</h1>
-  //       </Link>
-  //     </div>
-  //     <div className={styles.item}>
-  //       <Link to="/article">
-  //         <h1>Article</h1>
-  //       </Link>
-  //     </div>
-  //     <div className={styles.item}>
-  //       <Link to="/article">
-  //         <h1>Article</h1>
-  //       </Link>
-  //     </div>
-  //     <div className={styles.item}>
-  //       <Link to="/article">
-  //         <h1>Article</h1>
-  //       </Link>
-  //     </div>
-  //     <div className={styles.item}>
-  //       <Link to="/article">
-  //         <h1>Article</h1>
-  //       </Link>
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default Carousel;
