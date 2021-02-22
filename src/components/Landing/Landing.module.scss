@@ -1,27 +1,19 @@
 // @use "../../variables/variables" as *;
 @import "../../variables/variables";
 
-////////////////////
-// LANDING COMPONENT
-
 .Landing {
   grid-column: 1 / -1;
-  grid-row: landing / about;
+  grid-row: 1 / about;
   position: relative;
   display: grid;
-  grid-template-columns: [left-section top-section] repeat(8, 1fr) [right-section bottom-section] repeat(
-      8,
-      1fr
-    );
+  grid-template-columns: 1fr 1fr;
 
-  // TOP / LEFT SECTION //
   .imageContainer {
-    grid-column: left-section / right-section;
+    grid-column: 1;
     height: 100%;
     background-color: cadetblue;
     background: url(../../assets/images/medium-woman-in-white.jpg);
     background-position: left center;
-    // background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,9 +37,8 @@
     }
   }
 
-  // RIGHT / BOTTOM SECTION //
   .fullImageSection {
-    grid-column: right-section / -1;
+    grid-column: 2;
     height: 100%;
     background-color: chocolate;
     background: url(../../assets/images/medium-abstract-building.jpg);
@@ -61,7 +52,6 @@
   }
 }
 
-// TITLE CONTAINER FOR LANDING COMPONENT TITLE //
 .titleContainer {
   width: max-content;
   height: auto;
@@ -83,8 +73,6 @@
     }
   }
 }
-
-// BACKGROUND TEXT //
 
 .backgroundTextContainer {
   color: white;
@@ -109,24 +97,4 @@
     align-self: flex-end;
     justify-self: self-end;
   }
-}
-.smSunsetGirl {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(../../assets/images/small-sunset-girl.jpg);
-}
-
-.smSmallWoman {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(../../assets/images/small-woman-in-white.jpg);
-  background-position: left;
-}
-
-.smSumoStadium {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(../../assets/images/small-sumo-stadium.jpg);
-}
-
-.smTempleSakura {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(../../assets/images/small-red-temple-sakura.jpg);
 }
