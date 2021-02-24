@@ -1,8 +1,7 @@
 import React from "react";
+
+import BeforeReading from '../BeforeReading/BeforeReading';
 import styles from "./About.module.scss";
-import smGinzaImg from "../../assets/images/small-ginza-building.jpg";
-import mdWithinSakura from "../../assets/images/medium-within-sakura-tree.jpg";
-import mdWomanRedBG from "../../assets/images/medium-woman-red-background.jpg";
 
 const About = () => {
   const windowHeight = window.innerHeight;
@@ -34,16 +33,7 @@ const About = () => {
           <div className={styles.doubleImage}></div>
         </div>
       </div>
-      {/* <div className={styles.stacked}>
-        <div className={styles.stackedGridContainer}>
-          <div className={styles.topImage}>
-            <img src={smGinzaImg} alt="img" />
-          </div>
-          <div className={styles.bottomImage}>
-            <img src={mdWithinSakura} alt="img"></img>
-          </div>
-        </div> */}
-      {/* </div>  */}
+      {/* <BeforeReading /> */}
     </div>
   );
 };

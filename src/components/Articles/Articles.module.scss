@@ -3,28 +3,7 @@
   grid-column: 1 / -1;
   grid-row: articles / calculator;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  .textSection {
-    // background-color: lightslategray;
-    height: 25%;
-    width: 80%;
-    display: flex;
-    align-items: center;
-
-    .textContainer {
-      height: max-content;
-    //   background-color: lightskyblue;
-      font-family: var(--font-serif);
-
-      h2 {
-        font-size: 4rem;
-        font-weight: 500;
-      }
-    }
-  }
 
   .carouselContainer {
     // background-color: lightgreen;

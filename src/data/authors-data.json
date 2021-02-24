@@ -1,0 +1,23 @@
+[
+    {
+        "authorId": "alkjdf01daoaf",
+        "email": "author@gmail.com",
+        "name": "John Mayor",
+        "image": "/src/assets/images/",
+        "articles": ["ARTICLE_ID, ARTICLE_ID"]
+    },
+    {
+        "authorId": "alkjdf01daoaf",
+        "email": "author@gmail.com",
+        "name": "John Mayor",
+        "image": "/src/assets/images/",
+        "articles": ["ARTICLE_ID, ARTICLE_ID"]
+    },
+    {
+        "authorId": "alkjdf01daoaf",
+        "email": "author@gmail.com",
+        "name": "John Mayor",
+        "image": "/src/assets/images/",
+        "articles": ["ARTICLE_ID, ARTICLE_ID"]
+    }
+]

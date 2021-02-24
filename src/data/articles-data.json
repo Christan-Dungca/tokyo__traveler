@@ -1,51 +1,47 @@
 
 [
     {
-        "id": 1,
+        "id": "halkj13j0adf10",
         "title": "Title",
-        "titleColor": "title color",
-        "backgroundColor": "background color",
-        "imageUrl": "./assets/",
-        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"]
+        "image": "/src/assets/images/",
+        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"],
+        "createdAt": "Wednesday, 24 February 2021",
+        "author": {
+            "id": "alkjdf01daoaf",
+            "name": "John Mayor"
+        }
     },
     {
-        "id": 2,
-        "title": "Title",
-        "titleColor": "title color",
-        "backgroundColor": "background color",
-        "imageUrl": "./assets/",
-        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"]
+        "id": "halkj13j0adf10",
+        "title": "Title 2",
+        "image": "/src/assets/images/",
+        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"],
+        "createdAt": "Wednesday, 24 February 2021",
+        "author": {
+            "id": "alkjdf01daoaf",
+            "name": "John Mayor"
+        }
     },
     {
-        "id": 3,
-        "title": "Title",
-        "titleColor": "title color",
-        "backgroundColor": "background color",
-        "imageUrl": "./assets/",
-        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"]
+        "id": "halkj13j0adf10",
+        "title": "Title 3",
+        "image": "/src/assets/images/",
+        "content": [ "3 paragraph 1", "3 paragraph 2", "3 paragraph 3"],
+        "createdAt": "Wednesday, 24 February 2021",
+        "author": {
+            "id": "alkjdf01daoaf",
+            "name": "John Mayor"
+        }
     },
     {
-        "id": 4,
-        "title": "Title",
-        "titleColor": "title color",
-        "backgroundColor": "background color",
-        "imageUrl": "./assets/",
-        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"]
-    },
-    {
-        "id": 5,
-        "title": "Title",
-        "titleColor": "title color",
-        "backgroundColor": "background color",
-        "imageUrl": "./assets/",
-        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"]
-    },
-    {
-        "id": 6,
-        "title": "Title",
-        "titleColor": "title color",
-        "backgroundColor": "background color",
-        "imageUrl": "./assets/",
-        "content": [ "paragraph 1", "paragraph 2", "paragraph 3"]
+        "id": "halkj13j0adf10",
+        "title": "Title 3",
+        "image": "/src/assets/images/",
+        "content": [ "3 paragraph 1", "3 paragraph 2", "3 paragraph 3"],
+        "createdAt": "Wednesday, 24 February 2021",
+        "author": {
+            "id": "alkjdf01daoaf",
+            "name": "John Mayor"
+        }
     }
 ]

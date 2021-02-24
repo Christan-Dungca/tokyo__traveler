@@ -1,0 +1,9 @@
+{
+    "title": "What time of year is the best for visiting?",
+    "image": "/src/assets/images/",
+    "createdAt": "Wednesday, 24 February 2021",
+    "content": ["this is paragraph 1", "this is paragraph 2", "this is paragraph 3"],
+    "author": {
+        "id": "alkjdf01daoaf"
+    }
+}
