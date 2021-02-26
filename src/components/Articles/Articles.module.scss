@@ -1,15 +1,11 @@
 .Articles {
-//   background-color: palegoldenrod;
+  // background-color: palegoldenrod;
   grid-column: 1 / -1;
   grid-row: articles / calculator;
-  overflow: hidden;
-
 
   .carouselContainer {
     // background-color: lightgreen;
-    height: 75%;
-    margin-left: 20%;
-    width: 100%;
+    height: max-content;
     display: flex;
     justify-content: flex-start;
   }
