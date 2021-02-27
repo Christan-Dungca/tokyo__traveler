@@ -30,7 +30,7 @@ const Home = () => {
       <Landing />
       <About />
       <Articles />
-      <Calculator className={styles.Calculator} />
+      {/* <Calculator className={styles.Calculator} /> */}
     </div>
   );
 };

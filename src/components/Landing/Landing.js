@@ -5,9 +5,13 @@ const Landing = () => {
   return (
     <div className={styles.Landing}>
       <div className={styles.imageContainer}>
-        <div className={styles.image}></div>
+        <div className={styles.image}>
+          <div className={styles.overlay} />
+        </div>
       </div>
-      <div className={styles.fullImageSection}></div>
+      <div className={styles.fullImageSection}>
+        {/* <div className={styles.overlay} /> */}
+      </div>
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>Tokyo Traveler</h1>
       </div>

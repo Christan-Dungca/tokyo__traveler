@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import ARTICLE_IMG from "../../assets/images/medium-woman-in-white.jpg";
+import ARTICLE_IMG from "../../assets/images/medium-shrine-girls.jpg";
 import ARTICLE_DATA from "../../data/articles-data.json";
 import styles from "./Article.module.scss";
 
@@ -50,6 +50,7 @@ const Article = () => {
     return (
       <div className={styles.Article}>
         <div className={styles.imageContainer}>
+          <div className={styles.overlay}></div>
           <img src={ARTICLE_IMG} />
         </div>
         <div className={styles.content}>
