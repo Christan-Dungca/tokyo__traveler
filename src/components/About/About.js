@@ -1,6 +1,6 @@
 import React from "react";
 
-import BeforeReading from '../BeforeReading/BeforeReading';
+import BeforeReading from "../BeforeReading/BeforeReading";
 import styles from "./About.module.scss";
 
 const About = () => {
@@ -12,13 +12,9 @@ const About = () => {
     <div className={styles.About}>
       <div className={styles.textContainer}>
         <div className={styles.bigText}>
-          <h2>
-            A Simple
-            <br />
-            Guide For
-            <br />
-            Travelers
-          </h2>
+          <h2>A Simple</h2>
+          <h2>Guide For</h2>
+          <h2>Travelers</h2>
         </div>
         <div className={styles.aboutTextContainer}>
           <p>

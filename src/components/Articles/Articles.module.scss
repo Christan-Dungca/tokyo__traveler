@@ -1,12 +1,14 @@
 .Articles {
   // background-color: palegoldenrod;
-  grid-column: 1 / -1;
+  grid-column: 2 / -1;
   grid-row: articles / calculator;
 
-  .carouselContainer {
-    // background-color: lightgreen;
-    height: max-content;
-    display: flex;
-    justify-content: flex-start;
+  .title {
+    margin-top: 3vh;
+    font-family: var(--font-serif);
+    font-size: 3.4rem;
+    // font-weight: bolder;
+    font-weight: 400;
+    // margin-left: 2rem;
   }
 }
