@@ -7,8 +7,13 @@
     margin-top: 3vh;
     font-family: var(--font-serif);
     font-size: 3.4rem;
-    // font-weight: bolder;
     font-weight: 400;
-    // margin-left: 2rem;
+    margin-left: 10%;
+  }
+
+  @media screen and (max-width: 425px) {
+    .title {
+      margin-left: 2rem;
+    }
   }
 }

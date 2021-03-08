@@ -28,12 +28,11 @@
     scrollbar-width: none; /* Firefox */
   }
 
-  > a {
-    text-decoration: none;
-  }
-
   .imageContainer {
     // background-color: rgb(128, 148, 240);
+    > a {
+      text-decoration: none;
+    }
 
     width: 40vw;
     height: 60vh;
@@ -43,7 +42,6 @@
     position: relative;
     align-items: flex-end;
     min-width: 30rem;
-
 
     .image {
       background-image: url(../../assets/images/small-ginza-building.jpg);
