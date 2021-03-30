@@ -7,6 +7,7 @@ import Article from "./containers/Article/Article";
 import Author from "./containers/Author/Author";
 import AllArticlesPage from "./components/AllArticlesPage/AllArticlesPage";
 import AboutPage from "./components/AboutPage/AboutPage";
+import Login from './containers/Authentication/Login';
 import Transition from './containers/Transition/Transition';
 import "./App.scss";
 
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/user/:id" exact>
           <Author />
+        </Route>
+        <Route path="/login" exact>
+          <Login />
         </Route>
         <Route path="/about" exact>
           <AboutPage />
