@@ -1,6 +1,6 @@
 .Navigation {
   grid-column: 1;
-  background: white;
+  background: transparent;
   width: 100%;
   height: 5vh;
 
@@ -12,7 +12,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  color: black;
+  color: white;
   z-index: 111;
   // box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
@@ -21,7 +21,7 @@
 // Logo => tokyo traveler text
 .logo {
   width: auto;
-  color: black;
+  color: white;
   text-decoration: none;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 2.4rem;
@@ -40,7 +40,7 @@
   border-radius: 1rem;
 
   .navBtn {
-    background-color: black;
+    background-color: white;
     width: 100%;
     height: 3px;
     position: relative;
@@ -53,7 +53,7 @@
       top: 6px;
       width: 100%;
       height: 3px;
-      background-color: black;
+      background-color: white;
     }
 
     &::after {
@@ -62,7 +62,7 @@
       bottom: 6px;
       width: 100%;
       height: 3px;
-      background-color: black;
+      background-color: white;
     }
   }
 }

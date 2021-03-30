@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import axios from "axios";
 
-import ARTICLES_DATA from "../../data/articles-data.json";
 import Carousel from "../../containers/Carousel/Carousel";
 import styles from "./Articles.module.scss";
 
@@ -14,15 +13,17 @@ const Articles = () => {
   useEffect(() => {
     const getArticles = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/articles`);
+        const { data } = await axios.get(
+          `http://localhost:3000/api/articles`
+        );
         const { status, data: articles, results } = data;
 
-        if (articles.allArticles.length <= 0) {
+        if (articles.articles.length === 0) {
           setError(true);
           setLoading(false);
         } else {
           setLoading(false);
-          setArticles(articles.allArticles);
+          setArticles(articles.articles);
         }
       } catch (err) {
         console.log(err);
@@ -32,6 +33,7 @@ const Articles = () => {
   }, []);
 
   console.log(articles);
+
   if (loading === true && error === false) {
     return (
       <div>

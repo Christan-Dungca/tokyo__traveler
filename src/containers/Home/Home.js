@@ -1,51 +1,33 @@
-import React, { Component, Fragment } from "react";
-import styles from "./Home.module.scss";
+import React, { useEffect, useState } from "react";
+
 import Landing from "../../components/Landing/Landing";
 import About from "../../components/About/About";
 import Articles from "../../components/Articles/Articles";
 import Calculator from "../Calculator/Calculator";
+import Transition from "../../containers/Transition/Transition";
+import styles from "./Home.module.scss";
 
 const Home = () => {
-  // GETTING THE WINDOW INNER HEIGHT
-  const windowHeight = window.innerHeight + "px";
-  // console.log("window height: " + windowHeight);
+  const [isAnimating, setIsAnimating] = useState(true);
 
-  // Get 90% of the window inner height
-  const ninetyHeight = window.innerHeight * 0.95;
-  // console.log("90%: " + ninetyHeight)
+  useEffect(() => {
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 3000);
+  }, [isAnimating]);
 
-  // CHECK IS SCREEN IS MOBILE
-  const isMobile = window.innerWidth < 426 ? true : false;
-  // console.log({windowHeight, isMobile});
-
-  // SETTING GRID ROWS TO BE THE HEIGHT OF INNER WINDOW
-  const myStyles = {
-    gridTemplateRows: `[nav] 5vh [landing] ${
-      ninetyHeight + "px"
-    } [about] minmax(100vh, max-content) [articles] ${windowHeight} [calculator] 100vh`,
-  };
-
-  return (
-    <div className={styles.Home} style={myStyles}>
-      <Landing />
-      <About />
-      <Articles />
-      {/* <Calculator className={styles.Calculator} /> */}
-    </div>
-  );
+  if (isAnimating) {
+    return <Transition />;
+  } else {
+    return (
+      <div className={styles.Home}>
+        <Landing />
+        <About />
+        <Articles />
+        {/* <Calculator className={styles.Calculator} /> */}
+      </div>
+    );
+  }
 };
-
-// class Home extends Component {
-//   render() {
-//     return (
-//       <div className={styles.Home}>
-//         <Landing className={styles.Landing} />
-//         <About className={styles.About} />
-//         <Articles className={styles.Landing} />
-//         <Calculator className={styles.Calculator} />
-//       </div>
-//     );
-//   }
-// }
 
 export default Home;
