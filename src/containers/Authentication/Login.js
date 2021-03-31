@@ -1,18 +1,23 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./Login.module.scss";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const { register, errors, handleSubmit } = useForm();
+  const history = useHistory();
 
   const onFormSubmit = async (formData) => {
     const res = await axios.post(
       "http://localhost:3000/api/users/login",
       formData
     );
-    console.log(res);
+    // console.log(res.data.token);
+    setToken(res.data.token);
+    history.push("/");
   };
 
   return (
@@ -25,7 +30,7 @@ const Login = () => {
 
         <form onSubmit={handleSubmit(onFormSubmit)}>
           <div className={styles.inputContainer}>
-            <label htmlFor="email"> E-Mail or Username </label>
+            <label htmlFor="email"> E-Mail  </label>
             {errors.email && (
               <p className={styles.inputError}> A valid email is required </p>
             )}
@@ -56,7 +61,7 @@ const Login = () => {
 
         <div className={styles.registerContainer}>
           <p>Not Yet Registered? </p>
-          <a href="/">Register &#8594; </a>
+          <Link to="/signup"> Create an account &#8594; </Link>
         </div>
       </div>
     </div>
