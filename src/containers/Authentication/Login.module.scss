@@ -11,8 +11,8 @@
 .loginFormContainer {
   background-color: var(--test-form-color);
   width: 60rem;
-  height: 70%;
-  border-radius: 5px;
+//   height: 70%;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -25,7 +25,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 3rem;
 
     h3 {
       font-weight: 400;
@@ -52,6 +52,7 @@
 
     .inputContainer {
       width: 90%;
+      // background-color: yellow;
 
       label {
         align-self: start;
@@ -65,10 +66,11 @@
         border: 1px solid rgb(136, 136, 136);
         border-radius: 5px;
         margin-top: 1rem;
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
         padding-left: 1.5rem;
         transition: all .4s;
         outline: none;
+        color: #fff;
         
         &:focus,
         &:active {
@@ -82,7 +84,7 @@
     }
 
     button {
-        margin-top: 1.5rem;
+        margin: 1.5rem 0;
         width: 90%;
         border: none;
         border-radius: 5px;
@@ -90,6 +92,10 @@
         color: white;
         font-size: 1.8rem;
         padding: 1.5rem;
+    }
+
+    .inputError {
+      color: rgb(255, 0, 0);
     }
   }
 
