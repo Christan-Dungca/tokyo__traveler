@@ -9,21 +9,20 @@ import AllArticlesPage from "./components/AllArticlesPage/AllArticlesPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 import Login from "./containers/Authentication/Login";
 import Signup from "./containers/Authentication/Signup";
+import Admin from "./containers/Admin/Admin";
 
 import useToken from "./hooks/useToken";
 import AuthContext from "./context/auth-context";
 import "./App.scss";
 
 function App() {
-  const { token, setToken } = useToken();
-  console.log(`token: ${token}`);
-  console.log(typeof token);
+  const { token, setToken, removeToken } = useToken();
 
   return (
     <>
       {/* {token && <h1 style={{ color: "green" }}> token {token}</h1>} */}
-      <AuthContext.Provider value={{ token: token }}>
-        <Navigation />
+      <AuthContext.Provider value={{ token: token, logout: removeToken }}>
+        {/* <Navigation /> */}
         <Switch>
           <Route path="/" exact>
             <Home />
@@ -45,6 +44,9 @@ function App() {
           </Route>
           <Route path="/all-articles" exact>
             <AllArticlesPage />
+          </Route>
+          <Route path="/admin">
+            <Admin />
           </Route>
         </Switch>
       </AuthContext.Provider>

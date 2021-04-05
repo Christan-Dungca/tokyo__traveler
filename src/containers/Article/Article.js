@@ -15,7 +15,7 @@ const Article = () => {
     const fetchArticle = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/articles/${id}`
+          `http://localhost:5000/api/articles/${id}`
         );
 
         const fetchedArticle = data.data.article;

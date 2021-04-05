@@ -13,7 +13,7 @@ const Signup = ({ setToken }) => {
   const onFormSubmit = async (formData) => {
     console.log(formData);
     const res = await axios.post(
-      "http://localhost:3000/api/users/signup",
+      "http://localhost:5000/api/users/signup",
       formData
     );
     console.log(res.data);

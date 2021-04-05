@@ -12,7 +12,7 @@ const Login = ({ setToken }) => {
 
   const onFormSubmit = async (formData) => {
     const res = await axios.post(
-      "http://localhost:3000/api/users/login",
+      "http://localhost:5000/api/users/login",
       formData
     );
     // console.log(res.data.token);

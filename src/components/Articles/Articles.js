@@ -14,7 +14,7 @@ const Articles = () => {
     const getArticles = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3000/api/articles`
+          `http://localhost:5000/api/articles`
         );
         const { status, data: articles, results } = data;
 
