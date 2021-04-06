@@ -1,0 +1,165 @@
+.UserSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-family: var(--font-san-serif);
+
+  .userNameSection {
+    width: 100%;
+    // background-color: cadetblue;
+    display: flex;
+    align-items: center;
+
+    .userImg {
+      margin-right: 1rem;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background-color: lightgreen;
+      position: relative;
+
+      .userInitials {
+        font-size: 2rem;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .userName {
+      font-size: 4rem;
+      font-weight: 600;
+    }
+  }
+
+  .userInformation {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    width: 100%;
+
+    .informationTitle {
+      font-size: 2rem;
+      font-weight: 600;
+      //   background-color: palevioletred;
+      padding: 2rem 0;
+    }
+
+    .informationGrid {
+      list-style: none;
+      width: max-content;
+      display: grid;
+      grid-template-columns: max-content max-content;
+      row-gap: 2rem;
+      column-gap: 15vw;
+      //   background-color: lightgray;
+
+      .gridItem {
+        // background-color: papayawhip;
+
+        p {
+          font-size: 1.4rem;
+          color: rgb(75, 75, 75);
+        }
+
+        h4 {
+          font-size: 1.8rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+// Utility
+.header {
+  //   background-color: pink;
+  width: 100%;
+
+  .backBtn {
+    outline: none;
+    border: none;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    padding-left: 0;
+    font-size: 1.6rem;
+    font-family: var(--font-san-serif);
+
+    .arrowBackLogo {
+      margin-right: 0.5rem;
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.hr {
+  width: 98%;
+  border: 0.8px solid rgb(243, 243, 243);
+  margin: 1rem 0;
+}
+
+.userArticles {
+  width: 100%;
+  font-family: var(--font-san-serif);
+
+  .articlesHeader {
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 2rem 0;
+  }
+
+  .articlesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .article {
+      //   background-color: blanchedalmond;
+      border: 1px solid rgb(235, 235, 235);
+      width: 100%;
+      padding: 2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.8rem;
+
+      .articleTitle {
+        font-style: italic;
+      }
+      .articleDate {
+        color: rgb(75, 75, 75);
+
+        span {
+          font-weight: 600;
+        }
+      }
+      .articleViewBtn {
+        border-radius: 3px;
+        padding: 1rem 4rem;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid rgb(53, 53, 53);
+        transition: all 0.2s;
+        color: black;
+        text-decoration: none;
+
+        &:hover {
+          cursor: pointer;
+          border: 1px solid rgb(228, 228, 228);
+          color: #fff;
+          background-color: rgb(53, 53, 53);
+        }
+      }
+    }
+  }
+}

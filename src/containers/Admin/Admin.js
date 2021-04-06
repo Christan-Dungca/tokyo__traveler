@@ -7,12 +7,14 @@ import {
   Switch,
   useParams,
   useLocation,
+  useHistory,
 } from "react-router-dom";
 import { BiHomeAlt } from "react-icons/bi";
 import { BiUser } from "react-icons/bi";
 import { BiBook } from "react-icons/bi";
 import { BiSearch } from "react-icons/bi";
 
+import UserSection from "./User/UserSection";
 import AuthContext from "../../context/auth-context";
 import styles from "./Admin.module.scss";
 
@@ -109,7 +111,7 @@ const UserTable = () => {
   const [users, setUsers] = useState([]);
 
   let { url } = useRouteMatch();
-
+  const history = useHistory();
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
@@ -130,6 +132,10 @@ const UserTable = () => {
     };
     fetchUsers();
   }, [token]);
+
+  const editUserHandler = (userId) => {
+    history.push(`${url}/${userId}`);
+  };
 
   return (
     <div className={styles.UserTable}>
@@ -161,9 +167,12 @@ const UserTable = () => {
             {/* <Link to={`${url}/${user._id}`} className={styles.editBtn}>
               Edit
             </Link> */}
-            <Link to={`${url}/${user._id}`} className={styles.editBtn}>
+            <button
+              className={styles.editBtn}
+              onClick={() => editUserHandler(user._id)}
+            >
               Edit
-            </Link>
+            </button>
           </React.Fragment>
         );
       })}
@@ -180,18 +189,6 @@ const UsersSection = () => {
       <div className={styles.tableContainer}>
         <UserTable />
       </div>
-    </div>
-  );
-};
-
-const UserSection = () => {
-  const { userId } = useParams();
-  console.log(useParams());
-  console.log(useLocation());
-
-  return (
-    <div className={styles.UserSection}>
-      <h1> User Name - {userId} </h1>
     </div>
   );
 };
