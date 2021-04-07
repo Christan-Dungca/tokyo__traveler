@@ -1,45 +1,59 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import styles from "./Transition.module.scss";
 
-const Transition = () => {
+function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const Transition = ({ handleAnimation }) => {
+  const [isUnmounting, setIsUnmounting] = useState(false);
+
   const transitionRef = useRef(null);
   const headerRef = useRef(null);
-  const extraRef = useRef(null);
-  const timeline = gsap.timeline();
 
   useEffect(() => {
-    setTimeout(() => {
-      timeline
-        .fromTo(extraRef.current, { y: -1000 }, { y: 0, duration: 1 })
-        .fromTo(
-          transitionRef.current,
-          { y: -1000 },
-          { y: 0, duration: 1, opacity: 1 },
-          "-=.8"
-        )
-        // opacity set to 0 in .Transition Class
-        .to(transitionRef.current, { opacity: 1 }, "-=1")
-        .fromTo(
-          headerRef.current,
-          { opacity: 0, x: -100 },
-          { opacity: 1, x: 0, duration: 0.4 }
-        );
-    }, 500);
+    const mountTimeline = gsap.timeline();
+    const animateOnMount = async () => {
+      await mountTimeline.fromTo(
+        headerRef.current,
+        { y: 400, opacity: 0 },
+        { y: 0, opacity: 1, duration: 2, ease: "power2.out" }
+      );
 
-    return () => {
-      console.log("reversed timeline");
-      timeline.reverse();
+      const timer = setTimeout(() => {
+        setIsUnmounting(true);
+      }, 3000);
+
+      return () => clearTimeout(timer);
     };
-  });
+    animateOnMount();
+  }, []);
+
+  useEffect(() => {
+    let timer;
+
+    const animateOnDismount = async () => {
+      const unmountTimeline = gsap.timeline({
+        onComplete: () => handleAnimation(),
+      });
+      timer = await timeout(2000);
+
+      unmountTimeline
+        .to(headerRef.current, { y: -400, opacity: 0, duration: 1 })
+        .to(transitionRef.current, { y: -1000 }, "+=.3");
+    };
+    animateOnDismount();
+
+    return () => clearTimeout(timer);
+  }, [setIsUnmounting, handleAnimation]);
 
   return (
     <div className={styles.container}>
       <div className={styles.Transition} ref={transitionRef}>
         <h1 ref={headerRef}>Tokyo Traveler</h1>
       </div>
-      <div className={styles.extra} ref={extraRef}></div>
     </div>
   );
 };

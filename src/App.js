@@ -1,30 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Navigation from "./components/Navigation/Navigation";
-import Home from "./containers/Home/Home";
+import Admin from "./containers/Admin/Admin";
 import Article from "./containers/Article/Article";
 import Author from "./containers/Author/Author";
 import AllArticlesPage from "./components/AllArticlesPage/AllArticlesPage";
 import AboutPage from "./components/AboutPage/AboutPage";
+import Home from "./containers/Home/Home";
 import Login from "./containers/Authentication/Login";
+import Navigation from "./components/Navigation/Navigation";
 import Signup from "./containers/Authentication/Signup";
-import Admin from "./containers/Admin/Admin";
+import Transition from "./containers/Transition/Transition";
 
-import useToken from "./hooks/useToken";
 import AuthContext from "./context/auth-context";
+import useToken from "./hooks/useToken";
 import "./App.scss";
 
 function App() {
+  const [isAnimating, setIsAnimating] = useState(true);
   const { token, setToken, removeToken } = useToken();
+
+  const handleAnimation = () => {
+    setIsAnimating(false);
+  }
 
   return (
     <>
-      {/* {token && <h1 style={{ color: "green" }}> token {token}</h1>} */}
       <AuthContext.Provider value={{ token: token, logout: removeToken }}>
         {/* <Navigation /> */}
         <Switch>
           <Route path="/" exact>
+            {isAnimating && <Transition handleAnimation={handleAnimation} />}
             <Home />
           </Route>
           <Route path="/article/:id" exact>
