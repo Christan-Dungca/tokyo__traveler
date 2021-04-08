@@ -8,6 +8,7 @@ import AllArticlesPage from "./components/AllArticlesPage/AllArticlesPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 import Home from "./containers/Home/Home";
 import Login from "./containers/Authentication/Login";
+import Menu from "./components/Menu/Menu";
 import Navigation from "./components/Navigation/Navigation";
 import Signup from "./containers/Authentication/Signup";
 import Transition from "./containers/Transition/Transition";
@@ -17,20 +18,26 @@ import useToken from "./hooks/useToken";
 import "./App.scss";
 
 function App() {
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [showTransition, setShowTransition] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const { token, setToken, removeToken } = useToken();
 
   const handleAnimation = () => {
-    setIsAnimating(false);
-  }
+    setShowTransition(false);
+  };
+
+  const handleShowMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <>
       <AuthContext.Provider value={{ token: token, logout: removeToken }}>
-        {/* <Navigation /> */}
+        {showMenu && <Menu handleShowMenu={handleShowMenu}/>}
+        <Navigation handleShowMenu={handleShowMenu} />
         <Switch>
           <Route path="/" exact>
-            {isAnimating && <Transition handleAnimation={handleAnimation} />}
+            {/* {showTransition && <Transition handleAnimation={handleAnimation} />} */}
             <Home />
           </Route>
           <Route path="/article/:id" exact>

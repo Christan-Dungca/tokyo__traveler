@@ -1,42 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styles from "./Menu.module.scss";
-import japanVideo from "../../assets/videos/japan.mp4";
+import React, { useEffect, useRef } from "react";
 
-const Menu = ({ toggleNavHandler }) => {
+import { Link } from "react-router-dom";
+import gsap from "gsap";
+
+import styles from "./Menu.module.scss";
+
+const Menu = ({ handleShowMenu }) => {
+  const menuContainerRef = useRef();
+
+  useEffect(() => {
+    const menuContainerTimeline = gsap.timeline();
+    menuContainerTimeline.fromTo(
+      menuContainerRef.current,
+      { y: -2000 },
+      { y: 0, duration: 1, ease: "power4.easeIn" }
+    );
+  }, []);
+
   return (
-    <div className={styles.Menu}>
-      <div className={styles.overlay}>
-        <nav>
-          <h3 className={styles.title}> Tokyo Travler </h3>
-          <div onClick={toggleNavHandler} className={styles.closeBtnContainer}>
-            <div className={styles.btnTop}></div>
-            <div className={styles.btnBottom}></div>
-          </div>
-        </nav>
-        <div className={styles.textContainer}>
-          <div className={styles.links}>
-            <Link to='/' onClick={toggleNavHandler}>
-              Home
-            </Link>
-            <Link to='/about' onClick={toggleNavHandler}> About Us </Link>
-            <Link to='/all-articles' onClick={toggleNavHandler}>
-              Articles
-            </Link>
-            <Link to='/' onClick={toggleNavHandler}> Spending Plan </Link>
-          </div>
-        </div>
-      </div>
-      <div className={styles.videoContainer}>
-        <video
-          className={styles.video}
-          autoPlay={true}
-          loop={true}
-          muted={true}
-        >
-          <source src={japanVideo} type='video/mp4' />
-        </video>
-      </div>
+    <div className={styles.Menu} ref={menuContainerRef}>
+      <h1 onClick={handleShowMenu}> Menu </h1>
     </div>
   );
 };

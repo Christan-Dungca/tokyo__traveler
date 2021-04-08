@@ -15,6 +15,7 @@ const Transition = ({ handleAnimation }) => {
 
   useEffect(() => {
     const mountTimeline = gsap.timeline();
+    let timer;
     const animateOnMount = async () => {
       await mountTimeline.fromTo(
         headerRef.current,
@@ -22,13 +23,12 @@ const Transition = ({ handleAnimation }) => {
         { y: 0, opacity: 1, duration: 2, ease: "power2.out" }
       );
 
-      const timer = setTimeout(() => {
-        setIsUnmounting(true);
-      }, 3000);
-
-      return () => clearTimeout(timer);
+      timer = await timeout(1000);
+      setIsUnmounting(true);
     };
     animateOnMount();
+    
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
