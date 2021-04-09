@@ -19,7 +19,7 @@ import "./App.scss";
 
 function App() {
   const [showTransition, setShowTransition] = useState(true);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const { token, setToken, removeToken } = useToken();
 
   const handleAnimation = () => {

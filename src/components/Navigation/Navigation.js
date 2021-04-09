@@ -15,7 +15,7 @@ const Navigation = ({ handleShowMenu }) => {
   const handleHamburgerAnimation = () => {
     const hamburgerTimeline = gsap.timeline({
       onComplete: async function () {
-        handleShowMenu();
+        handleShowMenu(); 
         await timeout(1000)
         this.time(0).kill();
       },

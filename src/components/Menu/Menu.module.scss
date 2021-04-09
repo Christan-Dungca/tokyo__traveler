@@ -9,3 +9,25 @@
   z-index: 200;
   scroll-behavior: none;
 }
+
+.closeBtnContainer {
+  // background-color: lightsalmon;
+  height: 4.5rem;
+  width: 4.5rem;
+  top: 2.5rem;
+  right: 10rem;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+
+  .closeBtnLeft,
+  .closeBtnRight {
+    width: 5rem;
+    height: 3px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
