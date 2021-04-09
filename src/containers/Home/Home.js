@@ -8,7 +8,7 @@ import styles from "./Home.module.scss";
 
 const Home = () => {
   return (
-    <div className={styles.Home}>
+    <div className={styles.Home} >
       <Landing />
       <About />
       <Articles />

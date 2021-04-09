@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Admin from "./containers/Admin/Admin";
@@ -27,13 +27,14 @@ function App() {
   };
 
   const handleShowMenu = () => {
+    console.log(showMenu);
     setShowMenu(!showMenu);
   };
 
   return (
     <>
       <AuthContext.Provider value={{ token: token, logout: removeToken }}>
-        {showMenu && <Menu handleShowMenu={handleShowMenu}/>}
+        {showMenu && <Menu handleShowMenu={handleShowMenu} />}
         <Navigation handleShowMenu={handleShowMenu} />
         <Switch>
           <Route path="/" exact>
