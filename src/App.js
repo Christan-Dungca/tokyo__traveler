@@ -19,7 +19,7 @@ import "./App.scss";
 
 function App() {
   const [showTransition, setShowTransition] = useState(true);
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const { token, setToken, removeToken } = useToken();
 
   const handleAnimation = () => {
@@ -38,7 +38,7 @@ function App() {
         <Navigation handleShowMenu={handleShowMenu} />
         <Switch>
           <Route path="/" exact>
-            {/* {showTransition && <Transition handleAnimation={handleAnimation} />} */}
+            {showTransition && <Transition handleAnimation={handleAnimation} />}
             <Home />
           </Route>
           <Route path="/article/:id" exact>

@@ -22,6 +22,7 @@ const Menu = ({ handleShowMenu }) => {
   const aboutLabelRef = useRef();
   const aboutLinkRef = useRef();
   const descriptionRef = useRef();
+  const accountRef = useRef();
 
   useEffect(() => {
     menuContainerTimeline.current = gsap
@@ -29,8 +30,8 @@ const Menu = ({ handleShowMenu }) => {
       // need to handleCloseMenu true
       .fromTo(
         menuContainerRef.current,
-        { y: -2000 },
-        { y: 0, duration: 1, ease: "power4.easeIn" }
+        { y: -2000, visibility: "hidden" },
+        { y: 0, duration: 0.6, visibility: "visible", ease: "power4.easeIn" }
       )
       .fromTo(
         [closeMenuLeftRef.current, closeMenuRightRef.current],
@@ -52,7 +53,17 @@ const Menu = ({ handleShowMenu }) => {
         "-=0.4"
       )
       .fromTo(
-        [homeLinkRef.current, articleLinkRef.current, aboutLinkRef.current],
+        descriptionRef.current,
+        { x: -500, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.4 }
+      )
+      .fromTo(
+        [
+          homeLinkRef.current,
+          articleLinkRef.current,
+          aboutLinkRef.current,
+          accountRef.current,
+        ],
         { y: 40, opacity: 0, duration: 0.4 },
         { y: 0, opacity: 1 }
       )
@@ -62,12 +73,7 @@ const Menu = ({ handleShowMenu }) => {
         { y: 0, opacity: 1 },
         "-=0.2"
       );
-    // .fromTo(
-    //   descriptionRef.current,
-    //   { x: -500, opacity: 0 },
-    //   { x: 0, opacity: 1, duration: 1 }
-    // );
-  }, []);
+  }, [handleShowMenu]);
 
   useEffect(() => {
     if (isMenuClosing) {
@@ -160,13 +166,16 @@ const Menu = ({ handleShowMenu }) => {
             About the Project
           </h1>
         </div>
+        <div className={styles.subLinks}>
+          <p ref={accountRef}>Your Account</p>
+        </div>
       </div>
 
       <div className={styles.descriptionContainer}>
         {description ? (
-          <p useRef={descriptionRef}>{description}</p>
+          <p ref={descriptionRef}>{description}</p>
         ) : (
-          <p useRef={descriptionRef}> Hello Future Tokyo Travelers </p>
+          <p ref={descriptionRef}> Hello Future Tokyo Travelers </p>
         )}
       </div>
     </div>

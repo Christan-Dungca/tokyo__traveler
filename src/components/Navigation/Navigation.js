@@ -22,7 +22,7 @@ const Navigation = ({ handleShowMenu }) => {
     });
 
     hamburgerTimeline
-      .to(navBtnTopRef.current, { x: 50, duration: 0.8 })
+      .to(navBtnTopRef.current, { x: 50, duration: 0.9 })
       .to(navBtnBottomRef.current, { x: 50, duration: 0.8}, "-=0.8");
   };
 

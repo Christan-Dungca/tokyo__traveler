@@ -10,49 +10,39 @@ function timeout(ms) {
 const Transition = ({ handleAnimation }) => {
   const [isUnmounting, setIsUnmounting] = useState(false);
 
-  const transitionRef = useRef(null);
+  const containerRef = useRef(null);
+  const maskRef = useRef(null);
   const headerRef = useRef(null);
 
   useEffect(() => {
-    const mountTimeline = gsap.timeline();
-    let timer;
-    const animateOnMount = async () => {
-      await mountTimeline.fromTo(
-        headerRef.current,
-        { y: 400, opacity: 0 },
-        { y: 0, opacity: 1, duration: 2, ease: "power2.out" }
-      );
+    const mountTimeline = gsap.timeline({ onComplete: setIsUnmounting(true) });
 
-      timer = await timeout(1000);
-      setIsUnmounting(true);
-    };
-    animateOnMount();
-    
-    return () => clearTimeout(timer);
+    mountTimeline.fromTo(
+      headerRef.current,
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" }
+    );
   }, []);
 
   useEffect(() => {
-    let timer;
-
-    const animateOnDismount = async () => {
+    if (isUnmounting) {
       const unmountTimeline = gsap.timeline({
-        onComplete: () => handleAnimation(),
+        onComplete: handleAnimation,
       });
-      timer = await timeout(2000);
 
       unmountTimeline
-        .to(headerRef.current, { y: -400, opacity: 0, duration: 1 })
-        .to(transitionRef.current, { y: -1000 }, "+=.3");
-    };
-    animateOnDismount();
-
-    return () => clearTimeout(timer);
-  }, [setIsUnmounting, handleAnimation]);
+        .set(maskRef.current, { transformOrigin: "100% 50%" })
+        .to(maskRef.current, { width: "0%", duration: 1 }, "+=1")
+        .to(headerRef.current, { x: 900, duration: .9 }, "-=1");
+    }
+  }, [isUnmounting, handleAnimation]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.Transition} ref={transitionRef}>
-        <h1 ref={headerRef}>Tokyo Traveler</h1>
+    <div className={styles.container} ref={containerRef}>
+      <div className={styles.mask} ref={maskRef}>
+        <h1 className={styles.title} ref={headerRef}>
+          Tokyo Traveler
+        </h1>
       </div>
     </div>
   );
