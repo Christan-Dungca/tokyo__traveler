@@ -19,8 +19,8 @@ const Transition = ({ handleAnimation }) => {
 
     mountTimeline.fromTo(
       headerRef.current,
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" }
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.5, ease: "power2.out" }
     );
   }, []);
 
@@ -32,9 +32,9 @@ const Transition = ({ handleAnimation }) => {
 
       unmountTimeline
         .set(maskRef.current, { transformOrigin: "100% 50%" })
-        .to(maskRef.current, { width: "0%", duration: 1 }, "+=1")
-        .to(headerRef.current, { x: 900, duration: .9 }, "-=1");
-    }
+        .to(maskRef.current, { width: "0%", duration: 1 }, "+=1.5")
+        .to(headerRef.current, { x: "45.19vw", duration: .9 }, "-=1");
+    } // use Percentages 
   }, [isUnmounting, handleAnimation]);
 
   return (

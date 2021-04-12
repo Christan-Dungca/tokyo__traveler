@@ -11,27 +11,41 @@ function timeout(ms) {
 const Navigation = ({ handleShowMenu }) => {
   const navBtnTopRef = useRef();
   const navBtnBottomRef = useRef();
+  const navigationRef = useRef();
+
+  useEffect(() => {
+    const mountingTimeline = gsap
+      .timeline()
+      .fromTo(
+        navigationRef.current,
+        { y: 40, autoAlpha: 0 },
+        { y: 0, autoAlpha: 1, duration: 1 }
+      );
+  }, []);
 
   const handleHamburgerAnimation = () => {
     const hamburgerTimeline = gsap.timeline({
       onComplete: async function () {
-        handleShowMenu(); 
-        await timeout(1000)
+        handleShowMenu();
+        await timeout(1000);
         this.time(0).kill();
       },
     });
 
     hamburgerTimeline
       .to(navBtnTopRef.current, { x: 50, duration: 0.9 })
-      .to(navBtnBottomRef.current, { x: 50, duration: 0.8}, "-=0.8");
+      .to(navBtnBottomRef.current, { x: 50, duration: 0.8 }, "-=0.8");
   };
 
   return (
-    <nav className={styles.Navigation}>
+    <nav className={styles.Navigation} ref={navigationRef}>
       <Link to="/" className={styles.logo}>
         Tokyo Traveler
       </Link>
-      <div className={styles.navContainer} onClick={handleHamburgerAnimation}>
+      <div
+        className={styles.navContainer}
+        onClick={handleHamburgerAnimation}
+      >
         <div className={styles.navBtnTop} ref={navBtnTopRef}></div>
         <div className={styles.navBtnBottom} ref={navBtnBottomRef}></div>
       </div>

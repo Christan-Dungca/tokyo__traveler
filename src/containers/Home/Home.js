@@ -6,10 +6,10 @@ import Articles from "../../components/Articles/Articles";
 import Calculator from "../Calculator/Calculator";
 import styles from "./Home.module.scss";
 
-const Home = () => {
+const Home = ({ isAnimationComplete }) => {
   return (
-    <div className={styles.Home} >
-      <Landing />
+    <div className={styles.Home}>
+      <Landing isAnimationComplete={isAnimationComplete} />
       <About />
       <Articles />
       {/* <Calculator className={styles.Calculator} /> */}

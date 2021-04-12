@@ -59,11 +59,7 @@ body {
   font-size: 1.6rem; // 1rem = 10px
 }
 
-.Layout {
-  position: relative;
-}
-
-.Home {
-  // width: 100vw;
-  // min-height: 100vh;
+.App {
+  max-width: 100vw;
+  overflow-x: hidden;
 }

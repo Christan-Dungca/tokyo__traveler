@@ -15,15 +15,21 @@ import Transition from "./containers/Transition/Transition";
 
 import AuthContext from "./context/auth-context";
 import useToken from "./hooks/useToken";
-import "./App.scss";
+import styles from "./App.scss";
 
 function App() {
   const [showTransition, setShowTransition] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const { token, setToken, removeToken } = useToken();
 
   const handleAnimation = () => {
     setShowTransition(false);
+    setIsAnimationComplete(true);
+  };
+
+  const handleAnimationComplete = () => {
+    setIsAnimationComplete(true);
   };
 
   const handleShowMenu = () => {
@@ -32,14 +38,18 @@ function App() {
   };
 
   return (
-    <>
+    <div className={styles.App}>
       <AuthContext.Provider value={{ token: token, logout: removeToken }}>
         {showMenu && <Menu handleShowMenu={handleShowMenu} />}
-        <Navigation handleShowMenu={handleShowMenu} />
+        {isAnimationComplete && <Navigation handleShowMenu={handleShowMenu} />}
         <Switch>
           <Route path="/" exact>
-            {showTransition && <Transition handleAnimation={handleAnimation} />}
-            <Home />
+            {showTransition && (
+              <Transition
+                handleAnimation={handleAnimation}
+              />
+            )}
+            <Home isAnimationComplete={isAnimationComplete} />
           </Route>
           <Route path="/article/:id" exact>
             <Article />
@@ -64,7 +74,7 @@ function App() {
           </Route>
         </Switch>
       </AuthContext.Provider>
-    </>
+    </div>
   );
 }
 
