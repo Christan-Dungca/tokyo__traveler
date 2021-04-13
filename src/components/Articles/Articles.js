@@ -13,9 +13,7 @@ const Articles = () => {
   useEffect(() => {
     const getArticles = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/api/articles`
-        );
+        const { data } = await axios.get(`http://localhost:5000/api/articles`);
         const { status, data: articles, results } = data;
 
         if (articles.articles.length === 0) {
@@ -31,8 +29,6 @@ const Articles = () => {
     };
     getArticles();
   }, []);
-
-  console.log(articles);
 
   if (loading === true && error === false) {
     return (

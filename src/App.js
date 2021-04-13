@@ -14,13 +14,14 @@ import Signup from "./containers/Authentication/Signup";
 import Transition from "./containers/Transition/Transition";
 
 import AuthContext from "./context/auth-context";
+import AnimationContext from "./context/animation-context";
 import useToken from "./hooks/useToken";
 import styles from "./App.scss";
 
 function App() {
-  const [showTransition, setShowTransition] = useState(true);
+  const [showTransition, setShowTransition] = useState(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const { token, setToken, removeToken } = useToken();
 
   const handleAnimation = () => {
@@ -28,52 +29,49 @@ function App() {
     setIsAnimationComplete(true);
   };
 
-  const handleAnimationComplete = () => {
-    setIsAnimationComplete(true);
-  };
-
-  const handleShowMenu = () => {
-    console.log(showMenu);
+  const handleToggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   return (
     <div className={styles.App}>
-      <AuthContext.Provider value={{ token: token, logout: removeToken }}>
-        {showMenu && <Menu handleShowMenu={handleShowMenu} />}
-        {isAnimationComplete && <Navigation handleShowMenu={handleShowMenu} />}
-        <Switch>
-          <Route path="/" exact>
-            {showTransition && (
-              <Transition
-                handleAnimation={handleAnimation}
-              />
-            )}
-            <Home isAnimationComplete={isAnimationComplete} />
-          </Route>
-          <Route path="/article/:id" exact>
-            <Article />
-          </Route>
-          <Route path="/user/:id" exact>
-            <Author />
-          </Route>
-          <Route path="/login" exact>
-            <Login setToken={setToken} />
-          </Route>
-          <Route path="/signup" exact>
-            <Signup setToken={setToken} />
-          </Route>
-          <Route path="/about" exact>
-            <AboutPage />
-          </Route>
-          <Route path="/all-articles" exact>
-            <AllArticlesPage />
-          </Route>
-          <Route path="/admin">
-            <Admin />
-          </Route>
-        </Switch>
-      </AuthContext.Provider>
+      <AnimationContext.Provider value={{ isAnimationComplete }}>
+        <AuthContext.Provider value={{ token, logout: removeToken }}>
+          {showMenu && <Menu handleShowMenu={handleToggleMenu} />}
+          {isAnimationComplete && (
+            <Navigation handleShowMenu={handleToggleMenu} />
+          )}
+          <Switch>
+            <Route path="/" exact>
+              {showTransition && (
+                <Transition handleAnimation={handleAnimation} />
+              )}
+              <Home />
+            </Route>
+            <Route path="/article/:id" exact>
+              <Article />
+            </Route>
+            <Route path="/user/:id" exact>
+              <Author />
+            </Route>
+            <Route path="/login" exact>
+              <Login setToken={setToken} />
+            </Route>
+            <Route path="/signup" exact>
+              <Signup setToken={setToken} />
+            </Route>
+            <Route path="/about" exact>
+              <AboutPage />
+            </Route>
+            <Route path="/all-articles" exact>
+              <AllArticlesPage />
+            </Route>
+            <Route path="/admin">
+              <Admin />
+            </Route>
+          </Switch>
+        </AuthContext.Provider>
+      </AnimationContext.Provider>
     </div>
   );
 }

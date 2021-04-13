@@ -1,20 +1,22 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 
 import gsap from "gsap";
+import AnimationContext from "../../context/animation-context";
 import styles from "./Landing.module.scss";
 
-const Landing = ({ isAnimationComplete }) => {
+const Landing = () => {
   const imageRef = useRef();
+  const { isAnimationComplete } = useContext(AnimationContext);
 
   useEffect(() => {
     if (isAnimationComplete) {
       const mountingTimeline = gsap
         .timeline()
-        // .set(imageRef.current, { transformOrigin: "0% 50%" })
         .fromTo(
           imageRef.current,
           { x: -40, autoAlpha: 0 },
-          { x: 0, autoAlpha: 1, duration: 0.8}
+          { x: 0, autoAlpha: 1, duration: 0.8 },
+          "+=0.6"
         );
     }
   }, [isAnimationComplete]);

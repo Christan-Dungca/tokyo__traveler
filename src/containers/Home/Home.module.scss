@@ -4,7 +4,7 @@
 
   display: grid;
   //   grid-column-gap: 2rem;
-  grid-template-columns: [left-gutter] 1fr [content] 12fr [right-gutter] 1fr;
+  grid-template-columns: [left-gutter] 2fr [content] 12fr [right-gutter] 2fr;
   grid-template-rows: [landing] 100vh [about] max-content [articles] max-content [calculator] auto;
   
   @media screen and (max-width: 425px) {
