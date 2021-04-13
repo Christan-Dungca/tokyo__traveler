@@ -12,20 +12,19 @@
     grid-column: 2;
     grid-row: 2;
     height: max-content;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 4vw;
+    justify-content: center;
     align-items: center;
 
-    @media screen and (max-width: 425px) {
-      flex-direction: column;
-    }
-
     .bigText {
+      grid-column: 1 / 2;
       width: max-content;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      font-family: "Playfair Display", serif;
+      font-family: var(--font-serif);
       font-size: calc(1rem + 1.5vw);
       font-weight: 400;
       line-height: 140%;
@@ -42,15 +41,18 @@
     }
     .aboutTextContainer {
       // background-color: rgb(64, 69, 141);
-      max-width: 60rem;
+      grid-column: 2 / -1;
       height: max-content;
       font-family: var(--font-san-serif);
-      font-size: calc(0.8rem + 1vw);
+      font-size: calc(0.7rem + 1vw);
       line-height: 140%;
       margin-left: 4rem;
 
+      p {
+        width: 95%;
+      }
+
       @media screen and (max-width: 425px) {
-        margin-left: 0;
         p {
           line-height: 140%;
           font-size: calc(1.8rem);
