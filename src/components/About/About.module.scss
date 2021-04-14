@@ -65,6 +65,35 @@
   .imageSection {
     grid-column: 2;
     grid-row: 3;
+    position: relative;
+
+    .manCutOut {
+      position: absolute;
+      bottom: 0;
+      right: 10%;
+      z-index: 10;
+      // background: yellow;
+      width: max-content;
+      height: max-content;
+
+      img {
+        width: 25rem;
+      }
+    }
+
+    .womanCutOut {
+      position: absolute;
+      top: 10%;
+      left: 0%;
+      z-index: 10;
+      // background: yellow;
+      width: max-content;
+      height: max-content;
+
+      img {
+        width: 25rem;
+      }
+    }
 
     @media screen and (max-width: 425px) {
       grid-column: 1 / -1;

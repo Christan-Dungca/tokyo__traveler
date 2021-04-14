@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import manPNG from "../../assets/images/man-cutout.png";
+import womanPNG from "../../assets/images/woman-cutout.png";
 import styles from "./About.module.scss";
 
 const About = () => {
@@ -15,7 +18,7 @@ const About = () => {
       scrollTrigger: {
         trigger: bigTextRef.current,
         start: "center bottom",
-        markers: true,
+        // markers: true,
       },
     });
     t1.fromTo(
@@ -69,6 +72,12 @@ const About = () => {
       <div className={styles.imageSection}>
         <div className={styles.doubleImageContainer} ref={imageContainerRef}>
           <div className={styles.doubleImage} ref={imageRef}></div>
+        </div>
+        <div className={styles.manCutOut}>
+          <img src={manPNG} alt="man cutout png" />
+        </div>
+        <div className={styles.womanCutOut}>
+          <img src={womanPNG} alt="woman cutout png" />
         </div>
       </div>
       {/* <BeforeReading /> */}
