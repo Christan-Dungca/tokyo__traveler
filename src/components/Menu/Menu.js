@@ -1,8 +1,7 @@
-import React, { useCallback, useState, useEffect, useRef } from "react";
-
-import { useHistory } from "react-router-dom";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-
+import { useHistory } from "react-router-dom";
+import AuthContext from "../../context/auth-context";
 import styles from "./Menu.module.scss";
 
 const Menu = ({ handleShowMenu }) => {
@@ -10,6 +9,8 @@ const Menu = ({ handleShowMenu }) => {
   const [isMenuClosing, setIsMenuClosing] = useState(false);
 
   const history = useHistory();
+  const { token, user } = useContext(AuthContext);
+  console.log(`token: ${token}`);
   let menuContainerTimeline = useRef();
 
   const menuContainerRef = useRef();
@@ -167,7 +168,15 @@ const Menu = ({ handleShowMenu }) => {
           </h1>
         </div>
         <div className={styles.subLinks}>
-          <p ref={accountRef}>Your Account</p>
+          {token && user ? (
+            <p ref={accountRef} onClick={() => handleLinkClick(`/user/${user._id}`)}>
+              Welcome Back {user.name}
+            </p>
+          ) : (
+            <p ref={accountRef} onClick={() => handleLinkClick("/login")}>
+              Your Account
+            </p>
+          )}
         </div>
       </div>
 

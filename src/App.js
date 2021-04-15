@@ -19,10 +19,27 @@ import useToken from "./hooks/useToken";
 import styles from "./App.scss";
 
 function App() {
+  const getUser = () => {
+    let userFromStorage = localStorage.getItem("user");
+    if (userFromStorage) {
+      userFromStorage = JSON.parse(userFromStorage);
+    }
+    console.log(userFromStorage);
+    return userFromStorage;
+  };
+
   const [showTransition, setShowTransition] = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
+  const [user, setUser] = useState(getUser());
   const { token, setToken, removeToken } = useToken();
+
+  const loginUser = (userData = "") => {
+    if (!user) {
+      localStorage.setItem("user", JSON.stringify(userData));
+      setUser(userData);
+    }
+  };
 
   const handleAnimation = () => {
     setShowTransition(false);
@@ -33,10 +50,19 @@ function App() {
     setShowMenu(!showMenu);
   };
 
+  console.log({ user });
+
   return (
     <div className={styles.App}>
       <AnimationContext.Provider value={{ isAnimationComplete }}>
-        <AuthContext.Provider value={{ token, logout: removeToken }}>
+        <AuthContext.Provider
+          value={{
+            token,
+            user,
+            logout: removeToken,
+            login: loginUser,
+          }}
+        >
           {showMenu && <Menu handleShowMenu={handleToggleMenu} />}
           {isAnimationComplete && (
             <Navigation handleShowMenu={handleToggleMenu} />

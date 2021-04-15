@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useRef } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 
@@ -7,6 +7,7 @@ import styles from "./Carousel.module.scss";
 import userEvent from "@testing-library/user-event";
 
 const Carousel = ({ list, type }) => {
+  const elemIsAtStart = useRef(true);
   const items = useRef(null);
   const moveX = useRef(7);
   let elementWidthRef = useRef(null);
@@ -23,10 +24,10 @@ const Carousel = ({ list, type }) => {
     if (elementsRef.length > 0) {
       elementWidthRef.current =
         elementsRef[0].getBoundingClientRect().width / 10;
-      // console.log(elementsRef[0]);
-      // console.log(elementWidthRef.current);
+
+      console.log(`firstElement: ${elementsRef[0].offsetLeft}`);
     }
-  }, []);
+  }, [elementsRef]);
 
   useEffect(() => {
     const slider = items.current;
@@ -34,21 +35,13 @@ const Carousel = ({ list, type }) => {
   }, []);
 
   const goRight = () => {
-    console.log(
-      `elementWidthRef: ${elementWidthRef.current} -- moveX: ${moveX.current}`
-    );
-    console.log(`${elementWidthRef.current + moveX.current}`);
     gsap.to(elementsRef, {
       x: `-=${elementWidthRef.current + moveX.current}rem`,
+      // scrollTo: {x: `${elementWidthRef.current + moveX.current}rem`}
     });
-    // moveX.current += moveX.current;
   };
 
   const goLeft = () => {
-    console.log(
-      `elementWidthRef: ${elementWidthRef.current} -- moveX: ${moveX.current}`
-    );
-    console.log(`${elementWidthRef.current + moveX.current}`);
     gsap.to(elementsRef, {
       x: `+=${elementWidthRef.current + moveX.current}rem`,
     });
