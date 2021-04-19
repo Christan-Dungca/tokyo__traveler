@@ -9,8 +9,8 @@ const Menu = ({ handleShowMenu }) => {
   const [isMenuClosing, setIsMenuClosing] = useState(false);
 
   const history = useHistory();
-  const { token, user } = useContext(AuthContext);
-  console.log(`token: ${token}`);
+  const { logout, token, user } = useContext(AuthContext);
+  // console.log(`token: ${token}`);
   let menuContainerTimeline = useRef();
 
   const menuContainerRef = useRef();
@@ -113,6 +113,11 @@ const Menu = ({ handleShowMenu }) => {
     setIsMenuClosing(true);
   };
 
+  const handleLogout = () => {
+    logout();
+    history.push("/");
+  };
+
   return (
     <div className={styles.Menu} ref={menuContainerRef}>
       <div className={styles.closeBtnContainer} onClick={handleCloseMenu}>
@@ -169,12 +174,18 @@ const Menu = ({ handleShowMenu }) => {
         </div>
         <div className={styles.subLinks}>
           {token && user ? (
-            <p ref={accountRef} onClick={() => handleLinkClick(`/user/${user._id}`)}>
-              Welcome Back {user.name}
-            </p>
+            <>
+              <p
+                ref={accountRef}
+                onClick={() => handleLinkClick(`/user/${user._id}`)}
+              >
+                Welcome Back {user.name}
+              </p>
+              <p onClick={handleLogout}> logout</p>
+            </>
           ) : (
             <p ref={accountRef} onClick={() => handleLinkClick("/login")}>
-              Your Account
+              login or signup
             </p>
           )}
         </div>

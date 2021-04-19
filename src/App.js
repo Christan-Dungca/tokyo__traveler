@@ -15,31 +15,15 @@ import Transition from "./containers/Transition/Transition";
 
 import AuthContext from "./context/auth-context";
 import AnimationContext from "./context/animation-context";
-import useToken from "./hooks/useToken";
+import useToken from "./hooks/useAuth";
 import styles from "./App.scss";
 
 function App() {
-  const getUser = () => {
-    let userFromStorage = localStorage.getItem("user");
-    if (userFromStorage) {
-      userFromStorage = JSON.parse(userFromStorage);
-    }
-    console.log(userFromStorage);
-    return userFromStorage;
-  };
-
   const [showTransition, setShowTransition] = useState(false);
   const [isAnimationComplete, setIsAnimationComplete] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-  const [user, setUser] = useState(getUser());
-  const { token, setToken, removeToken } = useToken();
 
-  const loginUser = (userData = "") => {
-    if (!user) {
-      localStorage.setItem("user", JSON.stringify(userData));
-      setUser(userData);
-    }
-  };
+  const { login, logout, token, user } = useToken();
 
   const handleAnimation = () => {
     setShowTransition(false);
@@ -50,8 +34,6 @@ function App() {
     setShowMenu(!showMenu);
   };
 
-  console.log({ user });
-
   return (
     <div className={styles.App}>
       <AnimationContext.Provider value={{ isAnimationComplete }}>
@@ -59,8 +41,8 @@ function App() {
           value={{
             token,
             user,
-            logout: removeToken,
-            login: loginUser,
+            logout,
+            login,
           }}
         >
           {showMenu && <Menu handleShowMenu={handleToggleMenu} />}
@@ -81,10 +63,10 @@ function App() {
               <Author />
             </Route>
             <Route path="/login" exact>
-              <Login setToken={setToken} />
+              <Login />
             </Route>
             <Route path="/signup" exact>
-              <Signup setToken={setToken} />
+              <Signup />
             </Route>
             <Route path="/about" exact>
               <AboutPage />

@@ -17,11 +17,13 @@ const Login = ({ setToken }) => {
       "http://localhost:5000/api/users/login",
       formData
     );
-    console.log(res.data);
-    setToken(res.data.token);
-    login(res.data.data.user);
+
+    const token = res.data.token;
+    const user = res.data.data.user;
+
+    login(token, user);
     history.push("/");
-  };
+  }; // Need to revamp useHttp to not send the data.data.object
 
   return (
     <div className={styles.Login}>

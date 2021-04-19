@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import styles from "./Signup.module.scss";
+import AuthContext from "../../context/auth-context.js";
 
 const Signup = ({ setToken }) => {
   const { register, errors, handleSubmit, getValues } = useForm();
+  const { login } = useContext(AuthContext);
   const history = useHistory();
 
   const onFormSubmit = async (formData) => {
@@ -16,8 +18,11 @@ const Signup = ({ setToken }) => {
       "http://localhost:5000/api/users/signup",
       formData
     );
-    console.log(res.data);
-    setToken(res.data.token);
+
+    const token = res.data.token;
+    const user = res.data.data.user;
+
+    login(token, user);
     history.push("/");
   };
 

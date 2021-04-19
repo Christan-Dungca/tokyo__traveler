@@ -25,7 +25,7 @@ const useHttpClient = () => {
           throw new Error("Error getting resource");
         }
 
-        //   console.log(response.data.data);
+          // console.log(response.data.data);
         setIsLoading(false);
         return response.data.data;
       } catch (err) {
