@@ -2,84 +2,81 @@
   // background-color: lightblue;
   min-height: 100vh;
   width: 100vw;
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
-  grid-template-rows: 40vh 5vh auto;
+  position: relative;
+  font-family: var(--font-san-serif);
 
-  .imageContainer {
-    grid-column: 1 / -1;
-    grid-row: 1 / span 2;
-    overflow: hidden;
-    position: relative;
+  .landing {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 100vh;
+    
+    .textContainer {
+      grid-column: 1;
+      align-self: center;
+      justify-self: center;
+      max-width: 90rem;
+      background-color: #fff;
+      padding: 10rem 10rem;
 
-    img {
-      object-fit: cover;
-      object-position: top;
-      min-height: 100%;
-      width: 100%;
-    }
+      .title {
+        font-family: var(--font-serif);
 
-  }
+        h1 {
+          font-size: calc(4rem + 1vw);
+          line-height: 150%;
+          margin-bottom: 6rem;
+        }
+      }
 
-  .content {
-    grid-column: 2 / -1;
-    grid-row: 2 / span 2;
-    z-index: 10;
-    background-color: white;
-    margin: 0 auto;
-    white-space: normal;
-    font-family: var(--font-serif);
-    line-height: 140%;
-    padding: 2rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+      .authorProfile {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
 
-    .createdAt {
-      font-family: var(--font-san-serif);
-      color: rgb(100, 100, 100);
-      align-self: flex-start;
-      font-weight: 400;
-      font-size: calc(.8rem + 1vw);
-      text-transform: uppercase;
-    }
-    .title {
-      // background-color: yellow;
-      width: 100%;
-      height: max-content;
-      // text-align: center;
-      line-height: 140%;
-      font-size: calc(2.5rem + 2vw);
-      margin-bottom: 4vh;
-    }
+        .image {
+          width: 5rem;
+          height: 5rem;
+          border-radius: 50%;
+          background-color: rgb(0, 0, 0);
+          margin-right: 1rem;
+        }
 
-    .contentContainer {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        .text {
+          
+          .name {
+            font-size: 1.8rem;
+            line-height: 160%;
+          }
 
-      p {
-        // text-align: center;
-        letter-spacing: .8px;
-        color: rgb(71, 71, 71);
-        max-width: 80rem;
-        font-weight: 400;
-        font-family: var(--font-san-serif);
-        font-size: calc(1rem + 1vw);
-        line-height: 140%;
-        margin-bottom: 3vh;
+          .articleCreatedAt {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: rgb(52, 52, 52);
+          }
+        }
+      }
+
+      .intro {
+        font-size: 2.4rem;
+        line-height: 170%;
+        margin-bottom: 2rem;
+      }
+
+      .continue {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: underline;
       }
     }
-  }
-}
 
-.overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(black, 0.2);
+    .imageContainer {
+      // background-color: lightgreen;
+      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+        url(../../assets/images/medium-airplane.jpeg);
+      background-size: cover;
+      grid-column: 2;
+    }
+  }
 }

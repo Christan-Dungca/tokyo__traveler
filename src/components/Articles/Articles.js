@@ -1,28 +1,20 @@
 import React, { useEffect, useState } from "react";
 
-import axios from "axios";
-
 import Carousel from "../../containers/Carousel/Carousel";
+import useHttpClient from "../../hooks/useHttp";
 import styles from "./Articles.module.scss";
 
 const Articles = () => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [articles, setArticles] = useState();
+  const { isLoading, error, sendRequest } = useHttpClient();
 
   useEffect(() => {
     const getArticles = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/articles`);
-        const { status, data: articles, results } = data;
-
-        if (articles.articles.length === 0) {
-          setError(true);
-          setLoading(false);
-        } else {
-          setLoading(false);
-          setArticles(articles.articles);
-        }
+        const { articles: data } = await sendRequest(
+          `http://localhost:5000/api/articles`
+        );
+        setArticles(data);
       } catch (err) {
         console.log(err);
       }
@@ -30,7 +22,7 @@ const Articles = () => {
     getArticles();
   }, []);
 
-  if (loading === true && error === false) {
+  if (isLoading === true && error === false) {
     return (
       <div>
         <h1> Loading ... </h1>
@@ -38,7 +30,7 @@ const Articles = () => {
     );
   }
 
-  if (loading === false && error === true) {
+  if (isLoading === false && error === true) {
     return (
       <div>
         <h1> An error has occurred! </h1>
@@ -46,7 +38,7 @@ const Articles = () => {
     );
   }
 
-  if (articles && loading === false && error === false) {
+  if (articles && isLoading === false && error === false) {
     return (
       <div className={styles.Articles}>
         <h2 className={styles.title}>Articles</h2>
