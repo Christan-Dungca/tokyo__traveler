@@ -11,10 +11,11 @@ const Articles = () => {
   useEffect(() => {
     const getArticles = async () => {
       try {
-        const { articles: data } = await sendRequest(
+        const response  = await sendRequest(
           `http://localhost:5000/api/articles`
         );
-        setArticles(data);
+        
+        setArticles(response.data.articles);
       } catch (err) {
         console.log(err);
       }

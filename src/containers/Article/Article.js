@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import ARTICLE_IMG from "../../assets/images/medium-shrine-girls.jpg";
 import useHttpClient from "../../hooks/useHttp";
 import styles from "./Article.module.scss";
 
@@ -13,12 +12,12 @@ const Article = () => {
   useEffect(() => {
     const fetchArticle = async () => {
       try {
-        const {article: data} = await sendRequest(
+        const response = await sendRequest(
           `http://localhost:5000/api/articles/${id}`
         );
 
-        // console.log(article);
-        setArticle(data);
+        console.log(response);
+        setArticle(response.data.article);
       } catch (err) {}
     };
 

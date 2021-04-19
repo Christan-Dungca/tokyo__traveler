@@ -2,25 +2,28 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
-import styles from "./Signup.module.scss";
+import useHttpClient from "../../hooks/useHttp";
 import AuthContext from "../../context/auth-context.js";
+import styles from "./Signup.module.scss";
 
 const Signup = ({ setToken }) => {
+  const { sendRequest } = useHttpClient();
   const { register, errors, handleSubmit, getValues } = useForm();
   const { login } = useContext(AuthContext);
   const history = useHistory();
 
   const onFormSubmit = async (formData) => {
     console.log(formData);
-    const res = await axios.post(
+    const response = await sendRequest(
       "http://localhost:5000/api/users/signup",
+      "post",
       formData
     );
 
-    const token = res.data.token;
-    const user = res.data.data.user;
+    // console.log(response);
+    const token = response.token;
+    const user = response.data.user;
 
     login(token, user);
     history.push("/");

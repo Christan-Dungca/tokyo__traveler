@@ -10,14 +10,14 @@ const useHttpClient = () => {
   };
 
   const sendRequest = useCallback(
-    async (url, method = "GET", body = null, headers = {}) => {
+    async (url, method = "get", body = {}, headers = {}) => {
       setIsLoading(true);
 
       try {
         const response = await axios({
-          url,
           method,
-          body,
+          url,
+          data: body,
           headers,
         });
 
@@ -25,9 +25,9 @@ const useHttpClient = () => {
           throw new Error("Error getting resource");
         }
 
-          // console.log(response.data.data);
+        // console.log(response.data.data);
         setIsLoading(false);
-        return response.data.data;
+        return response.data;
       } catch (err) {
         setError(true);
         setIsLoading(false);

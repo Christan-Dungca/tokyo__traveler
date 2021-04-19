@@ -4,22 +4,27 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-import styles from "./Login.module.scss";
+import useHttpClient from "../../hooks/useHttp";
 import AuthContext from "../../context/auth-context";
+import styles from "./Login.module.scss";
 
 const Login = ({ setToken }) => {
+  const { sendRequest } = useHttpClient();
   const { register, errors, handleSubmit } = useForm();
-  const history = useHistory();
   const { login } = useContext(AuthContext);
+  const history = useHistory();
 
   const onFormSubmit = async (formData) => {
-    const res = await axios.post(
+    console.log(formData);
+    const response = await sendRequest(
       "http://localhost:5000/api/users/login",
+      "POST",
       formData
     );
 
-    const token = res.data.token;
-    const user = res.data.data.user;
+    // console.log(response);
+    const token = response.token;
+    const user = response.data.user;
 
     login(token, user);
     history.push("/");
@@ -56,6 +61,7 @@ const Login = ({ setToken }) => {
             <input
               id="password"
               name="password"
+              type="password"
               ref={register({ required: true })}
               placeholder="Enter your password"
             />
