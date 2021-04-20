@@ -8,7 +8,8 @@ function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const Navigation = ({ handleShowMenu }) => {
+const Navigation = ({ handleShowMenu, menuColor }) => {
+  const { left, right } = menuColor;
   const navBtnTopRef = useRef();
   const navBtnBottomRef = useRef();
   const navigationRef = useRef();
@@ -39,15 +40,22 @@ const Navigation = ({ handleShowMenu }) => {
 
   return (
     <nav className={styles.Navigation} ref={navigationRef}>
-      <Link to="/" className={styles.logo}>
+      <Link to="/" className={styles.logo} style={{ color: left }}>
         Tokyo Traveler
       </Link>
-      <div
-        className={styles.navContainer}
-        onClick={handleHamburgerAnimation}
-      >
-        <div className={styles.navBtnTop} ref={navBtnTopRef}></div>
-        <div className={styles.navBtnBottom} ref={navBtnBottomRef}></div>
+
+      <div className={styles.navContainer} onClick={handleHamburgerAnimation}>
+        <div
+          className={styles.navBtnTop}
+          ref={navBtnTopRef}
+          style={{ background: right }}
+        ></div>
+
+        <div
+          className={styles.navBtnBottom}
+          ref={navBtnBottomRef}
+          style={{ background: right }}
+        ></div>
       </div>
     </nav>
   );

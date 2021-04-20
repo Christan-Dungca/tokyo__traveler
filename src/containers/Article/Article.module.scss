@@ -1,82 +1,147 @@
 .Article {
   // background-color: lightblue;
-  min-height: 100vh;
-  width: 100vw;
+  min-height: max-content;
+  width: 100%;
   position: relative;
   font-family: var(--font-san-serif);
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5rem;
 
-  .landing {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-template-rows: 100vh;
-    
-    .textContainer {
-      grid-column: 1;
-      align-self: center;
-      justify-self: center;
-      max-width: 90rem;
+  .container {
+    // background-color: blue;
+    margin-top: 10vh;
+    width: 80%;
+    max-width: 120rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .header {
       background-color: #fff;
-      padding: 10rem 10rem;
+      // background-color: red;
+      width: 100%;
+      height: max-content;
+      font-family: var(--font-serif);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       .title {
-        font-family: var(--font-serif);
-
-        h1 {
-          font-size: calc(4rem + 1vw);
-          line-height: 150%;
-          margin-bottom: 6rem;
-        }
+        // font-size: calc(20px + (60 - 20) * (100vw - 600px) / (1200 - 600));
+        // background-color: blue;
+        margin-top: 4rem;
+        width: 60%;
+        max-width: 70rem;
+        font-size: calc(1rem + 3vw);
+        font-weight: 600;
+        text-align: center;
+        line-height: 140%;
       }
 
-      .authorProfile {
-        display: flex;
-        align-items: center;
-        margin-bottom: 3rem;
-
-        .image {
-          width: 5rem;
-          height: 5rem;
-          border-radius: 50%;
-          background-color: rgb(0, 0, 0);
-          margin-right: 1rem;
-        }
-
-        .text {
-          
-          .name {
-            font-size: 1.8rem;
-            line-height: 160%;
-          }
-
-          .articleCreatedAt {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: rgb(52, 52, 52);
-          }
-        }
+      .divider {
+        height: 2px;
+        width: 10rem;
+        background-color: var(--light-red);
+        margin: 4rem;
       }
 
-      .intro {
+      .tag {
         font-size: 2.4rem;
-        line-height: 170%;
+        font-family: var(--font-serif);
+        font-weight: 600;
+        margin-bottom: 4rem;
+      }
+
+      .imgContainer {
+        width: 100%;
+        height: 65vh;
+        background: linear-gradient(var(--dark-overlay), var(--dark-overlay)),
+          url(../../assets/images/medium-airplane.jpeg);
+        background-size: cover;
+        background-position: bottom;
         margin-bottom: 2rem;
       }
 
-      .continue {
-        font-size: 1.8rem;
-        font-weight: bold;
-        text-decoration: underline;
+      .articleInfo {
+        // background-color: red;
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        margin-bottom: 6rem;
+
+        .authorImg {
+          width: 5rem;
+          height: 5rem;
+          background-color: rosybrown;
+          border-radius: 50%;
+          margin-right: 1rem;
+        }
+
+        .info {
+          font-family: var(--font-san-serif);
+          font-size: 1.8rem;
+        }
       }
     }
 
-    .imageContainer {
-      // background-color: lightgreen;
-      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-        url(../../assets/images/medium-airplane.jpeg);
-      background-size: cover;
-      grid-column: 2;
+    .content {
+      // background-color: lightgray;
+      width: 80%;
+      min-width: 32rem;
+      max-width: 81rem;
+
+      p {
+        font-size: 2rem;
+        line-height: 160%;
+        letter-spacing: -0.01em;
+        margin-bottom: 2rem;
+      }
+
+      h3 {
+        font-size: 2.4rem;
+        margin: 4rem 0 2rem 0;
+      }
+
+      .tableContainer {
+        position: relative;
+        padding: 2rem 2rem;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgb(219, 207, 252);
+          opacity: 0.8;
+          z-index: 1;
+        }
+
+        .tableTitle {
+          position: relative;
+          font-size: 2.4rem;
+          z-index: 2;
+          margin-bottom: 1rem;
+          margin-top: 0;
+        }
+
+        ol {
+          margin-left: 5rem;
+          position: relative;
+          font-size: 2.4rem;
+          z-index: 2;
+
+          li {
+            color: rgb(0, 0, 0);
+            margin-bottom: 1rem;
+          }
+        }
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 import Admin from "./containers/Admin/Admin";
 import Article from "./containers/Article/Article";
@@ -21,7 +21,8 @@ import styles from "./App.scss";
 function App() {
   const [showTransition, setShowTransition] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-  
+  const [menuColor, setMenuColor] = useState({ left: "#fff", right: "#fff" });
+
   const { login, logout, token, user } = useToken();
 
   const handleAnimation = () => {
@@ -32,9 +33,15 @@ function App() {
     setShowMenu(!showMenu);
   };
 
+  const handleMenuColor = (colorObj) => {
+    setMenuColor(colorObj);
+  };
+
   return (
     <div className={styles.App}>
-      <AnimationContext.Provider value={{ isAnimationComplete: !showTransition }}>
+      <AnimationContext.Provider
+        value={{ isAnimationComplete: !showTransition }}
+      >
         <AuthContext.Provider
           value={{
             token,
@@ -44,9 +51,9 @@ function App() {
           }}
         >
           {showMenu && <Menu handleShowMenu={handleToggleMenu} />}
-          {!showTransition && (
-            <Navigation handleShowMenu={handleToggleMenu} />
-          )}
+          {/* {showTransition && ( */}
+          <Navigation handleShowMenu={handleToggleMenu} menuColor={menuColor} />
+          {/* )} */}
           <Switch>
             <Route path="/" exact>
               {showTransition && (
@@ -55,7 +62,7 @@ function App() {
               <Home />
             </Route>
             <Route path="/article/:id" exact>
-              <Article />
+              <Article handleMenuColor={handleMenuColor} />
             </Route>
             <Route path="/user/:id" exact>
               <Author />
