@@ -19,15 +19,13 @@ import useToken from "./hooks/useAuth";
 import styles from "./App.scss";
 
 function App() {
-  const [showTransition, setShowTransition] = useState(false);
-  const [isAnimationComplete, setIsAnimationComplete] = useState(true);
+  const [showTransition, setShowTransition] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-
+  
   const { login, logout, token, user } = useToken();
 
   const handleAnimation = () => {
     setShowTransition(false);
-    setIsAnimationComplete(true);
   };
 
   const handleToggleMenu = () => {
@@ -36,7 +34,7 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <AnimationContext.Provider value={{ isAnimationComplete }}>
+      <AnimationContext.Provider value={{ isAnimationComplete: !showTransition }}>
         <AuthContext.Provider
           value={{
             token,
@@ -46,7 +44,7 @@ function App() {
           }}
         >
           {showMenu && <Menu handleShowMenu={handleToggleMenu} />}
-          {isAnimationComplete && (
+          {!showTransition && (
             <Navigation handleShowMenu={handleToggleMenu} />
           )}
           <Switch>

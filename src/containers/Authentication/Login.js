@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
 import useHttpClient from "../../hooks/useHttp";
 import AuthContext from "../../context/auth-context";
