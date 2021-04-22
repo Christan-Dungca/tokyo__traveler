@@ -5,13 +5,12 @@ import { BiHash } from "react-icons/bi";
 import useHttpClient from "../../hooks/useHttp";
 import styles from "./Article.module.scss";
 
-const Article = ({ handleMenuColor }) => {
+const Article = () => {
   const { isLoading, error, sendRequest } = useHttpClient();
   const [article, setArticle] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
-    handleMenuColor({ left: "#000", right: "#000" });
     const fetchArticle = async () => {
       try {
         const response = await sendRequest(

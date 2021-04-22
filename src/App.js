@@ -33,7 +33,11 @@ function App() {
     setShowMenu(!showMenu);
   };
 
-  const handleMenuColor = (colorObj) => {
+  const setMenuColorWhite = (colorObj = { left: "#fff", right: "#fff" }) => {
+    setMenuColor(colorObj);
+  };
+
+  const setMenuColorBlack = (colorObj = { left: "#000", right: "#000" }) => {
     setMenuColor(colorObj);
   };
 
@@ -52,17 +56,24 @@ function App() {
         >
           {showMenu && <Menu handleShowMenu={handleToggleMenu} />}
           {/* {showTransition && ( */}
-          <Navigation handleShowMenu={handleToggleMenu} menuColor={menuColor} />
           {/* )} */}
           <Switch>
             <Route path="/" exact>
               {showTransition && (
                 <Transition handleAnimation={handleAnimation} />
               )}
+              <Navigation
+                handleShowMenu={handleToggleMenu}
+                menuColor={menuColor}
+              />
               <Home />
             </Route>
             <Route path="/article/:id" exact>
-              <Article handleMenuColor={handleMenuColor} />
+              <Navigation
+                handleShowMenu={handleToggleMenu}
+                menuColor={{ left: "#000", right: "#000" }}
+              />
+              <Article setMenuColorBlack={setMenuColorBlack} />
             </Route>
             <Route path="/user/:id" exact>
               <Author />
@@ -77,6 +88,10 @@ function App() {
               <AboutPage />
             </Route>
             <Route path="/all-articles" exact>
+              <Navigation
+                handleShowMenu={handleToggleMenu}
+                menuColor={{ left: "#000", right: "#000" }}
+              />
               <AllArticlesPage />
             </Route>
             <Route path="/admin">
