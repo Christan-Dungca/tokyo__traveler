@@ -81,13 +81,54 @@
     column-gap: 3.33%;
     row-gap: 3.33%;
 
-    .articlesTitle {
-      font-family: var(--font-serif);
+    .articleHeader {
       grid-column: 1 / -1;
       grid-row: 1 / -1;
-      font-size: 4rem;
-      font-weight: 400;
-      align-self: flex-start;
+
+      display: flex;
+      justify-content: space-between;
+
+      .articlesTitle {
+        font-family: var(--font-serif);
+        font-size: 4rem;
+        font-weight: 400;
+        // align-self: flex-start;
+      }
+
+      div {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover > p::after {
+          visibility: visible;
+          width: 100%;
+        }
+
+        p {
+          position: relative;
+
+          &::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            background-color: var(--japan-red);
+            position: absolute;
+            top: 140%;
+            left: 0;
+            transform: translate(0%, 50%);
+            visibility: hidden;
+            transition: all 0.3s;
+          }
+        }
+
+        .searchIcon {
+          width: 3rem;
+          height: 3rem;
+          margin-right: 1rem;
+        }
+      }
     }
 
     .article {
@@ -153,5 +194,70 @@
         }
       }
     }
+  }
+}
+
+.SearchModal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+
+  .searchContainer {
+    background-color: #fff;
+    width: 100%;
+    height: 60%;
+    padding: 4rem;
+
+    .inputContainer {
+      // background-color: chartreuse;
+      margin-top: 5vh;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--blue-gray);
+
+      input {
+        border: none;
+        outline: none;
+        width: 80%;
+        font-size: 2.4rem;
+        color: #000;
+
+        &::placeholder {
+          color: #000;
+          font-family: var(--font-san-serif);
+        }
+      }
+
+      .arrowRightIcon {
+        font-size: 4rem;
+        font-weight: 400;
+      }
+    }
+
+    .results {
+      display: flex;
+      align-items: center;
+
+      p {
+        font-size: 1.6rem;
+        margin-right: 1rem;
+      }
+
+      .arrowRightIcon {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  .overlay {
+    width: 100%;
+    height: 40%;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }

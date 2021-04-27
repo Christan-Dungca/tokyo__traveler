@@ -41,6 +41,7 @@ function App() {
     setMenuColor(colorObj);
   };
 
+  
   return (
     <div className={styles.App}>
       <AnimationContext.Provider

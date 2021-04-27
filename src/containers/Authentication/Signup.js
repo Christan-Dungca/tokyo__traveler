@@ -8,7 +8,7 @@ import AuthContext from "../../context/auth-context.js";
 import styles from "./Signup.module.scss";
 
 const Signup = ({ setToken }) => {
-  const { sendRequest } = useHttpClient();
+  const { sendRequest, error,  } = useHttpClient();
   const { register, errors, handleSubmit, getValues } = useForm();
   const { login } = useContext(AuthContext);
   const history = useHistory();
@@ -21,7 +21,7 @@ const Signup = ({ setToken }) => {
       formData
     );
 
-    // console.log(response);
+    console.log(response);
     const token = response.token;
     const user = response.data.user;
 

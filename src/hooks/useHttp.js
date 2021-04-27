@@ -22,9 +22,14 @@ const useHttpClient = () => {
         });
 
         if (!response.statusText === "OK") {
-          throw new Error("Error getting resource");
+          // setIsLoading(false);
+          // setError(true);
+          // throw new Error("Error getting resource");
+          console.log("response" + response);
+          return response;
         }
 
+        console.log(response);
         // console.log(response.data.data);
         setIsLoading(false);
         return response.data;

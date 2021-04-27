@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { BiHash } from "react-icons/bi";
+import { BiHash, BiSearch, BiRightArrowAlt } from "react-icons/bi";
+import { BsArrowRight } from "react-icons/bs";
 import useHttpClient from "../../hooks/useHttp";
 import styles from "./AllArticlesPage.module.scss";
 
 const AllArticlesPage = () => {
   const [articles, setArticles] = useState(null);
+  const [showSearchModal, setShowSearchModal] = useState(false);
   const [word, setWord] = useState("");
   const [searchFilter, setSearchFilter] = useState([]);
   const { sendRequest, isLoading, error } = useHttpClient();
@@ -26,10 +28,40 @@ const AllArticlesPage = () => {
     fetchArticles();
   }, []);
 
+  useEffect(() => {
+    console.log();
+    if (showSearchModal === true) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [showSearchModal]);
+
+  const handleToggleSearchModal = () => {
+    setShowSearchModal(!showSearchModal);
+  };
+
   const handleChange = (e) => {
     setWord(e);
 
-    // let oldList = 
+    let oldList = articles.map((article) => {
+      return {
+        ...article,
+      };
+    });
+
+    if (word !== "") {
+      let newList = [];
+      // var regex = new RegExp(word, "gi");
+
+      newList = oldList.filter((article) => {
+        if (article.title.toLowerCase().includes(word)) return true;
+      });
+
+      setSearchFilter(newList);
+    } else {
+      setSearchFilter(articles);
+    }
   };
 
   return (
@@ -48,36 +80,87 @@ const AllArticlesPage = () => {
         </div>
       </div>
 
-      {/* Search Container */}
-      {/* <SearchBar
-        value={word}
-        handleChange={(e) => {
-          handleChange(e.target.value);
-        }}
-      /> */}
-
       {/* All Articles Container */}
       {!isLoading && articles !== null && (
-        <Articles articlesList={word.length < 1 ? articles : searchFilter} />
+        <Articles
+          articlesList={word.length < 1 ? articles : searchFilter}
+          handleToggleSearchModal={handleToggleSearchModal}
+        />
+      )}
+
+      {/* Search Container */}
+      {showSearchModal && (
+        <SearchModal
+          value={word}
+          handleChange={(e) => {
+            handleChange(e.target.value);
+          }}
+          handleToggleSearchModal={handleToggleSearchModal}
+          resultsNumber={searchFilter.length}
+        />
       )}
     </div>
   );
 };
 
-const SearchBar = ({ value, handleChange }) => {
+const SearchModal = ({
+  value,
+  handleChange,
+  handleToggleSearchModal,
+  resultsNumber,
+}) => {
+  // When component mounts point to input
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
-    <div>
-      Search: <input value={value} onChange={handleChange} />
+    <div className={styles.SearchModal}>
+      <div className={styles.searchContainer}>
+        <div className={styles.inputContainer}>
+          <input
+            value={value}
+            onChange={handleChange}
+            placeholder="Search"
+            ref={inputRef}
+          />
+          <BsArrowRight className={styles.arrowRightIcon} />
+        </div>
+
+        {/* Suggestions */}
+
+        {/* See Results */}
+        <div className={styles.results}>
+          {value.length > 1 ? (
+            <p>
+              See the {resultsNumber} results for "{value}"
+            </p>
+          ) : (
+            <p>See All Results </p>
+          )}
+
+          <BiRightArrowAlt className={styles.arrowRightIcon} />
+        </div>
+      </div>
+      <div className={styles.overlay} onClick={handleToggleSearchModal}></div>
     </div>
   );
 };
 
-const Articles = ({ articlesList }) => {
-  console.log(`${articlesList}`);
+const Articles = ({ articlesList, handleToggleSearchModal }) => {
+  // console.log(`${articlesList}`);
   return (
     <div className={styles.Articles}>
       <div className={styles.gridContainer}>
-        <h5 className={styles.articlesTitle}> Articles </h5>
+        <div className={styles.articleHeader}>
+          <h5 className={styles.articlesTitle}> Articles </h5>
+          <div onClick={handleToggleSearchModal}>
+            <BiSearch className={styles.searchIcon} />
+            <p>Search For Anything </p>
+          </div>
+        </div>
         {articlesList.map((article) => {
           return (
             <div className={styles.article} key={article._id}>
