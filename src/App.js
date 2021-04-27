@@ -19,7 +19,7 @@ import useToken from "./hooks/useAuth";
 import styles from "./App.scss";
 
 function App() {
-  const [showTransition, setShowTransition] = useState(true);
+  const [showTransition, setShowTransition] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [menuColor, setMenuColor] = useState({ left: "#fff", right: "#fff" });
 

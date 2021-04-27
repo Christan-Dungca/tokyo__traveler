@@ -32,7 +32,7 @@ const Menu = ({ handleShowMenu }) => {
       .fromTo(
         menuContainerRef.current,
         { y: -2000, visibility: "hidden" },
-        { y: 0, duration: 0.6, visibility: "visible", ease: "power4.easeIn" }
+        { y: 0, duration: 0.5, visibility: "visible", ease: "power4.easeIn" }
       )
       .fromTo(
         [closeMenuLeftRef.current, closeMenuRightRef.current],
@@ -41,22 +41,22 @@ const Menu = ({ handleShowMenu }) => {
           width: 0,
         },
         { opacity: 1, width: "100%" },
-        "+=.05"
+        // "+=.3"
       )
       .to(closeMenuLeftRef.current, {
         rotation: 135,
-        duration: 0.4,
+        duration: 0.35,
         ease: "power2.easeOut",
       })
       .to(
         closeMenuRightRef.current,
-        { rotation: 225, opacity: 1, duration: 0.4, ease: "power2.easeOut" },
+        { rotation: 225, opacity: 1, duration: 0.35, ease: "power2.easeOut" },
         "-=0.4"
       )
       .fromTo(
         descriptionRef.current,
         { x: -500, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.4 }
+        { x: 0, opacity: 1, duration: 0.3 }
       )
       .fromTo(
         [
@@ -65,7 +65,7 @@ const Menu = ({ handleShowMenu }) => {
           aboutLinkRef.current,
           accountRef.current,
         ],
-        { y: 40, opacity: 0, duration: 0.4 },
+        { y: 40, opacity: 0, duration: 0.3 },
         { y: 0, opacity: 1 }
       )
       .fromTo(

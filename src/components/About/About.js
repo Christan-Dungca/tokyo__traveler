@@ -2,8 +2,6 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import manPNG from "../../assets/images/man-cutout.png";
-import womanPNG from "../../assets/images/woman-cutout.png";
 import styles from "./About.module.scss";
 
 const About = () => {
@@ -57,27 +55,20 @@ const About = () => {
     <div className={styles.About}>
       <div className={styles.textContainer}>
         <div className={styles.bigText} ref={bigTextRef}>
-          <h2>A Simple</h2>
-          <h2>Guide For</h2>
-          <h2>Travelers</h2>
+          <h2>About Us </h2>
         </div>
         <div className={styles.aboutTextContainer} ref={aboutTextRef}>
           <p>
-            Tokyo Traveler is a guide with the goal of helping you effectivly
-            plan you dream trip to Japan! The early stages of planning a trip
-            can be exhilarating and have you eager to venture out and explore.
+            Tokyo Traveler is an online magazine with a simple goal - to help future
+            travelers plan their dream trip to Japan. We write articles for
+            those who want to know all the tips and tricks of traveling in
+            Japan.
           </p>
         </div>
       </div>
       <div className={styles.imageSection}>
         <div className={styles.doubleImageContainer} ref={imageContainerRef}>
           <div className={styles.doubleImage} ref={imageRef}></div>
-        </div>
-        <div className={styles.manCutOut}>
-          <img src={manPNG} alt="man cutout png" />
-        </div>
-        <div className={styles.womanCutOut}>
-          <img src={womanPNG} alt="woman cutout png" />
         </div>
       </div>
       {/* <BeforeReading /> */}

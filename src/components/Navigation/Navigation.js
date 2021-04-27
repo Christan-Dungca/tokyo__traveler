@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 
+import AnimationContext from "../../context/animation-context";
 import styles from "./Navigation.module.scss";
 
 function timeout(ms) {
@@ -10,24 +11,28 @@ function timeout(ms) {
 
 const Navigation = ({ handleShowMenu, menuColor }) => {
   const { left, right } = menuColor;
+  const { isAnimationComplete } = useContext(AnimationContext);
   const navBtnTopRef = useRef();
   const navBtnBottomRef = useRef();
   const navigationRef = useRef();
 
   useEffect(() => {
-    const mountingTimeline = gsap
-      .timeline()
-      .fromTo(
-        navigationRef.current,
-        { y: 40, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: 1 }
-      );
-  }, []);
+    if (isAnimationComplete) {
+      const mountingTimeline = gsap
+        .timeline()
+        .fromTo(
+          navigationRef.current,
+          { y: 40, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: .4}
+        );
+    }
+  }, [isAnimationComplete]);
 
   const handleHamburgerAnimation = () => {
     const hamburgerTimeline = gsap.timeline({
       onComplete: async function () {
         handleShowMenu();
+        // Waits 1 second for menu to close then restarts animation scrubber
         await timeout(1000);
         this.time(0).kill();
       },

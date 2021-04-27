@@ -61,7 +61,7 @@ const Carousel = ({ list, type }) => {
                 <div className={styles.image}></div>
                 <div className={styles.overlay}></div>
                 <div className={styles.textContainer}>
-                  <h4> {article.createdAt} </h4>
+                  <h4> {article.createdAtFormatted} </h4>
                   <h3> {article.title} </h3>
                 </div>
               </Link>

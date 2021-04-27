@@ -5,32 +5,32 @@
   display: grid;
   grid-template-columns: minmax(5vw, 1fr) minmax(25rem, 6fr) minmax(5vw, 1fr);
   grid-template-rows: 5vh max-content max-content;
-  row-gap: 10vh;
+  row-gap: 8vh;
   overflow-x: hidden;
 
   .textContainer {
+    // background-color: yellow;
     grid-column: 2;
     grid-row: 2;
     height: max-content;
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    column-gap: 4vw;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 
     .bigText {
-      grid-column: 1 / 2;
+      // background-color: green;
       width: max-content;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-family: var(--font-serif);
-      font-size: calc(1rem + 1.5vw);
-      font-weight: 400;
-      line-height: 140%;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-
+      align-self: flex-start;
+      
+      h2 {
+        font-family: var(--font-serif);
+        letter-spacing: 1.4px;
+        font-size: 2.8rem;
+        font-weight: 500;
+      }
+      // font-size: calc(1rem + 1.5vw);
+      // text-transform: uppercase;
+      
       @media screen and (max-width: 425px) {
         padding-bottom: 2rem;
         h2 {
@@ -40,15 +40,18 @@
       }
     }
     .aboutTextContainer {
+      display: flex;
+      justify-content: flex-end;
       // background-color: rgb(64, 69, 141);
-      grid-column: 2 / -1;
+      width: 80%;
       height: max-content;
       font-family: var(--font-san-serif);
-      font-size: calc(0.7rem + 1vw);
+      font-size: 2.4rem;
       line-height: 140%;
       margin-left: 4rem;
-
+      
       p {
+        letter-spacing: .4px;
         width: 95%;
       }
 
