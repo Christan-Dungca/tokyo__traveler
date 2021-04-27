@@ -11,10 +11,10 @@ const Articles = () => {
   useEffect(() => {
     const getArticles = async () => {
       try {
-        const response  = await sendRequest(
+        const response = await sendRequest(
           `http://localhost:5000/api/articles`
         );
-        
+
         setArticles(response.data.articles);
       } catch (err) {
         console.log(err);
@@ -42,8 +42,8 @@ const Articles = () => {
   if (articles && isLoading === false && error === false) {
     return (
       <div className={styles.Articles}>
-        <h2 className={styles.title}>Articles</h2>
-        <Carousel list={articles} type={"images"} />
+        {/* <h2 className={styles.title}>Articles</h2> */}
+        <Carousel list={articles} type="images" title="Recent Articles" />
       </div>
     );
   }

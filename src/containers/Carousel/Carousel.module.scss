@@ -1,17 +1,28 @@
-.Carousel {
-  // background-color: blue;
+.Container {
+  background-color: blue;
+  // display: flex;
   overflow-x: hidden;
-
   margin-bottom: 2rem;
 }
 
-.images {
-  // background-color: rgb(255, 194, 194);
+.title {
+  margin-top: 3vh;
+  margin-left: 10%;
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  font-weight: 400;
+}
+
+.CarouselContainer {
+  display: flex;
+  background-color: black;
+}
+
+.Carousel {
+  background-color: rgb(255, 194, 194);
   padding: 0rem 0rem;
   margin-left: 10%;
   position: relative;
-  width: 100%;
-  height: max-content;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -21,6 +32,7 @@
   user-select: none;
   cursor: pointer;
   vertical-align: top;
+  scroll-snap-type: x mandatory;
 
   &.active {
     background: rgba(255, 255, 255, 0.3);
@@ -35,7 +47,9 @@
     scrollbar-width: none; /* Firefox */
   }
 
-  .imageContainer {
+  .item {
+    scroll-snap-align: start;
+
     // background-color: rgb(128, 148, 240);
     > a {
       text-decoration: none;
@@ -49,6 +63,7 @@
     position: relative;
     align-items: flex-end;
     min-width: 30rem;
+    vertical-align: top;
 
     .image {
       background-image: url(../../assets/images/small-ginza-building.jpg);
@@ -67,6 +82,7 @@
     }
 
     .textContainer {
+      // background-color: black;
       height: max-content;
       width: 100%;
       color: #f9f9f9;
@@ -82,9 +98,10 @@
         font-family: var(--font-san-serif);
         font-weight: 400;
       }
+
       h3 {
         letter-spacing: 1.7px;
-        width: 70%;
+        width: 75%;
         font-size: calc(2rem + 1.5vw);
         font-family: var(--font-serif);
         font-weight: 400;

@@ -19,9 +19,9 @@
 
     .bigText {
       // background-color: green;
-      width: max-content;
+      min-width: max-content;
       align-self: flex-start;
-      
+
       h2 {
         font-family: var(--font-serif);
         letter-spacing: 1.4px;
@@ -30,7 +30,7 @@
       }
       // font-size: calc(1rem + 1.5vw);
       // text-transform: uppercase;
-      
+
       @media screen and (max-width: 425px) {
         padding-bottom: 2rem;
         h2 {
@@ -49,9 +49,9 @@
       font-size: 2.4rem;
       line-height: 140%;
       margin-left: 4rem;
-      
+
       p {
-        letter-spacing: .4px;
+        letter-spacing: 0.4px;
         width: 95%;
       }
 

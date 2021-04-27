@@ -6,28 +6,15 @@ import createCarousel from "../../animations/carouselAnimation";
 import styles from "./Carousel.module.scss";
 import userEvent from "@testing-library/user-event";
 
-const Carousel = ({ list, type }) => {
-  const elemIsAtStart = useRef(true);
+const Carousel = ({ list, type, title }) => {
   const items = useRef(null);
-  const moveX = useRef(7);
-  let elementWidthRef = useRef(null);
   const articleRefs = useRef([]);
-  let elementsRef;
-
   articleRefs.current = list.map((_, i) => articleRefs[i] ?? createRef());
 
+  let elementsRef;
   useEffect(() => {
     elementsRef = articleRefs.current.map((ref) => ref.current);
   }, []);
-
-  useEffect(() => {
-    if (elementsRef.length > 0) {
-      elementWidthRef.current =
-        elementsRef[0].getBoundingClientRect().width / 10;
-
-      console.log(`firstElement: ${elementsRef[0].offsetLeft}`);
-    }
-  }, [elementsRef]);
 
   useEffect(() => {
     const slider = items.current;
@@ -35,39 +22,64 @@ const Carousel = ({ list, type }) => {
   }, []);
 
   const goRight = () => {
-    gsap.to(elementsRef, {
-      x: `-=${elementWidthRef.current + moveX.current}rem`,
-      // scrollTo: {x: `${elementWidthRef.current + moveX.current}rem`}
+    let elementWidth = elementsRef[0].getBoundingClientRect().width;
+    let { marginRight } = getComputedStyle(elementsRef[0]);
+    let elementMargin = parseInt(marginRight);
+
+    let scrollNumber = elementMargin + elementWidth;
+
+    items.current.scrollBy({
+      top: 0,
+      left: scrollNumber,
+      behavior: "smooth",
     });
   };
 
   const goLeft = () => {
-    gsap.to(elementsRef, {
-      x: `+=${elementWidthRef.current + moveX.current}rem`,
+    // let elementWidth = elementsRef[0].getBoundingClientRect().width;
+    // let isAtStart =
+    //   Math.floor(elementsRef[0].getBoundingClientRect().left) ===
+    //   Math.floor(items.current.getBoundingClientRect().left)
+    //     ? true
+    //     : false;
+
+    let elementWidth = elementsRef[0].getBoundingClientRect().width;
+    let { marginLeft } = getComputedStyle(elementsRef[0]);
+    let elementMargin = parseInt(marginLeft);
+
+    let scrollNumber = elementMargin + elementWidth;
+
+    items.current.scrollBy({
+      top: 0,
+      left: `-${scrollNumber}`,
+      behavior: "smooth",
     });
   };
 
   return (
-    <div className={styles.Carousel}>
-      <div className={styles.images} ref={items}>
-        {list.map((article, idx) => {
-          return (
-            <div
-              className={styles.imageContainer}
-              key={article._id}
-              ref={articleRefs.current[idx]}
-            >
-              <Link to={`/article/${article._id}`}>
-                <div className={styles.image}></div>
-                <div className={styles.overlay}></div>
-                <div className={styles.textContainer}>
-                  <h4> {article.createdAtFormatted} </h4>
-                  <h3> {article.title} </h3>
-                </div>
-              </Link>
-            </div>
-          );
-        })}
+    <div className={styles.Container}>
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.CarouselContainer}>
+        <div className={styles.Carousel} ref={items}>
+          {list.map((article, idx) => {
+            return (
+              <div
+                className={styles.item}
+                key={article._id}
+                ref={articleRefs.current[idx]}
+              >
+                <Link to={`/article/${article._id}`}>
+                  <div className={styles.image}></div>
+                  <div className={styles.overlay}></div>
+                  <div className={styles.textContainer}>
+                    <h4> {article.createdAtFormatted} </h4>
+                    <h3> {article.title} </h3>
+                  </div>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div className={styles.btnContainer}>
         <button onClick={goLeft}>left</button>
