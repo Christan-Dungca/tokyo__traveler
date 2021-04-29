@@ -10,16 +10,19 @@ const useHttpClient = () => {
   };
 
   const sendRequest = useCallback(
-    async (url, method = "get", body = {}, headers = {}) => {
+    async (url, method = "get", body = {}, headers = {}, params = {}) => {
       setIsLoading(true);
 
       try {
-        const response = await axios({
-          method,
-          url,
-          data: body,
-          headers,
-        });
+        const response = await axios(
+          {
+            method,
+            url,
+            data: body,
+            headers,
+          },
+          { params }
+        );
 
         if (!response.statusText === "OK") {
           // setIsLoading(false);

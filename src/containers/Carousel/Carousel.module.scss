@@ -1,26 +1,24 @@
 .Container {
-  background-color: blue;
+  // background-color: blue;
   // display: flex;
   overflow-x: hidden;
   margin-bottom: 2rem;
 }
 
 .title {
-  margin-top: 3vh;
-  margin-left: 10%;
   font-family: var(--font-serif);
+  margin: 3vh 0 3rem 7%;
   font-size: 3.4rem;
   font-weight: 400;
 }
 
 .CarouselContainer {
   display: flex;
-  background-color: black;
+  // background-color: black;
 }
 
 .Carousel {
-  background-color: rgb(255, 194, 194);
-  padding: 0rem 0rem;
+  // background-color: rgb(255, 194, 194);
   margin-left: 10%;
   position: relative;
   overflow-x: scroll;
@@ -48,22 +46,21 @@
   }
 
   .item {
-    scroll-snap-align: start;
-
     // background-color: rgb(128, 148, 240);
-    > a {
-      text-decoration: none;
-    }
-
     width: 40vw;
     height: 60vh;
-    margin: 1rem 3rem;
+    margin-right: 3rem;
+    position: relative;
     overflow: hidden;
     display: inline-flex;
-    position: relative;
     align-items: flex-end;
     min-width: 30rem;
     vertical-align: top;
+    scroll-snap-align: start;
+
+    > a {
+      text-decoration: none;
+    }
 
     .image {
       background-image: url(../../assets/images/small-ginza-building.jpg);
@@ -82,7 +79,6 @@
     }
 
     .textContainer {
-      // background-color: black;
       height: max-content;
       width: 100%;
       color: #f9f9f9;
@@ -92,19 +88,55 @@
       position: relative;
       z-index: 10;
 
-      h4 {
+      .articleCreatedAt {
         letter-spacing: 1.5px;
         font-size: calc(1rem + 0.7vw);
         font-family: var(--font-san-serif);
         font-weight: 400;
       }
 
-      h3 {
+      .articleTitle {
         letter-spacing: 1.7px;
         width: 75%;
         font-size: calc(2rem + 1.5vw);
         font-family: var(--font-serif);
         font-weight: 400;
+      }
+    }
+
+    .viewLink {
+      padding: 2rem;
+      align-self: center;
+      position: relative;
+      color: #000;
+      // background-color: green;
+
+      .viewAll {
+        display: flex;
+        font-size: 2.8rem;
+        align-items: center;
+
+        &::after {
+          content: "";
+          width: 0%;
+          height: 2px;
+          background-color: red;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          transform: translate(0%, 50%);
+          visibility: hidden;
+          transition: all 0.3s;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:hover > .viewAll::after {
+        visibility: visible;
+        width: 100%;
       }
     }
   }
@@ -138,6 +170,25 @@
           width: 90%;
         }
       }
+    }
+  }
+}
+
+.btnsContainer {
+  // background-color: green;
+  margin-left: 10%;
+  width: max-content;
+  display: flex;
+
+  .btnContainer {
+    padding: 2rem 0;
+    // background-color: blue;
+
+    .arrowBtn {
+      // background-color: blueviolet;
+      font-size: 5rem;
+      cursor: pointer;
+      margin-right: 2rem;
     }
   }
 }

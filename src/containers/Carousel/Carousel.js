@@ -1,10 +1,9 @@
 import React, { createRef, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
 
 import createCarousel from "../../animations/carouselAnimation";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import styles from "./Carousel.module.scss";
-import userEvent from "@testing-library/user-event";
 
 const Carousel = ({ list, type, title }) => {
   const items = useRef(null);
@@ -36,13 +35,6 @@ const Carousel = ({ list, type, title }) => {
   };
 
   const goLeft = () => {
-    // let elementWidth = elementsRef[0].getBoundingClientRect().width;
-    // let isAtStart =
-    //   Math.floor(elementsRef[0].getBoundingClientRect().left) ===
-    //   Math.floor(items.current.getBoundingClientRect().left)
-    //     ? true
-    //     : false;
-
     let elementWidth = elementsRef[0].getBoundingClientRect().width;
     let { marginLeft } = getComputedStyle(elementsRef[0]);
     let elementMargin = parseInt(marginLeft);
@@ -72,18 +64,37 @@ const Carousel = ({ list, type, title }) => {
                   <div className={styles.image}></div>
                   <div className={styles.overlay}></div>
                   <div className={styles.textContainer}>
-                    <h4> {article.createdAtFormatted} </h4>
-                    <h3> {article.title} </h3>
+                    <h4 className={styles.articleCreatedAt}>
+                      {article.createdAtFormatted}
+                    </h4>
+                    <h3 className={styles.articleTitle}> {article.title} </h3>
                   </div>
                 </Link>
               </div>
             );
           })}
+          <div className={styles.item}>
+            <Link to={`/all-articles`} className={styles.viewLink}>
+              <p className={styles.viewAll}>
+                View All Articles <BsArrowRight />
+              </p>
+            </Link>
+          </div>
         </div>
       </div>
-      <div className={styles.btnContainer}>
-        <button onClick={goLeft}>left</button>
-        <button onClick={goRight}>right</button>
+      <div className={styles.btnsContainer}>
+        <div className={styles.btnContainer}>
+          <BsArrowLeft
+            onClick={goLeft}
+            className={`${styles.arrowBtn} ${styles.arrowRight}`}
+          />
+        </div>
+        <div className={styles.btnContainer}>
+          <BsArrowRight
+            onClick={goRight}
+            className={`${styles.arrowBtn} ${styles.arrowLeft}`}
+          />
+        </div>
       </div>
     </div>
   );

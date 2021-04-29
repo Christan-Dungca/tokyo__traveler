@@ -12,7 +12,7 @@ const Articles = () => {
     const getArticles = async () => {
       try {
         const response = await sendRequest(
-          `http://localhost:5000/api/articles`
+          `http://localhost:5000/api/articles?limit=5`
         );
 
         setArticles(response.data.articles);
