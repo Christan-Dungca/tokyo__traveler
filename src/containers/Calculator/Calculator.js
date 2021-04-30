@@ -32,10 +32,11 @@ const Calculator = () => {
         console.log(`this is amount: ${amount}`);
         return setAmount(showAmount += amount)
     }
-
-
+    const stepsList = ['Get a thing', 'enter a thing', 'view a thing']
+    // const textInput = useRef(null);
+    // console.log(count)
     if(count === 0) {
-        console.log(`homepage state ${count}`)
+        // console.log(`homepage count ${count}`)
         return (
             <div className={Styles.Calculator}>
                 <BudgetHomePage setState={count} handleStateCount={handleStateCount}/>

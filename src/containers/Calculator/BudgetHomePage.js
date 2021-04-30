@@ -3,6 +3,7 @@ import Styles from './BudgetHomePage.module.scss';
 import BtnStyles from '../../components/UI/Button/Button.module.scss';
 
 function BudgetHomePage(props) {
+    // console.log(props.countState)
 
     return (
         <div className={Styles.BudgetHome}>

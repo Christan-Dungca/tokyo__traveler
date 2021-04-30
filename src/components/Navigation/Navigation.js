@@ -1,33 +1,69 @@
-import React from 'react';
-import styles from './Navigation.module.scss';
+import React, { useEffect, useRef, useContext } from "react";
+import { Link } from "react-router-dom";
+import gsap from "gsap";
 
-const Navigation = (props) => {
-    return (
-        <nav className={styles.Navigation}>
-            <a href="#" 
-                className={styles.logo} 
-                // style={ props.showNav === true ? {color: "black"} : {color: "black"}}
-            > Tokyo Traveler </a>
-            {/* <div className={styles.navBtnContainer} onClick={props.toggleNavHandler}> 
-                <div className={styles.navBtn}></div>  
-            </div> */}
-            <div className={styles.navContainer}>
-                <div className={styles.navBtn}></div>
-            </div>
-        </nav>
-    )
+import AnimationContext from "../../context/animation-context";
+import styles from "./Navigation.module.scss";
+
+function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export default Navigation;
+const Navigation = ({ handleShowMenu, menuColor }) => {
+  const { left, right } = menuColor;
+  const { isAnimationComplete } = useContext(AnimationContext);
+  const navBtnTopRef = useRef();
+  const navBtnBottomRef = useRef();
+  const navigationRef = useRef();
 
-/* 
-    TODO:
-        
-    [x] Change sizing of the navigation
-    [x] Change color of navigation background
-    [x] Change positioning of the navigation to be fixed or absolute?
-    [ ] Change positioning of elements within the navigation on smaller screens
-    [x] Switch the menu to be a hamburger menu icon
-    [x] Add a drop shadow to the navigation
-    [] The Navigation is the same colour as the Landing section to begin with, then onScroll it turns white
-*/
+  useEffect(() => {
+    if (isAnimationComplete) {
+      const mountingTimeline = gsap
+        .timeline()
+        .fromTo(
+          navigationRef.current,
+          { y: 40, autoAlpha: 0 },
+          { y: 0, autoAlpha: 1, duration: .4}
+        );
+    }
+  }, [isAnimationComplete]);
+
+  const handleHamburgerAnimation = () => {
+    const hamburgerTimeline = gsap.timeline({
+      onComplete: async function () {
+        handleShowMenu();
+        // Waits 1 second for menu to close then restarts animation scrubber
+        await timeout(1000);
+        this.time(0).kill();
+      },
+    });
+
+    hamburgerTimeline
+      .to(navBtnTopRef.current, { x: 50, duration: 0.9 })
+      .to(navBtnBottomRef.current, { x: 50, duration: 0.8 }, "-=0.8");
+  };
+
+  return (
+    <nav className={styles.Navigation} ref={navigationRef}>
+      <Link to="/" className={styles.logo} style={{ color: left }}>
+        Tokyo Traveler
+      </Link>
+
+      <div className={styles.navContainer} onClick={handleHamburgerAnimation}>
+        <div
+          className={styles.navBtnTop}
+          ref={navBtnTopRef}
+          style={{ background: right }}
+        ></div>
+
+        <div
+          className={styles.navBtnBottom}
+          ref={navBtnBottomRef}
+          style={{ background: right }}
+        ></div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navigation;

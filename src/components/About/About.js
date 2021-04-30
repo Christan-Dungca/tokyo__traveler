@@ -1,48 +1,77 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import styles from "./About.module.scss";
 
-/* 
-  TODO
-  [x] Create a container for the Text
-  [x] Style container to be a flex container with large text centered in the middle of section
-  [x] Create a container for double image art
-  [x] Have containers each be 50% of the About section
-  [] Creat a grid Layout to overlap the images, no need for the layout to change on smaller screens: it will just get smaller
-  [] Have the big text and overlapping image sections next to each other then try below each other 
-  [] Add additional styling elements to the grid and photos
-  [] ? Add scaling on hover to make some sort of cool interactin
-  [] ? Create a component to separate the About section and Article section
-  [] Picture large left 50% ==> "hello, future travlers" ==> goal of tokyo traveler... etc
-  [] Double Image Large Next to each other
-*/
-
 const About = () => {
+  gsap.registerPlugin(ScrollTrigger);
+  const bigTextRef = useRef();
+  const aboutTextRef = useRef();
+  const imageContainerRef = useRef();
+  const imageRef = useRef();
+
+  useEffect(() => {
+    const t1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: bigTextRef.current,
+        start: "center bottom",
+        // markers: true,
+      },
+    });
+    t1.fromTo(
+      [bigTextRef.current, aboutTextRef.current],
+      {
+        y: 70,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+      }
+    );
+
+    const t2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: bigTextRef.current,
+        start: "bottom center",
+        // markers: true,
+      },
+    });
+
+    t2.set([imageContainerRef.current, imageRef.current], {
+      transformOrigin: "0% 50%",
+    })
+      .fromTo(
+        imageContainerRef.current,
+        { width: 0 },
+        { width: "100%", duration: 0.5, ease: "power2.easeIn" }
+      )
+      .fromTo(imageRef.current, { width: 0 }, { width: "80%" }, "+=0.2");
+  }, []);
+
   return (
     <div className={styles.About}>
-      {/* Text Container */}
       <div className={styles.textContainer}>
-        <div className={styles.bigText}>
-          <h2>A Simple </h2>
-          <h2>Travel Guide For</h2>
-          <h2>Future Travelers </h2>
+        <div className={styles.bigText} ref={bigTextRef}>
+          <h2>About Us </h2>
         </div>
-        {/* About Tokyo Traveler Section */}
-        <div className={styles.aboutTextContainer}>
+        <div className={styles.aboutTextContainer} ref={aboutTextRef}>
           <p>
-            Hello, future travelers! Tokyo Traveler is a guide with the goal of
-            helping you effectivly plan you dream trip to Japan! The early
-            stages of planning a trip can be exhilarating and have you eager to
-            venture out and explore. However, poor planning can lead to an
-            unpleasant experience. We can help you with that!
+            Tokyo Traveler is an online magazine with a simple goal - to help future
+            travelers plan their dream trip to Japan. We write articles for
+            those who want to know all the tips and tricks of traveling in
+            Japan.
           </p>
         </div>
       </div>
-      {/* Double Image Centered on Page */}
       <div className={styles.imageSection}>
-        <div className={styles.doubleImageContainer}> 
-          <div className={styles.doubleImage}></div>        
+        <div className={styles.doubleImageContainer} ref={imageContainerRef}>
+          <div className={styles.doubleImage} ref={imageRef}></div>
         </div>
       </div>
+      {/* <BeforeReading /> */}
     </div>
   );
 };

@@ -1,16 +1,108 @@
 .Menu {
+  visibility: hidden;
   width: 100vw;
-  height: 100vh;
-  background-color: black;
-  color: white;
-
-  position: absolute;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  position: fixed;
   top: 0;
   left: 0;
-
+  z-index: 200;
+  scroll-behavior: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  z-index: 10;
+  align-items: center;
+  font-family: var(--font-serif);
+  // scroll-behavior:unset;
+  overflow: hidden;
+
+  .linksContainer {
+    // background-color: lightsteelblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // height: 90%;
+
+    .linkContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // background-color: lightyellow;
+      margin-bottom: 5rem;
+      overflow: hidden;
+
+      p {
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        color: rgb(56, 56, 56);
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 5rem;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--dark-red);
+        }
+      }
+    }
+
+    .subLinks {
+      margin-top: 4rem;
+
+      p {
+        font-size: 1.6rem;
+        cursor: pointer;
+        // text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.closeBtnContainer {
+  // background-color: lightsalmon;
+  height: 4.5rem;
+  width: 4.5rem;
+  top: 2.5rem;
+  right: 10rem;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+
+  .closeBtnLeft,
+  .closeBtnRight {
+    width: 5rem;
+    height: 3px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &:hover .closeBtnRight,
+  &:hover .closeBtnLeft {
+    background-color: var(--dark-red);
+  }
+}
+
+.descriptionContainer {
+  // background-color: green;
+  font-family: var(--font-serif);
+  max-width: 35rem;
+  width: 20%;
+  position: absolute;
+  bottom: 10%;
+  left: 7%;
+  overflow: hidden;
+  word-wrap: break-word;
+
+  p {
+    line-height: 160%;
+    font-size: 1.8rem;
+    // word-break: break-word;
+  }
 }

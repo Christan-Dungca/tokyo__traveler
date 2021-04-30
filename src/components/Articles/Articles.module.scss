@@ -1,9 +1,20 @@
 .Articles {
-    background-color: palegoldenrod;
-    grid-column: 1 / -1;
-    grid-row: articles / calculator;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8rem;
+  // background-color: palegoldenrod;
+  padding-top: 8vh;
+  grid-column: 2 / -1;
+  grid-row: articles / calculator;
+
+  // .title {
+  //   margin-top: 3vh;
+  //   font-family: var(--font-serif);
+  //   font-size: 3.4rem;
+  //   font-weight: 400;
+  //   margin-left: 10%;
+  // }
+
+  @media screen and (max-width: 425px) {
+    .title {
+      margin-left: 2rem;
+    }
+  }
 }
