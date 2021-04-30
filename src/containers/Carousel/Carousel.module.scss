@@ -7,19 +7,20 @@
 
 .title {
   font-family: var(--font-serif);
-  margin: 3vh 0 3rem 7%;
+  margin: 3vh 0 3rem 5vw;
   font-size: 3.4rem;
   font-weight: 400;
 }
 
 .CarouselContainer {
+  margin-left: -1%;
   display: flex;
   // background-color: black;
 }
 
 .Carousel {
   // background-color: rgb(255, 194, 194);
-  margin-left: 10%;
+  margin-left: 5%;
   position: relative;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -176,7 +177,7 @@
 
 .btnsContainer {
   // background-color: green;
-  margin-left: 10%;
+  margin-left: 5%;
   width: max-content;
   display: flex;
 

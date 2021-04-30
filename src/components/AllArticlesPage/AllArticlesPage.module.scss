@@ -1,34 +1,25 @@
 .AllArticlesPage {
-  width: 100%;
-  height: 100vh;
   // background-color: cadetblue;
+  // background-color: #f8f8ff;
+  width: 100%;
+  height: max-content;
   margin-top: 10vh;
   padding: 5vh 5vw;
+  // padding-bottom: 70vh;
   font-family: var(--font-san-serif);
   color: rgb(54, 54, 54);
-
-  // .title {
-  //   font-size: 4rem;
-  //   font-family: var(--font-serif);
-  //   text-align: center;
-  //   letter-spacing: 2px;
-  //   margin-bottom: 10vh;
-  // }
 
   .landingContainer {
     margin-top: 10vh;
     width: 100%;
     // background-color: lightpink;
     display: flex;
-    // justify-content: flex-end;
 
     .pageInfo {
       margin-left: 5vw;
       width: 80rem;
       height: max-content;
       // background-color: lightgrey;
-      // display: flex;
-      // justify-content: space-evenly;
 
       .pageTitle {
         min-width: max-content;
@@ -37,227 +28,18 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         word-spacing: 2px;
-        // margin-right: 10rem;
         margin-bottom: 2rem;
         margin-top: 1rem;
         color: var(--japan-red);
       }
 
       .pageDescription {
-        // width: 80%;
         font-family: var(--font-serif);
         font-size: 2.8rem;
         font-weight: 400;
         line-height: 160%;
         letter-spacing: 0.5px;
-        // margin-left: 2rem;
       }
     }
-  }
-}
-
-// Component
-.SearchBar {
-}
-
-// Component
-.Articles {
-  // background-color: rgb(152, 190, 147);
-  margin-top: 8rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--font-san-serif);
-
-  .gridContainer {
-    // background-color: rgb(255, 129, 129);
-    width: 100%;
-    max-width: 120rem;
-    height: max-content;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-    column-gap: 3.33%;
-    row-gap: 3.33%;
-
-    .articleHeader {
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-
-      display: flex;
-      justify-content: space-between;
-
-      .articlesTitle {
-        font-family: var(--font-serif);
-        font-size: 4rem;
-        font-weight: 400;
-        // align-self: flex-start;
-      }
-
-      div {
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-
-        &:hover > p::after {
-          visibility: visible;
-          width: 100%;
-        }
-
-        p {
-          position: relative;
-
-          &::after {
-            content: "";
-            width: 0;
-            height: 2px;
-            background-color: var(--japan-red);
-            position: absolute;
-            top: 140%;
-            left: 0;
-            transform: translate(0%, 50%);
-            visibility: hidden;
-            transition: all 0.3s;
-          }
-        }
-
-        .searchIcon {
-          width: 3rem;
-          height: 3rem;
-          margin-right: 1rem;
-        }
-      }
-    }
-
-    .article {
-      // background-color: rgb(212, 216, 153);
-
-      .imgContainer {
-        background-color: var(--japan-red);
-        background: url(../../assets/images/small-ginza-building.jpg);
-        background-size: cover;
-        width: 100%;
-        height: 40rem;
-      }
-
-      .topRow {
-        display: flex;
-        justify-content: space-between;
-        margin: 1rem 0;
-
-        .title {
-          width: 70%;
-          // background-color: yellow;
-          font-family: var(--font-serif);
-          font-size: 2.8rem;
-          font-weight: 600;
-        }
-
-        .date {
-          text-transform: uppercase;
-        }
-      }
-
-      .divider {
-        width: 100%;
-        height: 1px;
-        background-color: var(--japan-red);
-        margin: 2rem 0;
-      }
-
-      .bottomRow {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-
-        .author {
-          p {
-            font-size: 1.4rem;
-            // text-decoration: underline;
-          }
-
-          .authorName {
-            font-size: 1.8rem;
-            font-weight: 500;
-            text-decoration: none;
-          }
-        }
-
-        .tag {
-          color: var(--blue-gray);
-
-          .hash {
-            color: var(--blue-gray);
-          }
-        }
-      }
-    }
-  }
-}
-
-.SearchModal {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1000;
-
-  .searchContainer {
-    background-color: #fff;
-    width: 100%;
-    height: 60%;
-    padding: 4rem;
-
-    .inputContainer {
-      // background-color: chartreuse;
-      margin-top: 5vh;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: .4rem;
-      border-bottom: 1px solid var(--blue-gray);
-
-      input {
-        border: none;
-        outline: none;
-        width: 80%;
-        font-size: 2.4rem;
-        color: #000;
-
-        &::placeholder {
-          color: #000;
-          font-family: var(--font-san-serif);
-        }
-      }
-
-      .arrowRightIcon {
-        font-size: 4rem;
-        font-weight: 400;
-      }
-    }
-
-    .results {
-      display: flex;
-      align-items: center;
-
-      p {
-        font-size: 1.6rem;
-        margin-right: 1rem;
-      }
-
-      .arrowRightIcon {
-        font-size: 1.6rem;
-      }
-    }
-  }
-  .overlay {
-    width: 100%;
-    height: 40%;
-    background-color: rgba(0, 0, 0, 0.5);
   }
 }

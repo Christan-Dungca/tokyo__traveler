@@ -2,11 +2,11 @@
   // background-color: paleturquoise;
   grid-column: 1 / -1;
   grid-row: about / articles;
-  display: grid;
-  grid-template-columns: minmax(5vw, 1fr) minmax(25rem, 6fr) minmax(5vw, 1fr);
-  grid-template-rows: 5vh max-content max-content;
-  row-gap: 8vh;
-  overflow-x: hidden;
+display: grid;
+grid-template-columns: minmax(5vw, 1fr) minmax(25rem, 6fr) minmax(5vw, 1fr);
+grid-template-rows: 5vh max-content max-content;
+row-gap: 8vh;
+overflow-x: hidden;
 
   .textContainer {
     // background-color: yellow;

@@ -17,6 +17,7 @@ import AuthContext from "./context/auth-context";
 import AnimationContext from "./context/animation-context";
 import useToken from "./hooks/useAuth";
 import styles from "./App.scss";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [showTransition, setShowTransition] = useState(false);
@@ -41,7 +42,6 @@ function App() {
     setMenuColor(colorObj);
   };
 
-  
   return (
     <div className={styles.App}>
       <AnimationContext.Provider
@@ -68,6 +68,7 @@ function App() {
                 menuColor={menuColor}
               />
               <Home />
+              <Footer />
             </Route>
             <Route path="/article/:id" exact>
               <Navigation
@@ -75,9 +76,11 @@ function App() {
                 menuColor={{ left: "#000", right: "#000" }}
               />
               <Article setMenuColorBlack={setMenuColorBlack} />
+              <Footer />
             </Route>
             <Route path="/user/:id" exact>
               <Author />
+              <Footer />
             </Route>
             <Route path="/login" exact>
               <Login />
@@ -87,6 +90,7 @@ function App() {
             </Route>
             <Route path="/about" exact>
               <AboutPage />
+              <Footer />
             </Route>
             <Route path="/all-articles" exact>
               <Navigation
@@ -94,6 +98,7 @@ function App() {
                 menuColor={{ left: "#000", right: "#000" }}
               />
               <AllArticlesPage />
+              <Footer />
             </Route>
             <Route path="/admin">
               <Admin />
