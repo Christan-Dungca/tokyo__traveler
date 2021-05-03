@@ -73,12 +73,14 @@ const Logo = () => {
 };
 
 const AdminProfile = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className={styles.AdminProfile}>
       <div className={styles.adminImg}></div>
       <div className={styles.adminInfo}>
         <h4 className={styles.adminTitle}>Administrator</h4>
-        <h3 className={styles.adminName}> Christian Dungca</h3>
+        <h3 className={styles.adminName}> {user.name} </h3>
       </div>
     </div>
   );

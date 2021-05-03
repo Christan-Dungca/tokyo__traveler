@@ -11,8 +11,8 @@ const Menu = ({ handleShowMenu }) => {
   const history = useHistory();
   const { logout, token, user } = useContext(AuthContext);
   // console.log(`token: ${token}`);
-  let menuContainerTimeline = useRef();
 
+  let menuContainerTimeline = useRef();
   const menuContainerRef = useRef();
   const closeMenuLeftRef = useRef();
   const closeMenuRightRef = useRef();
@@ -147,7 +147,7 @@ const Menu = ({ handleShowMenu }) => {
         >
           <p className={styles.articleslabel} ref={articleLabelRef}>
             Chapter 02
-          </p>
+          </p>  
           <h1
             className={styles.articlesLink}
             ref={articleLinkRef}
@@ -172,16 +172,16 @@ const Menu = ({ handleShowMenu }) => {
             About the Project
           </h1>
         </div>
-        <div className={styles.subLinks}>
+        <div className={styles.subLinks} ref={accountRef}>
           {token && user ? (
             <>
               <p
                 ref={accountRef}
-                onClick={() => handleLinkClick(`/user/${user._id}`)}
+                onClick={() => handleLinkClick(`/me`)}
               >
                 Welcome Back {user.name}
               </p>
-              <p onClick={handleLogout}> logout</p>
+              <p onClick={handleLogout}> Logout </p>
             </>
           ) : (
             <p ref={accountRef} onClick={() => handleLinkClick("/login")}>

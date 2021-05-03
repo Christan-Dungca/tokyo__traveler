@@ -51,10 +51,15 @@
 
     .subLinks {
       margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
       p {
         font-size: 1.6rem;
         cursor: pointer;
+        margin-bottom: 1rem;
         // text-transform: uppercase;
       }
     }

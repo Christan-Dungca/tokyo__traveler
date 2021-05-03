@@ -46,6 +46,21 @@ function App() {
     setMenuColor(colorObj);
   };
 
+  const mePage = () => {
+    if (!user) return <Login />;
+
+    switch (user.role) {
+      case "user":
+        return <div> User Section</div>;
+      case "author":
+        return <Author />;
+      case "admin":
+        return <Admin />;
+      default:
+        return <Login />;
+    }
+  };
+
   return (
     <div className={styles.App}>
       <AnimationContext.Provider
@@ -60,8 +75,6 @@ function App() {
           }}
         >
           {showMenu && <Menu handleShowMenu={handleToggleMenu} />}
-          {/* {showTransition && ( */}
-          {/* )} */}
           <Switch>
             <Route path="/" exact>
               {showTransition && (
@@ -82,14 +95,18 @@ function App() {
               <Article setMenuColorBlack={setMenuColorBlack} />
               <Footer />
             </Route>
-            <Route path="/user/:id" exact>
-              <Author />
-              <Footer />
-            </Route>
             <Route path="/login" exact>
+              <Navigation
+                handleShowMenu={handleToggleMenu}
+                menuColor={{ left: "#fff", right: "#fff" }}
+              />
               <Login />
             </Route>
             <Route path="/signup" exact>
+              <Navigation
+                handleShowMenu={handleToggleMenu}
+                menuColor={{ left: "#fff", right: "#fff" }}
+              />
               <Signup />
             </Route>
             <Route path="/about" exact>
@@ -107,6 +124,7 @@ function App() {
             <Route path="/admin">
               <Admin />
             </Route>
+            <Route path="/me">{mePage()}</Route>
           </Switch>
         </AuthContext.Provider>
       </AnimationContext.Provider>

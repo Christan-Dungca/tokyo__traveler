@@ -17,12 +17,13 @@ const Carousel = ({ list, type, title }) => {
     }
   }, []);
 
-  useEffect(() => {
-    const slider = items.current;
-    createCarousel({ slider });
-  }, []);
+  // useEffect(() => {
+  //   const slider = items.current;
+  //   createCarousel({ slider });
+  // }, []);
 
   const goRight = () => {
+    console.log(elementsRef)
     let elementWidth = elementsRef[0].getBoundingClientRect().width;
     let { marginRight } = getComputedStyle(elementsRef[0]);
     let elementMargin = parseInt(marginRight);
