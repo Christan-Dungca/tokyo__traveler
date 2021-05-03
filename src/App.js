@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Admin from "./containers/Admin/Admin";
 import Article from "./containers/Article/Article";
@@ -25,6 +25,10 @@ function App() {
   const [menuColor, setMenuColor] = useState({ left: "#fff", right: "#fff" });
 
   const { login, logout, token, user } = useToken();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleAnimation = () => {
     setShowTransition(false);

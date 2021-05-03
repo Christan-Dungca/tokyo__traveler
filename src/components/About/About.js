@@ -59,16 +59,33 @@ const About = () => {
         </div>
         <div className={styles.aboutTextContainer} ref={aboutTextRef}>
           <p>
-            Tokyo Traveler is an online magazine with a simple goal - to help future
-            travelers plan their dream trip to Japan. We write articles for
-            those who want to know all the tips and tricks of traveling in
+            Tokyo Traveler is an online magazine with a simple goal - to help
+            future travelers plan their dream trip to Japan. We write articles
+            for those who want to know all the tips and tricks of traveling in
             Japan.
           </p>
         </div>
       </div>
       <div className={styles.imageSection}>
         <div className={styles.doubleImageContainer} ref={imageContainerRef}>
-          <div className={styles.doubleImage} ref={imageRef}></div>
+          <h1
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              color: "#fff",
+              fontSize: "6rem",
+              fontFamily: "var(--font-serif)",
+              // textTransform: "uppercase",
+              letterSpacing: "4px",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            Discover Japan.
+          </h1>
+          {/* <div className={styles.doubleImage} ref={imageRef}></div> */}
         </div>
       </div>
       {/* <BeforeReading /> */}

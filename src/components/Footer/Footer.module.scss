@@ -22,17 +22,14 @@
     font-family: var(--font-san-serif);
     color: #fff;
     color: var(--japan-red);
-  }
-
-  .title,
-  ul {
-    // margin-right: 8rem;
+    letter-spacing: 0.5px;
   }
 
   .title {
     font-family: var(--font-san-serif);
     font-size: 1.8rem;
     font-weight: 600;
+    letter-spacing: 0.7px;
   }
 
   ul {
@@ -44,6 +41,7 @@
       font-family: var(--font-san-serif);
       line-height: 160%;
       margin-bottom: 0.8rem;
+      letter-spacing: 0.7px;
 
       &:first-child {
         margin-bottom: 1.2rem;

@@ -12,7 +12,9 @@ const Carousel = ({ list, type, title }) => {
 
   let elementsRef;
   useEffect(() => {
-    elementsRef = articleRefs.current.map((ref) => ref.current);
+    if (articleRefs.current.length > 0) {
+      elementsRef = articleRefs.current.map((ref) => ref.current);
+    }
   }, []);
 
   useEffect(() => {
