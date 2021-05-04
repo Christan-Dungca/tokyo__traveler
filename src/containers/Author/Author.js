@@ -12,77 +12,131 @@ import {
   BiComment,
   BiHeart,
 } from "react-icons/bi";
+import clonedeep from "lodash.clonedeep";
 import { useForm } from "react-hook-form";
 
 import styles from "./Author.module.scss";
 
 const ArticleFormSection = () => {
-  // const [sections, setSections] = useState({});
-  const imageInputRef = useRef();
+  const [sections, setSections] = useState([{ heading: "", content: [true] }]);
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
-  const handleFormSubmit = (data) => {
-    console.log(data);
-  };
+  const imageInputRef = useRef();
+  const { ref, ...rest } = register("image", { required: true });
+
+  const handleFormSubmit = (data) => console.log(data); // watch input value by passing the name of it
 
   const handleImagePicker = () => {
     imageInputRef.current.click();
+    return;
+  };
+
+  const handleAddParagraph = (sectionIdx) => {
+    const deepClonedObject = clonedeep(sections);
+    deepClonedObject[sectionIdx].content.push(true);
+    setSections(deepClonedObject);
+    return;
+  };
+
+  const handleAddSection = (sectionIdx) => {
+    const deepClonedObject = clonedeep(sections);
+    deepClonedObject.push({ heading: "", content: [true] });
+    setSections(deepClonedObject);
+    return;
   };
 
   return (
     <div className={styles.ArticleFormSection}>
       <h1> Create A New Article </h1>
-
       <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <label for="title">Title</label>
-        <input name="title" {...register("title", { required: true })} />
-
-        <div className={styles.imageSection}>
-          <p>Upload an Image</p>
-          <p>File should be PNG, JPG, JPEG</p>
-          <div className={styles.imageUpload} onClick={handleImagePicker}>
-            BiFolder
-          </div>
-          <div className={styles.imagePreview}></div>
+        <div className={styles.inputContainer}>
+          <label htmlFor="title"> Title </label>
+          {errors.title && (
+            <p className={styles.inputError}> A title is required</p>
+          )}
           <input
-            type="file"
-            name="image"
-            className={styles.imageInput}
-            ref={imageInputRef}
+            {...register("title", { required: true })}
+            placeholder="Enter a title for your article"
           />
         </div>
 
-        <p>Choose a Tag</p>
-        <input
-          type="radio"
-          name="before-you-go"
-          {...register("before-you-go", { required: true })}
-        />
-        <label for="before-you-go">Before You Go</label>
-        <input
-          type="radio"
-          name="during-your-trip"
-          {...register("during-your-trip", { required: true })}
-        />
-        <label for="Tag">During Your Trip</label>
+        <div className={styles.imageSection}>
+          <label htmlFor="image">Image</label>
+          <p>File should be PNG, JPG, JPEG</p>
+          {errors.image && (
+            <p className={styles.inputError}> A valid image is required </p>
+          )}
+          <div className={styles.imageUpload} onClick={handleImagePicker}>
+            <BiFolder />
+          </div>
+          <input
+            type="file"
+            {...rest}
+            ref={imageInputRef}
+            className={styles.imageInput}
+          />
+        </div>
 
-        <p>Sections</p>
-        <label for="section-1-title">Section 1 Title</label>
-        <input
-          name="section-1-title"
-          {...register("section-1-title", { required: true })}
-        />
-        <label for="section-1-paragraph">Section 1 paragraph</label>
-        <textarea
-          name="section-1-paragraph"
-          {...register("section-1-paragraph", { required: true })}
-        />
+        <label htmlFor="tags">Tag</label>
+        {errors.tags && <p>You must select one tag</p>}
+        <select {...register("tags", { required: true })}>
+          <option value="">Select...</option>
+          <option value="Before-You-Leave">Before You Leave</option>
+          <option value="During-Your-Trip">During Your Stay</option>
+        </select>
+
+        <label htmlFor="introduction">Introduction</label>
+        <p>
+          Write an introduction for your article. Explain the reason for the
+          article or try to give a personal experience with the issue
+        </p>
+        {errors.introduction && (
+          <p>An introduction for the article is required</p>
+        )}
+        <textarea {...register("introduction", { required: true })}></textarea>
+
+        <div className={styles.Sections}>
+          {sections.map((section, sidx) => {
+            return (
+              <div key={`${section}-${sidx}`}>
+                <label htmlFor={`section.${sidx}.heading`}>
+                  Section-{sidx} Title
+                </label>
+                {errors.section && <p>The section title is needed</p>}
+                <input
+                  {...register(`section.${sidx}.heading`, { required: true })}
+                />
+
+                {section.content.map((para, pidx) => {
+                  return (
+                    <div key={`${para}-${pidx}`}>
+                      <label htmlFor="section">Section-{pidx} Paragraph</label>
+                      {errors.section && <p>The section title is needed</p>}
+                      <input
+                        {...register(`section.${sidx}.content.${pidx}`, {
+                          required: true,
+                        })}
+                      />
+                    </div>
+                  );
+                })}
+
+                <div onClick={() => handleAddParagraph(sidx)}>
+                  <p>Add Paragraph</p>
+                </div>
+                <div onClick={() => handleAddSection(sidx)}>
+                  <p>Add Section</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <button> Create Article </button>
       </form>
     </div>
   );
@@ -311,16 +365,16 @@ const RecentActivity = () => {
           </div>
         </li>
         <li>
-          <li>
-            <div className={styles.activity}>
-              <p>
-                <span> Brooklyn Simmons</span> commented on your post
-              </p>
-              <div className={styles.dot}>
-                <div className={styles.innerDot}></div>
-              </div>
+          <div className={styles.activity}>
+            <p>
+              <span> Brooklyn Simmons</span> commented on your post
+            </p>
+            <div className={styles.dot}>
+              <div className={styles.innerDot}></div>
             </div>
-          </li>
+          </div>
+        </li>
+        <li>
           <div className={styles.activity}>
             <p>
               <span> Jane Coooper </span> liked your posts
