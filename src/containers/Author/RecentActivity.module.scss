@@ -1,0 +1,59 @@
+.RecentActivity {
+  font-family: var(--font-san-serif);
+  width: 100%;
+  height: 100%;
+  //   background-color: palegoldenrod;
+
+  .title {
+    font-weight: 500;
+  }
+
+  hr {
+    margin: 0.5rem 0 3rem 0;
+    height: 2px;
+    background-color: var(--japan-red);
+    border: none;
+  }
+
+  ul {
+    width: 100%;
+
+    li {
+      list-style: none;
+
+      .activity {
+        border-left: 1px solid #c700246c;
+        margin-bottom: 2rem;
+        padding-left: 1rem;
+        position: relative;
+        // background-color: beige;
+
+        p > span {
+          font-weight: bold;
+        }
+
+        .dot {
+          width: 1rem;
+          height: 1rem;
+          border-radius: 50%;
+          background-color: #c700246c;
+          position: absolute;
+          top: 8%;
+          left: 0;
+          transform: translate(-55%, -50%);
+
+          .innerDot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--japan-red);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+  }
+}

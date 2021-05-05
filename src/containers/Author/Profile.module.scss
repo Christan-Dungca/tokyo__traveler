@@ -1,0 +1,37 @@
+.Profile {
+  //   background-color: pink;
+  font-family: var(--font-san-serif);
+  width: 100%;
+  margin-bottom: 2rem;
+
+  .userProfile {
+    // background-color: rgb(165, 165, 165);
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1rem;
+
+    .userImg {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background-color: var(--japan-red);
+      margin-right: 1rem;
+    }
+
+    .profile {
+      .userName {
+        font-weight: 600;
+        font-size: 1.8rem;
+        //   line-height: 160%;
+        //   margin-bottom: .5rem;
+      }
+      .userRole {
+        // font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 160%;
+      }
+    }
+  }
+}
