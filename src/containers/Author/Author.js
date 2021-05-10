@@ -41,6 +41,7 @@ const Author = () => {
 
   return (
     <div className={styles.AuthorPage}>
+      {/* {Conditionally render <ArticleFormSection />} */}
       <nav className={styles.SideBar}>
         <h5 className={styles.Logo}>Tokyo Traveler</h5>
         <ul>

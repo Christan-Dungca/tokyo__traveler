@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { BiFolder, BiFile } from "react-icons/bi";
 import clonedeep from "lodash.clonedeep";
 import { useForm } from "react-hook-form";
@@ -17,8 +17,6 @@ const ArticleFormSection = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  useEffect(() => {}, []);
 
   const imageInputRef = useRef();
   const { ref, ...rest } = register("image");

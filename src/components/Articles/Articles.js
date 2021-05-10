@@ -9,7 +9,7 @@ const Articles = () => {
   const { isLoading, error, sendRequest } = useHttpClient();
 
   useEffect(() => {
-    console.log('getting articles')
+    console.log("getting articles");
     const getArticles = async () => {
       try {
         const response = await sendRequest(

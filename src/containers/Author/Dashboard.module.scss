@@ -19,6 +19,8 @@
     padding: 1rem;
     background-color: #fff;
     border-radius: 1rem;
+    max-height: 40%;
+    overflow: hidden;
 
     & > h2 {
       margin-bottom: 1.4rem;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {
   BiDotsHorizontalRounded,
   BiRightArrowAlt,
@@ -6,9 +6,28 @@ import {
 } from "react-icons/bi";
 import { Link, useRouteMatch } from "react-router-dom";
 
+import useHttpClient from "../../hooks/useHttp";
+import AuthContext from "../../context/auth-context";
 import styles from "./Dashboard.module.scss";
 
 const Dashboard = () => {
+  const [articles, setArticles] = useState(null);
+  const { sendRequest, error, isLoading } = useHttpClient();
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log("fetching...");
+    const fetchArticles = async () => {
+      const { data } = await sendRequest(
+        `http://localhost:5000/api/articles/user/${user._id}?limit=4`
+      );
+      console.log(data);
+      setArticles(data);
+    };
+
+    fetchArticles();
+  }, []);
+
   return (
     <div className={styles.Dashboard}>
       <div className={styles.headerSection}>
@@ -18,48 +37,21 @@ const Dashboard = () => {
       <div className={styles.recentArticlesSection}>
         <ul>
           <h2> Recently Published Articles </h2>
-          <li>
-            <div className={styles.article}>
-              <p> Article ID </p>
-              <p> Article Published </p>
-              <p> Article Title </p>
-              <BiDotsHorizontalRounded />
-            </div>
-          </li>
-          <li>
-            <div className={styles.article}>
-              <p> Article ID </p>
-              <p> Article Published </p>
-              <p> Article Title </p>
-              <BiDotsHorizontalRounded />
-            </div>
-          </li>
-          <li>
-            <div className={styles.article}>
-              <p> Article ID </p>
-              <p> Article Published </p>
-              <p> Article Title </p>
-              <BiDotsHorizontalRounded />
-            </div>
-          </li>
-          <li>
-            <div className={styles.article}>
-              <p> Article ID </p>
-              <p> Article Published </p>
-              <p> Article Title </p>
-              <BiDotsHorizontalRounded />
-            </div>
-          </li>
-          <li>
-            <div className={styles.article}>
-              <p> Article ID </p>
-              <p> Article Published </p>
-              <p> Article Title </p>
-              <BiDotsHorizontalRounded />
-            </div>
-          </li>
+          {articles !== null &&
+            articles.map((article, idx) => {
+              return (
+                <li key={`${article._id}`}>
+                  <div className={styles.article}>
+                    <p> {article._id} </p>
+                    <p> {article.createdAtFormatted} </p>
+                    <p> {article.title} </p>
+                    <BiDotsHorizontalRounded />
+                  </div>
+                </li>
+              );
+            })}
           <li className={styles.viewAll}>
-            <p> View All Articles</p> <BiRightArrowAlt />
+            <p> View All Articles </p> <BiRightArrowAlt />
           </li>
         </ul>
       </div>
