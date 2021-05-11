@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, Switch, Route, useRouteMatch } from "react-router-dom";
 import { BiHomeAlt, BiBook, BiLineChart, BiUser } from "react-icons/bi";
 
@@ -7,37 +7,49 @@ import Dashboard from "./Dashboard";
 import Profile from "./Profile";
 import ArticleFormSection from "./ArticleFormSection";
 import styles from "./Author.module.scss";
+import AuthContext from "../../context/auth-context";
 
-const routes = [
-  {
-    path: "/me",
-    exact: "true",
-    component: <Dashboard />,
-  },
-  {
-    path: "/me/articles",
-    exact: "true",
-    component: () => <div> Articles Section </div>,
-  },
-  {
-    path: "/me/activity",
-    exact: "true",
-    component: () => <div> Activity Section </div>,
-  },
-  {
-    path: "/me/profile",
-    exact: "true",
-    component: () => <div> Profile Section </div>,
-  },
-  {
-    path: "/me/create-article",
-    exact: "true",
-    component: () => <ArticleFormSection />,
-  },
-];
+const getRoutes = (userRole) => {
+  let routes;
+  let role = userRole.toLowerCase();
+
+  if (role === "author") {
+    routes = [
+      {
+        path: "/me",
+        exact: "true",
+        component: <Dashboard />,
+      },
+      {
+        path: "/me/articles",
+        exact: "true",
+        component: () => <div> Articles Section </div>,
+      },
+      {
+        path: "/me/activity",
+        exact: "true",
+        component: () => <div> Activity Section </div>,
+      },
+      {
+        path: "/me/profile",
+        exact: "true",
+        component: () => <div> Profile Section </div>,
+      },
+      {
+        path: "/me/create-article",
+        exact: "true",
+        component: () => <ArticleFormSection />,
+      },
+    ];
+    return routes;
+  }
+};
 
 const Author = () => {
+  const { user } = useContext(AuthContext);
   let { path } = useRouteMatch();
+
+  const routes = getRoutes(user.role);
 
   return (
     <div className={styles.AuthorPage}>
@@ -52,8 +64,7 @@ const Author = () => {
               activeStyle={{
                 fontWeight: "bold",
                 color: "#000",
-              }}
-            >
+              }}>
               <BiHomeAlt />
               Dashboard
             </NavLink>
@@ -65,8 +76,7 @@ const Author = () => {
               activeStyle={{
                 fontWeight: "bold",
                 color: "#000",
-              }}
-            >
+              }}>
               <BiBook />
               Articles
             </NavLink>
@@ -78,8 +88,7 @@ const Author = () => {
               activeStyle={{
                 fontWeight: "bold",
                 color: "#000",
-              }}
-            >
+              }}>
               <BiLineChart />
               Activity
             </NavLink>
@@ -91,8 +100,7 @@ const Author = () => {
               activeStyle={{
                 fontWeight: "bold",
                 color: "#000",
-              }}
-            >
+              }}>
               <BiUser />
               Profile
             </NavLink>

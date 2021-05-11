@@ -25,15 +25,14 @@ const useHttpClient = () => {
         );
 
         if (!response.statusText === "OK") {
-          // setIsLoading(false);
-          // setError(true);
+          setError(true);
+          setIsLoading(false);
           // throw new Error("Error getting resource");
           console.log("response" + response);
           return response;
         }
 
         console.log(response);
-        // console.log(response.data.data);
         setIsLoading(false);
         return response.data;
       } catch (err) {
