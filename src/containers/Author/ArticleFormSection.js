@@ -1,5 +1,6 @@
-import React, { useState, useRef, useContext } from "react";
-import { BiFolder, BiFile } from "react-icons/bi";
+import React, { useState, useRef, useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { BiFolder, BiFile, BiArrowBack } from "react-icons/bi";
 import clonedeep from "lodash.clonedeep";
 import { useForm } from "react-hook-form";
 
@@ -9,8 +10,10 @@ import styles from "./ArticleFormSection.module.scss";
 
 const ArticleFormSection = () => {
   const [sections, setSections] = useState([{ heading: "", content: [true] }]);
+  const [showWarning, setShowWarning] = useState(false);
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
   const { token } = useContext(AuthContext);
+  const history = useHistory();
 
   const {
     register,
@@ -18,8 +21,17 @@ const ArticleFormSection = () => {
     formState: { errors },
   } = useForm();
 
+  const SectionRef = useRef();
   const imageInputRef = useRef();
   const { ref, ...rest } = register("image");
+
+  useEffect(() => {
+    if(showWarning === true){
+      SectionRef.current.style.overflow = 'hidden';
+    } else {
+      SectionRef.current.style.overflow = 'unset';
+    }
+  }, [showWarning])
 
   const handleFormSubmit = async (data) => {
     const { title, tags, image, introduction, sections } = data;
@@ -71,8 +83,45 @@ const ArticleFormSection = () => {
     return;
   };
 
+  const handleBackClick = () => {
+    setShowWarning(!showWarning);
+  };
+
+  const handleGoBack = () => {
+    history.go(-1);
+  };
+
+  const toggleWarning = () => {
+    setShowWarning(!showWarning);
+  };
+
   return (
-    <div className={styles.ArticleFormSection}>
+    <div className={styles.ArticleFormSection} ref={SectionRef}>
+      {showWarning && (
+        <div className={styles.WarningModal}>
+          <div className={styles.modal}>
+            <div className={styles.textContainer}>
+              <h3>Are you sure you wanna leave?</h3>
+              <p>
+                You will lose all progress from this form. Do you still want to
+                leave this page?
+              </p>
+            </div>
+            <div className={styles.btnContainer}>
+              <p onClick={handleGoBack} className={styles.modalBtnYes}>
+                Leave Page
+              </p>
+              <p onClick={toggleWarning} className={styles.modalBtnNo}>
+                Take Me Back
+              </p>
+            </div>
+          </div>
+          <div onClick={toggleWarning} className={styles.overlay}></div>
+        </div>
+      )}
+      <div className={styles.backBtnContainer} onClick={handleBackClick}>
+        <BiArrowBack className={styles.backBtn} />
+      </div>
       <div className={styles.aboutSection}>
         <BiFile />
         <h1> New Article Form </h1>
@@ -169,8 +218,7 @@ const ArticleFormSection = () => {
                   return (
                     <div
                       key={`${para}-${pidx}`}
-                      className={styles.sectionParagraph}
-                    >
+                      className={styles.sectionParagraph}>
                       <label htmlFor={`sections.${sidx}.heading`}>
                         Section - {sidx + 1} -- Paragraph - {pidx + 1}
                       </label>
@@ -190,8 +238,7 @@ const ArticleFormSection = () => {
 
                 <div
                   onClick={() => handleAddParagraph(sidx)}
-                  className={styles.addParagraphBtn}
-                >
+                  className={styles.addParagraphBtn}>
                   <p>Add Paragraph To Section</p>
                 </div>
               </div>

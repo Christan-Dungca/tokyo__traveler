@@ -1,15 +1,33 @@
 .ArticleFormSection {
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: #fff;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow-y: scroll;
+  z-index: 10;
+
+  .backBtnContainer {
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    width: max-content;
+    // background-color: yellow;
+    padding: 1rem;
+    cursor: pointer;
+
+    .backBtn {
+      font-size: 3rem;
+    }
+  }
 
   .aboutSection {
     width: 100%;
     // background-color: var(--light-yellow);
     // color: #000;
-    background-color: #000;
-    color: var(--gray-white);
+    // background-color: #000;
+    // color: var(--gray-white);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -289,6 +307,7 @@
         }
       }
     }
+
     .addSectionBtn {
       margin: 1rem;
       align-self: flex-end;
@@ -325,5 +344,82 @@
       font-size: 1.8rem;
       color: #fff;
     }
+  }
+}
+
+// Warning Label
+.WarningModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  .modal {
+    width: 50rem;
+    height: 30rem;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .textContainer {
+      background-color: var(--light-red);
+      color: var(--gray-white);
+      color: #fff;
+      width: 100%;
+      height: 50%;
+      padding: 3rem 2rem;
+      font-family: var(--font-san-serif);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        margin-bottom: 1rem;
+      }
+      p {
+        line-height: 140%;
+      }
+    }
+
+    .btnContainer {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 2rem;
+      font-family: var(--font-san-serif);
+      // background-color: aqua;
+
+      .modalBtnNo,
+      .modalBtnYes {
+        padding: 1.4rem 5rem;
+        border-radius: 6px;
+        margin: 0 1rem;
+        cursor: pointer;
+      }
+
+      .modalBtnNo {
+        background-color: var(--gray);
+      }
+      .modalBtnYes {
+        background-color: var(--light-red);
+        color: var(--gray-white);
+        color: #fff;
+      }
+    }
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
   }
 }
