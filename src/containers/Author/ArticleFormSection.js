@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { BiFolder, BiFile, BiArrowBack } from "react-icons/bi";
+import { BiImageAdd, BiFile, BiArrowBack } from "react-icons/bi";
+import { MdRemoveCircleOutline } from "react-icons/md";
 import clonedeep from "lodash.clonedeep";
 import { useForm } from "react-hook-form";
 
@@ -9,29 +10,59 @@ import useHttpClient from "../../hooks/useHttp";
 import styles from "./ArticleFormSection.module.scss";
 
 const ArticleFormSection = () => {
+  const [file, setFile] = useState(null);
+  const [filePreviewUrl, setFilePreviewUrl] = useState();
   const [sections, setSections] = useState([{ heading: "", content: [true] }]);
   const [showWarning, setShowWarning] = useState(false);
   const { isLoading, error, clearError, sendRequest } = useHttpClient();
   const { token } = useContext(AuthContext);
   const history = useHistory();
-
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm();
 
   const SectionRef = useRef();
   const imageInputRef = useRef();
-  const { ref, ...rest } = register("image");
+  const { ref, ...rest } = register("image", { required: true });
+
+  const imageValue = watch("image", null);
+  useEffect(() => {
+    if (!imageValue || imageValue.length < 1) return;
+
+    // setting the imagePreviewUrl based on imageValue
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      setFilePreviewUrl(fileReader.result);
+    };
+    fileReader.readAsDataURL(imageValue[0]);
+
+    // setting image name and file size
+    let fileSize = imageValue[0].size;
+    let formattedSize;
+    if (fileSize < 1000000) {
+      formattedSize = Math.floor(fileSize / 1000) + "KB";
+    } else {
+      formattedSize = Math.floor(fileSize / 1000000) + "MB";
+    }
+
+    // remove image value from form state
+    setFile({
+      size: formattedSize,
+      name: imageValue[0].name,
+    });
+  }, [imageValue]);
 
   useEffect(() => {
-    if(showWarning === true){
-      SectionRef.current.style.overflow = 'hidden';
+    if (showWarning === true) {
+      SectionRef.current.style.overflow = "hidden";
     } else {
-      SectionRef.current.style.overflow = 'unset';
+      SectionRef.current.style.overflow = "unset";
     }
-  }, [showWarning])
+  }, [showWarning]);
 
   const handleFormSubmit = async (data) => {
     const { title, tags, image, introduction, sections } = data;
@@ -43,13 +74,12 @@ const ArticleFormSection = () => {
     formData.append("introduction", introduction);
     formData.append("sections", JSON.stringify(sections));
 
-    // console.log(data);
-
     for (var pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     }
 
     try {
+      console.log(data);
       await sendRequest(
         `http://localhost:5000/api/articles`,
         "post",
@@ -81,6 +111,13 @@ const ArticleFormSection = () => {
     deepClonedObject.push({ heading: "", content: [true] });
     setSections(deepClonedObject);
     return;
+  };
+
+  const handleRemoveImage = () => {
+    // remove file, imageUrlPreview, set imageValue === null
+    setFile(null);
+    setFilePreviewUrl(null);
+    setValue("image", "", { shouldValidate: true });
   };
 
   const handleBackClick = () => {
@@ -126,7 +163,7 @@ const ArticleFormSection = () => {
         <BiFile />
         <h1> New Article Form </h1>
         <p>
-          Create a new blog post that can shine light on a topic relating to
+          Create a new blog post that can shine light on a topics relating to
           Japan
         </p>
       </div>
@@ -160,11 +197,30 @@ const ArticleFormSection = () => {
             <p className={styles.inputError}> A valid image is required </p>
           )}
           <div className={styles.imageUpload} onClick={handleImagePicker}>
-            <BiFolder />
+            <BiImageAdd />
             <p>
               Click To <span className={styles.underline}>Upload</span> An Image
             </p>
           </div>
+
+          {imageValue && file !== null && (
+            <div className={styles.imagePreviewContainer}>
+              <div className={styles.imagePreview}>
+                {filePreviewUrl && (
+                  <img src={filePreviewUrl} alt="selected item" />
+                )}
+              </div>
+              <div className={styles.imageInfo}>
+                <p>{file.name}</p>
+                <p>{file.size}</p>
+              </div>
+              <div
+                className={styles.removeImgBtnContainer}
+                onClick={handleRemoveImage}>
+                <MdRemoveCircleOutline />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className={styles.tagInputContainer}>
@@ -228,9 +284,7 @@ const ArticleFormSection = () => {
                         </p>
                       )}
                       <textarea
-                        {...register(`sections.${sidx}.content.${pidx}`, {
-                          required: true,
-                        })}
+                        {...register(`sections.${sidx}.content.${pidx}`)}
                       />
                     </div>
                   );
