@@ -1,0 +1,88 @@
+.Comment {
+  //   background-color: black;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  font-family: var(--font-san-serif);
+
+  form {
+    // background-color: aqua;
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .container {
+      display: flex;
+      align-items: center;
+
+      .imgContainer {
+        background-color: var(--dark-yellow);
+        background: url('../../assets/images/default-user.jpeg');
+        background-size: cover;
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        margin-right: 1.2rem;
+      }
+
+      .commentContainer {
+        flex: 1;
+
+        label {
+          font-family: inherit;
+          font-size: 1.6rem;
+          font-weight: 600;
+          letter-spacing: 0.8px;
+        }
+
+        input {
+          margin-top: 1rem;
+          font-size: 1.6rem;
+          padding: 1.4rem 1rem;
+          width: 100%;
+          border: 1px solid var(--blue-gray);
+          border-radius: 4px;
+          outline: none;
+          transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+          &:focus {
+            border: 1px solid var(--dark-gray);
+          }
+
+          &:focus {
+            border: 1px solid var(--dark-blue);
+          }
+
+          &::-webkit-input-placeholder,
+          &::-moz-placeholder {
+            /* Chrome/Opera/Safari */
+            /* Firefox 19+ */
+            font-family: var(--font-san-serif);
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+
+    button {
+      //   align-self: flex-end;
+      border: none;
+      border-radius: 4px;
+      padding: 1.2rem 6rem;
+      font-family: inherit;
+      font-size: 1.6rem;
+      background-color: var(--dark-blue);
+      justify-self: flex-end;
+      color: #fff;
+      margin-top: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px 0px var(--blue-gray);
+      transition: all 0.4s;
+
+      &:active {
+        box-shadow: 0 2px 3px 0px var(--blue-gray);
+      }
+    }
+  }
+}

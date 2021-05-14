@@ -175,7 +175,7 @@ const ArticleFormSection = () => {
           )}
           <input
             type="text"
-            {...register("title")}
+            {...register("title", { required: true })}
             placeholder="Enter a title for your article"
           />
         </div>
@@ -190,6 +190,7 @@ const ArticleFormSection = () => {
               imageInputRef.current = e;
             }}
             name="image"
+            accept="image/png, image/jpeg, image/jpg"
             className={styles.imageInput}
           />
           <p>File should be PNG, JPG, JPEG</p>
@@ -229,7 +230,7 @@ const ArticleFormSection = () => {
           {errors.tags && (
             <p className={styles.inputError}>You must select one tag</p>
           )}
-          <select {...register("tags")}>
+          <select {...register("tags", { required: true })}>
             <option value="">Select...</option>
             <option value="Before You Leave">Before You Leave</option>
             <option value="During Your Trip">During Your Stay</option>
@@ -247,7 +248,8 @@ const ArticleFormSection = () => {
               An introduction for the article is required
             </p>
           )}
-          <textarea {...register("introduction")}></textarea>
+          <textarea
+            {...register("introduction", { required: true })}></textarea>
         </div>
 
         <div className={styles.sectionsContainer}>
@@ -263,12 +265,14 @@ const ArticleFormSection = () => {
                 <label htmlFor={`sections.${sidx}.heading`}>
                   Section - {sidx + 1} Title
                 </label>
-                {errors.section && (
+                {errors.sections && (
                   <p className={styles.inputError}>
                     The section title is needed
                   </p>
                 )}
-                <input {...register(`sections.${sidx}.heading`)} />
+                <input
+                  {...register(`sections.${sidx}.heading`, { required: true })}
+                />
 
                 {section.content.map((para, pidx) => {
                   return (
@@ -278,13 +282,15 @@ const ArticleFormSection = () => {
                       <label htmlFor={`sections.${sidx}.heading`}>
                         Section - {sidx + 1} -- Paragraph - {pidx + 1}
                       </label>
-                      {errors.section && (
+                      {errors.sections && (
                         <p className={styles.inputError}>
                           The section title is needed
                         </p>
                       )}
                       <textarea
-                        {...register(`sections.${sidx}.content.${pidx}`)}
+                        {...register(`sections.${sidx}.content.${pidx}`, {
+                          required: true,
+                        })}
                       />
                     </div>
                   );

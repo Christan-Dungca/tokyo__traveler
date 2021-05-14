@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BiHash } from "react-icons/bi";
 
+import AddComment from "./AddComment";
 import useHttpClient from "../../hooks/useHttp";
 import styles from "./Article.module.scss";
 
@@ -84,8 +85,7 @@ const Article = () => {
                 <div
                   className={styles.section}
                   id={`${section.heading.split(" ").join("-")}`}
-                  key={`${section.heading}`}
-                >
+                  key={`${section.heading}`}>
                   <h3>{section.heading}</h3>
                   {section.content.map((paragraph, idx) => {
                     return <p key={`paragraph-${idx}`}> {paragraph} </p>;
@@ -95,6 +95,8 @@ const Article = () => {
             })}
           </div>
         </div>
+
+        <AddComment />
       </div>
     );
   }
